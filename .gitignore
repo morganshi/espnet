@@ -41,6 +41,7 @@ egs*/*/*/data*
 egs*/*/*/db
 egs*/*/*/downloads
 egs*/*/*/dump
+egs*/*/*/ckpt
 egs*/*/*/enhan
 egs*/*/*/exp
 egs*/*/*/fbank
