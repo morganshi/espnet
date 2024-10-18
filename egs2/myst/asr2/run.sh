@@ -5,6 +5,7 @@ set -e
 set -u
 set -o pipefail
 
+CUDA_VISIBLE_DEVICES="0"
 
 kmeans_feature="wavlm_large/21"  # use model_type/layer_index
 nclusters=2000
@@ -12,9 +13,9 @@ nclusters=2000
 src_lang=$(echo "${kmeans_feature}_km${nclusters}" | tr "/" "_")
 tgt_lang=en
 
-train_set="train_clean_100"
+train_set="train"
 train_dev="dev"
-test_sets="test_other dev_clean dev_other"
+test_sets="test"
 
 # test_sets="test_clean test_other dev_clean dev_other"
 
@@ -29,10 +30,12 @@ tgt_nbpe=5000   # if token_joint is True, then only tgt_nbpe is used
 src_case="rm"
 tgt_case="ts"
 
+CUDA_VISIBLE_DEVICES="0"    \
 ./asr2.sh \
-    --stage 15   \
-    --stop_stage 15  \
-    --kmeans_opts "--batch_bins 600000 --nj 4" \
+    --stage 14   \
+    --stop_stage 14  \
+    --gpu_kmeans true  \
+    --kmeans_opts "--batch_bins 400000 --nj 4" \
     --kmeans_feature "${kmeans_feature}" \
     --nclusters "${nclusters}" \
     --ngpu 1 \
@@ -44,13 +47,12 @@ tgt_case="ts"
     --tgt_nbpe $tgt_nbpe \
     --src_case ${src_case} \
     --tgt_case ${tgt_case} \
-    --speed_perturb_factors "0.9 1.0 1.1" \
     --use_lm false \
     --asr_config "${asr_config}" \
     --inference_config "${inference_config}" \
     --train_set "${train_set}" \
     --valid_set "${train_dev}" \
     --test_sets "${test_sets}" \
-    --src_bpe_train_text "dump/raw/${train_set}_sp/text.${src_case}.${src_lang}" \
-    --tgt_bpe_train_text "dump/raw/${train_set}_sp/text.${tgt_case}.${tgt_lang}" \
-    --lm_train_text "dump/raw/${train_set}_sp/text.${tgt_case}.${tgt_lang}" "$@"
+    --src_bpe_train_text "dump/raw/${train_set}/text.${src_case}.${src_lang}" \
+    --tgt_bpe_train_text "dump/raw/${train_set}/text.${tgt_case}.${tgt_lang}" \
+    --lm_train_text "dump/raw/${train_set}/text.${tgt_case}.${tgt_lang}" "$@"

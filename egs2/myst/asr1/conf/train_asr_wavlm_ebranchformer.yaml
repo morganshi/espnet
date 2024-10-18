@@ -1,31 +1,24 @@
-# Trained with A6000 (48 GB) x 1 GPUs for Kmeans2K+nbpe5K. It takes 6 minutes per epoch.
-# BPE-Dropout (https://github.com/google/sentencepiece#subword-regularization-and-bpe-dropout)
-src_tokenizer_encode_conf:
-    enable_sampling: true    # If set to true, bpe-dropout is used.
-    alpha: 0.4
-    nbest_size: -1
+# network architecture
+# wavlm
+# unused_parameters: true
+freeze_param: [
+    "frontend.upstream"
+]
 
-frontend: embed     # embedding + positional encoding
+# network architecture
+frontend: s3prl
 frontend_conf:
-    embed_dim: 512
-    positional_dropout_rate: 0.1
+    frontend_conf:
+        upstream: wavlm_large
+    download_dir: ./ckpt
+    multilayer_feature: false
 
-specaug: specaug
-specaug_conf:
-    apply_time_warp: false
-    time_warp_window: 5
-    time_warp_mode: bicubic
-    apply_freq_mask: false
-    freq_mask_width_range:
-    - 0
-    - 10
-    num_freq_mask: 0
-    apply_time_mask: true
-    time_mask_width_ratio_range:
-    - 0.
-    - 0.05
-    num_time_mask: 10
+preencoder: linear
+preencoder_conf:
+    input_size: 1024
+    output_size: 128
 
+# encoder related
 encoder: e_branchformer
 encoder_conf:
     output_size: 256
@@ -41,7 +34,7 @@ encoder_conf:
     dropout_rate: 0.1
     positional_dropout_rate: 0.1
     attention_dropout_rate: 0.1
-    input_layer: conv1d2
+    input_layer: conv2d
     layer_drop_rate: 0.0
     linear_units: 1024
     positionwise_layer_type: linear
@@ -49,6 +42,7 @@ encoder_conf:
     macaron_ffn: true
     merge_conv_kernel: 31
 
+# decoder related
 decoder: transformer
 decoder_conf:
     attention_heads: 4
@@ -60,21 +54,19 @@ decoder_conf:
     src_attention_dropout_rate: 0.1
     layer_drop_rate: 0.0
 
-model: discrete_asr
+# hybrid CTC/attention
 model_conf:
-    ctc_weight: 0.3
+    ctc_weight: 0.0
     lsm_weight: 0.1
     length_normalized_loss: false
-    share_decoder_input_output_embed: false
-    share_encoder_decoder_input_embed: false
 
-use_amp: true
-num_att_plot: 1
-# log_interval: 100
+
+# minibatch related
+seed: 2022
 num_workers: 4
 batch_type: numel
-batch_bins: 140000000
-accum_grad: 4
+batch_bins: 8000000
+accum_grad: 8
 max_epoch: 70
 patience: none
 init: none
@@ -83,11 +75,14 @@ best_model_criterion:
     - acc
     - max
 keep_nbest_models: 10
+use_amp: true
 
 optim: adam
 optim_conf:
-    lr: 0.006
+    lr: 0.002
     weight_decay: 0.000001
 scheduler: warmuplr
 scheduler_conf:
-    warmup_steps: 15000
+    warmup_steps: 10000
+
+specaug: null
