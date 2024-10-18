@@ -40,6 +40,7 @@ out/config.yaml
 egs*/*/*/data*
 egs*/*/*/db
 egs*/*/*/downloads
+egs*/*/*/ckpt
 egs*/*/*/dump
 egs*/*/*/enhan
 egs*/*/*/exp
