@@ -62,7 +62,7 @@ decoder_conf:
 
 model: discrete_asr
 model_conf:
-    ctc_weight: 0.3
+    ctc_weight: 0.0
     lsm_weight: 0.1
     length_normalized_loss: false
     share_decoder_input_output_embed: false
@@ -86,7 +86,7 @@ keep_nbest_models: 10
 
 optim: adam
 optim_conf:
-    lr: 0.006
+    lr: 0.001
     weight_decay: 0.000001
 scheduler: warmuplr
 scheduler_conf:

@@ -1296,6 +1296,8 @@ class AbsTask(ABC):
             # logging.basicConfig() is invoked in main_worker() instead of main()
             # because it can be invoked only once in a process.
             # FIXME(kamo): Should we use logging.getLogger()?
+            for handler in logging.root.handlers[:]:
+                logging.root.removeHandler(handler)
             logging.basicConfig(
                 level=args.log_level,
                 format=f"[{os.uname()[1].split('.')[0]}{_rank}]"
@@ -1303,6 +1305,8 @@ class AbsTask(ABC):
             )
         else:
             # Suppress logging if RANK != 0
+            for handler in logging.root.handlers[:]:
+                logging.root.removeHandler(handler)
             logging.basicConfig(
                 level="ERROR",
                 format=f"[{os.uname()[1].split('.')[0]}"
@@ -1398,7 +1402,6 @@ class AbsTask(ABC):
                     f'Saving the configuration in {output_dir / "config.yaml"}'
                 )
                 yaml_no_alias_safe_dump(vars(args), f, indent=4, sort_keys=False)
-
         if args.dry_run:
             pass
         elif args.collect_stats:

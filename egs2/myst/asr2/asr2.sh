@@ -32,10 +32,10 @@ skip_train=false        # Skip training stages.
 skip_eval=false         # Skip decoding and evaluation stages.
 skip_packing=true       # Skip the packing stage.
 skip_upload_hf=true     # Skip uploading to huggingface stage.
-eval_valid_set=false    # Run decoding for the validation set
+eval_valid_set=true    # Run decoding for the validation set
 ngpu=1                  # The number of gpus ("0" uses cpu, otherwise use gpu).
 num_nodes=1             # The number of nodes.
-nj=32                   # The number of parallel jobs.
+nj=16                   # The number of parallel jobs.
 inference_nj=8         # The number of parallel jobs in decoding.
 gpu_inference=false     # Whether to perform gpu decoding.
 dumpdir=dump            # Directory to dump features.
@@ -316,22 +316,22 @@ if [ -n "${train_set}" ] && [ "${train_set}" = "${valid_set}" ]; then
     exit 1
 fi
 
-_test_sets=
-for dset in ${test_sets}; do
-    if [ "${dset}" = "${train_set}" ]; then
-        log "Error: train_set and test_sets must be different. --train_set ${train_set} --test_sets ${test_sets}"
-        exit 1
-    fi
-    if [ "${dset}" = "${valid_set}" ]; then
-        log "Info: The valid_set '${valid_set}' is included in the test_sets. '--eval_valid_set true' is set and '${valid_set}' is removed from the test_sets"
-        eval_valid_set=true
-    elif [[ " ${_test_sets} " =~ [[:space:]]${dset}[[:space:]] ]]; then
-        log "Info: ${dset} is duplicated in the test_sets. One is removed"
-    else
-        _test_sets+="${dset} "
-    fi
-done
-test_sets=${_test_sets}
+# _test_sets=
+# for dset in ${test_sets}; do
+#     if [ "${dset}" = "${train_set}" ]; then
+#         log "Error: train_set and test_sets must be different. --train_set ${train_set} --test_sets ${test_sets}"
+#         exit 1
+#     fi
+#     if [ "${dset}" = "${valid_set}" ]; then
+#         log "Info: The valid_set '${valid_set}' is included in the test_sets. '--eval_valid_set true' is set and '${valid_set}' is removed from the test_sets"
+#         eval_valid_set=true
+#     elif [[ " ${_test_sets} " =~ [[:space:]]${dset}[[:space:]] ]]; then
+#         log "Info: ${dset} is duplicated in the test_sets. One is removed"
+#     else
+#         _test_sets+="${dset} "
+#     fi
+# done
+# test_sets=${_test_sets}
 
 # Check feature type
 if [ "${feats_type}" = raw ]; then
@@ -789,7 +789,7 @@ if [ ${stage} -le 5 ] && [ ${stop_stage} -ge 5 ] && ! [[ " ${skip_stages} " =~ [
             --stage 1 --stop-stage 4 \
             --train_set "${train_set}" \
             --dev_set "${_dev_set}" \
-            --other_sets "${test_sets} ${train_sp_sets}" \
+            --other_sets "${test_sets}" \
             --datadir "${data_audio}" \
             --featdir "${data_extract}" \
             --audio_format "${audio_format}" \
@@ -944,7 +944,7 @@ if [ ${stage} -le 6 ] && [ ${stop_stage} -ge 6 ] && ! [[ " ${skip_stages} " =~ [
     fi
     if [ "${feats_type}" = raw ]; then
         # NOTE(Jinchuan): data prep with codec tokenization has been done. Skip this part
-        if [ "${tokenization_choice}" == "codec"]; then
+        if [ "${tokenization_choice}" == "codec" ]; then
             continue
         fi
         log "Stage 6: ${data_extract} -> ${data_feats}"
@@ -1570,11 +1570,13 @@ if [ ${stage} -le 14 ] && [ ${stop_stage} -ge 14 ] && ! [[ " ${skip_stages} " =~
     log "Generate '${asr_exp}/${inference_tag}/run.sh'. You can resume the process from stage 14 using this script"
     mkdir -p "${asr_exp}/${inference_tag}"; echo "${run_args} --stage 14 \"\$@\"; exit \$?" > "${asr_exp}/${inference_tag}/run.sh"; chmod +x "${asr_exp}/${inference_tag}/run.sh"
 
-    if "${eval_valid_set}"; then
-        _dsets="org/${valid_set} ${test_sets}"
-    else
-        _dsets="${test_sets}"
-    fi
+    # if "${eval_valid_set}"; then
+    #     _dsets="org/${valid_set} ${test_sets}"
+    # else
+    #     _dsets="${test_sets}"
+    # fi
+    _dsets="${test_sets}"
+    
     for dset in ${_dsets}; do
         _data="${data_feats}/${dset}"
         _dir="${asr_exp}/${inference_tag}/${dset}"
@@ -1621,11 +1623,13 @@ fi
 if [ ${stage} -le 15 ] && [ ${stop_stage} -ge 15 ] && ! [[ " ${skip_stages} " =~ [[:space:]]15[[:space:]] ]]; then
     log "Stage 15: Scoring"
 
-    if "${eval_valid_set}"; then
-        _dsets="org/${valid_set} ${test_sets}"
-    else
-        _dsets="${test_sets}"
-    fi
+    # if "${eval_valid_set}"; then
+    #     _dsets="org/${valid_set} ${test_sets}"
+    # else
+    #     _dsets="${test_sets}"
+    # fi
+    _dsets="${test_sets}"
+
     for dset in ${_dsets}; do
         _data="${data_feats}/${dset}"
         _dir="${asr_exp}/${inference_tag}/${dset}"
