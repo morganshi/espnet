@@ -5,7 +5,6 @@ set -e
 set -u
 set -o pipefail
 
-CUDA_VISIBLE_DEVICES="2"
 
 train_set="train"
 valid_set="dev"

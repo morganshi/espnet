@@ -5,8 +5,6 @@ set -e
 set -u
 set -o pipefail
 
-CUDA_VISIBLE_DEVICES="2"
-
 train_set="train"
 valid_set="dev"
 test_sets="test"
@@ -15,17 +13,18 @@ asr_config=conf/train_asr_wavlm_ebranchformer.yaml
 inference_config=conf/decode_asr.yaml
 
 
-CUDA_VISIBLE_DEVICES="2"    \
+CUDA_VISIBLE_DEVICES="1,3"    \
 ./asr.sh \
     --stage 11   \
     --stop_stage 11  \
     --lang en \
-    --ngpu 1 \
+    --ngpu 2 \
     --nj 16 \
     --gpu_inference true \
     --inference_nj 2 \
     --nbpe 5000 \
     --max_wav_duration 30 \
+    --feats_normalize utterance_mvn \
     --audio_format "flac" \
     --feats_type raw \
     --use_lm false \

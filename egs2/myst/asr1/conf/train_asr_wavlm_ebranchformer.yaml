@@ -10,7 +10,7 @@ frontend: s3prl
 frontend_conf:
     frontend_conf:
         upstream: wavlm_large
-    download_dir: ./ckpt
+    download_dir: ../asr2/ckpt
     multilayer_feature: false
 
 preencoder: linear
@@ -76,6 +76,7 @@ best_model_criterion:
     - max
 keep_nbest_models: 10
 use_amp: true
+unused_parameters: true
 
 optim: adam
 optim_conf:
