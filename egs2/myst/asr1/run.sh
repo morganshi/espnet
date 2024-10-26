@@ -10,16 +10,16 @@ train_set="train"
 valid_set="dev"
 test_sets="test"
 
-asr_config=conf/train_asr_lr1e-3_warm_10000.yaml
-inference_config=conf/decode_asr.yaml
+asr_config=conf/train_asr_onlyctc.yaml
+inference_config=conf/decode_asr_ctc_greedy.yaml
 
 
-CUDA_VISIBLE_DEVICES="2"    \
+CUDA_VISIBLE_DEVICES="0,1,2,3"    \
 ./asr.sh \
     --stage 11   \
     --stop_stage 11  \
     --lang en \
-    --ngpu 1 \
+    --ngpu 4 \
     --nj 16 \
     --gpu_inference true \
     --inference_nj 2 \
