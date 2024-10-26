@@ -12,8 +12,8 @@ log() {
 SECONDS=0
 
 
-stage=4
-stop_stage=100000
+stage=1
+stop_stage=3
 data_url=www.openslr.org/resources/12
 train_dev="dev"
 
