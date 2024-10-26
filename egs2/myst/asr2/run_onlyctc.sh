@@ -15,12 +15,12 @@ tgt_lang=en
 
 train_set="train"
 train_dev="dev"
-test_sets="test"
+test_sets="dev test"
 
 # test_sets="test_clean test_other dev_clean dev_other"
 
 asr_config=conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu.yaml
-inference_config=conf/decode_ctc1.0.yaml
+inference_config=conf/decode_ctc1.0_greedy.yaml
 
 src_nbpe=6000   # I use src_nbpe=6000 for 2000-cluster kmeans.
 tgt_nbpe=5000   # if token_joint is True, then only tgt_nbpe is used
@@ -32,13 +32,14 @@ tgt_case="ts"
 
 CUDA_VISIBLE_DEVICES="1"    \
 ./asr2.sh \
-    --stage 13   \
-    --stop_stage 13  \
+    --stage 14   \
+    --stop_stage 14  \
     --gpu_kmeans true  \
     --kmeans_opts "--batch_bins 400000 --nj 4" \
     --kmeans_feature "${kmeans_feature}" \
     --nclusters "${nclusters}" \
     --ngpu 1 \
+    --inference_nj 4    \
     --inference_asr_model "valid.cer_ctc.ave.pth"   \
     --src_lang ${src_lang} \
     --tgt_lang ${tgt_lang} \
