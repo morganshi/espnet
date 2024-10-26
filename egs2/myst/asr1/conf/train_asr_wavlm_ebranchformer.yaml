@@ -12,6 +12,7 @@ frontend_conf:
         upstream: wavlm_large
     download_dir: ../asr2/ckpt
     multilayer_feature: false
+    layer: 21
 
 preencoder: linear
 preencoder_conf:

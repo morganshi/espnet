@@ -12,6 +12,7 @@ frontend_conf:
         upstream: wavlm_large
     download_dir: ../asr2/ckpt
     multilayer_feature: false
+    layer: 21
 
 preencoder: linear
 preencoder_conf:
@@ -65,8 +66,8 @@ model_conf:
 seed: 2022
 num_workers: 4
 batch_type: numel
-batch_bins: 4000000
-accum_grad: 16
+batch_bins: 32000000
+accum_grad: 2
 max_epoch: 70
 patience: none
 init: none

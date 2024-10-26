@@ -13,12 +13,12 @@ asr_config=conf/train_asr_wavlm_ebranchformer_onlyctc.yaml
 inference_config=conf/decode_asr_ctc_greedy.yaml
 
 
-CUDA_VISIBLE_DEVICES="0,1"    \
+CUDA_VISIBLE_DEVICES="0,1,2,3"    \
 ./asr.sh \
     --stage 11   \
     --stop_stage 11  \
     --lang en \
-    --ngpu 2 \
+    --ngpu 4 \
     --nj 16 \
     --gpu_inference false \
     --inference_nj 8 \
