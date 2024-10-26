@@ -43,6 +43,7 @@ egs*/*/*/downloads
 egs*/*/*/ckpt
 egs*/*/*/dump
 egs*/*/*/ckpt
+egs*/*/*/nohup.out
 egs*/*/*/enhan
 egs*/*/*/exp
 egs*/*/*/fbank
