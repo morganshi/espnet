@@ -13,7 +13,7 @@ asr_config=conf/train_asr_wavlm_ebranchformer_noctc.yaml
 inference_config=conf/decode_asr_noctc.yaml
 
 
-CUDA_VISIBLE_DEVICES="1,3"    \
+CUDA_VISIBLE_DEVICES="0,1"    \
 ./asr.sh \
     --stage 13   \
     --stop_stage 13  \
