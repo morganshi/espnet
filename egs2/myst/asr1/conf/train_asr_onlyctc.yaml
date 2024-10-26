@@ -34,7 +34,7 @@ decoder_conf:
     layer_drop_rate: 0.0
 
 model_conf:
-    ctc_weight: 0.3
+    ctc_weight: 1.0
     lsm_weight: 0.1
     length_normalized_loss: false
 
