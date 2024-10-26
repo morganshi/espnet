@@ -12,7 +12,10 @@ test_sets="test_clean test_other dev_clean dev_other"
 asr_config=conf/train_asr.yaml
 inference_config=conf/decode_asr.yaml
 
+CUDA_VISIBLE_DEVICES="0"    \
 ./asr.sh \
+    --stage 11   \
+    --stop_stage 11  \
     --lang en \
     --ngpu 1 \
     --nj 16 \
@@ -21,7 +24,7 @@ inference_config=conf/decode_asr.yaml
     --nbpe 5000 \
     --max_wav_duration 30 \
     --speed_perturb_factors "0.9 1.0 1.1" \
-    --audio_format "flac.ark" \
+    --audio_format "flac" \
     --feats_type raw \
     --use_lm false \
     --asr_config "${asr_config}" \
