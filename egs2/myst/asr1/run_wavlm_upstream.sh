@@ -9,14 +9,14 @@ train_set="train"
 valid_set="dev"
 test_sets="dev test"
 
-asr_config=conf/train_asr_wavlm_ebranchformer_noctc.yaml
-inference_config=conf/decode_asr_noctc.yaml
+asr_config=conf/train_asr_wavlm_ebranchformer_onlyctc.yaml
+inference_config=conf/decode_asr_ctc_greedy.yaml
 
 
 CUDA_VISIBLE_DEVICES="0,1"    \
 ./asr.sh \
-    --stage 13   \
-    --stop_stage 13  \
+    --stage 11   \
+    --stop_stage 11  \
     --lang en \
     --ngpu 2 \
     --nj 16 \

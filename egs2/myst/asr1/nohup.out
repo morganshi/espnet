@@ -8356,3 +8356,1025 @@ ESPnetDataset(
 2024-10-18 14:36:39,884 (launch:94) INFO: /data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/launch.py --cmd 'run.pl --name exp/asr_train_asr_wavlm_ebranchformer_raw_en_bpe5000/train.log' --log exp/asr_train_asr_wavlm_ebranchformer_raw_en_bpe5000/train.log --ngpu 2 --num_nodes 1 --init_file_prefix exp/asr_train_asr_wavlm_ebranchformer_raw_en_bpe5000/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_unigram5000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_unigram5000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,sound --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir exp/asr_train_asr_wavlm_ebranchformer_raw_en_bpe5000 --config conf/train_asr_wavlm_ebranchformer.yaml --frontend_conf fs=16k --train_data_path_and_name_and_type dump/raw/train/wav.scp,speech,sound --train_shape_file exp/asr_stats_raw_en_bpe5000/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe5000/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/text_shape.bpe
 2024-10-18 14:36:39,902 (launch:237) INFO: single-node with 2gpu on distributed mode
 2024-10-18 14:36:39,903 (launch:348) INFO: log file: exp/asr_train_asr_wavlm_ebranchformer_raw_en_bpe5000/train.log
+2024-10-25T23:34:37 (asr.sh:283:main) ./asr.sh --stage 11 --stop_stage 11 --lang en --ngpu 2 --nj 16 --gpu_inference false --inference_nj 8 --nbpe 5000 --max_wav_duration 30 --feats_normalize utterance_mvn --audio_format flac --feats_type raw --use_lm false --asr_config conf/train_asr_wavlm_ebranchformer_onlyctc.yaml --inference_config conf/decode_asr_ctc_greedy.yaml --train_set train --valid_set dev --test_sets dev test --lm_train_text data/train/text --bpe_train_text data/train/text
+2024-10-25T23:34:37 (asr.sh:564:main) Skipped stages:  6 7 8 9 14 15 
+2024-10-25T23:34:37 (asr.sh:1308:main) Stage 11: ASR Training: train_set=dump/raw/train, valid_set=dump/raw/dev
+2024-10-25T23:34:37 (asr.sh:1407:main) Generate 'exp/asr_train_asr_wavlm_ebranchformer_onlyctc_raw_en_bpe5000/run.sh'. You can resume the process from stage 11 using this script
+2024-10-25T23:34:37 (asr.sh:1411:main) ASR training started... log: 'exp/asr_train_asr_wavlm_ebranchformer_onlyctc_raw_en_bpe5000/train.log'
+2024-10-25 23:34:37,674 (launch:94) INFO: /data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/launch.py --cmd 'run.pl --name exp/asr_train_asr_wavlm_ebranchformer_onlyctc_raw_en_bpe5000/train.log' --log exp/asr_train_asr_wavlm_ebranchformer_onlyctc_raw_en_bpe5000/train.log --ngpu 2 --num_nodes 1 --init_file_prefix exp/asr_train_asr_wavlm_ebranchformer_onlyctc_raw_en_bpe5000/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_unigram5000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_unigram5000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,sound --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir exp/asr_train_asr_wavlm_ebranchformer_onlyctc_raw_en_bpe5000 --config conf/train_asr_wavlm_ebranchformer_onlyctc.yaml --frontend_conf fs=16k --train_data_path_and_name_and_type dump/raw/train/wav.scp,speech,sound --train_shape_file exp/asr_stats_raw_en_bpe5000/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe5000/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/text_shape.bpe
+2024-10-25 23:34:37,689 (launch:237) INFO: single-node with 2gpu on distributed mode
+2024-10-25 23:34:37,690 (launch:348) INFO: log file: exp/asr_train_asr_wavlm_ebranchformer_onlyctc_raw_en_bpe5000/train.log
+run.pl: job failed, log is in exp/asr_train_asr_wavlm_ebranchformer_onlyctc_raw_en_bpe5000/train.log
+Command '['run.pl', '--name', 'exp/asr_train_asr_wavlm_ebranchformer_onlyctc_raw_en_bpe5000/train.log', '--gpu', '2', 'exp/asr_train_asr_wavlm_ebranchformer_onlyctc_raw_en_bpe5000/train.log', 'python3', '-m', 'espnet2.bin.asr_train', '--use_preprocessor', 'true', '--bpemodel', 'data/en_token_list/bpe_unigram5000/bpe.model', '--token_type', 'bpe', '--token_list', 'data/en_token_list/bpe_unigram5000/tokens.txt', '--non_linguistic_symbols', 'none', '--cleaner', 'none', '--g2p', 'none', '--valid_data_path_and_name_and_type', 'dump/raw/dev/wav.scp,speech,sound', '--valid_shape_file', 'exp/asr_stats_raw_en_bpe5000/valid/speech_shape', '--resume', 'true', '--ignore_init_mismatch', 'false', '--fold_length', '80000', '--output_dir', 'exp/asr_train_asr_wavlm_ebranchformer_onlyctc_raw_en_bpe5000', '--config', 'conf/train_asr_wavlm_ebranchformer_onlyctc.yaml', '--frontend_conf', 'fs=16k', '--train_data_path_and_name_and_type', 'dump/raw/train/wav.scp,speech,sound', '--train_shape_file', 'exp/asr_stats_raw_en_bpe5000/train/speech_shape', '--fold_length', '150', '--train_data_path_and_name_and_type', 'dump/raw/train/text,text,text', '--train_shape_file', 'exp/asr_stats_raw_en_bpe5000/train/text_shape.bpe', '--valid_data_path_and_name_and_type', 'dump/raw/dev/text,text,text', '--valid_shape_file', 'exp/asr_stats_raw_en_bpe5000/valid/text_shape.bpe', '--ngpu', '2', '--multiprocessing_distributed', 'True']' returned non-zero exit status 1.
+Traceback (most recent call last):
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/mohan/workdir/espnet/espnet2/bin/launch.py", line 384, in <module>
+    main()
+  File "/data/mohan/workdir/espnet/espnet2/bin/launch.py", line 375, in main
+    raise RuntimeError(
+RuntimeError: 
+################### The last 1000 lines of exp/asr_train_asr_wavlm_ebranchformer_onlyctc_raw_en_bpe5000/train.log ###################
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,030 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.self_attn.k_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,030 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.self_attn.k_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,030 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.self_attn.v_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,030 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.self_attn.v_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,030 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.self_attn.q_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,030 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.self_attn.q_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,030 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.self_attn.out_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,030 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.self_attn.out_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.self_attn.grep_linear.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.self_attn.grep_linear.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.self_attn_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.self_attn_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.fc1.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.fc1.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.fc2.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.fc2.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.final_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.14.final_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.self_attn.grep_a.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.self_attn.k_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.self_attn.k_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.self_attn.v_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.self_attn.v_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.self_attn.q_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.self_attn.q_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.self_attn.out_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.self_attn.out_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.self_attn.grep_linear.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.self_attn.grep_linear.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.self_attn_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.self_attn_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.fc1.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.fc1.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.fc2.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.fc2.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.final_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.15.final_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.self_attn.grep_a.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.self_attn.k_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.self_attn.k_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.self_attn.v_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.self_attn.v_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.self_attn.q_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.self_attn.q_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.self_attn.out_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.self_attn.out_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.self_attn.grep_linear.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.self_attn.grep_linear.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.self_attn_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.self_attn_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.fc1.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.fc1.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.fc2.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.fc2.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.final_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.16.final_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.self_attn.grep_a.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.self_attn.k_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,031 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.self_attn.k_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.self_attn.v_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.self_attn.v_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.self_attn.q_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.self_attn.q_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.self_attn.out_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.self_attn.out_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.self_attn.grep_linear.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.self_attn.grep_linear.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.self_attn_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.self_attn_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.fc1.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.fc1.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.fc2.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.fc2.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.final_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.17.final_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.self_attn.grep_a.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.self_attn.k_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.self_attn.k_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.self_attn.v_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.self_attn.v_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.self_attn.q_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.self_attn.q_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.self_attn.out_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.self_attn.out_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.self_attn.grep_linear.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.self_attn.grep_linear.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.self_attn_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.self_attn_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.fc1.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.fc1.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.fc2.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.fc2.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.final_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.18.final_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.self_attn.grep_a.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.self_attn.k_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.self_attn.k_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.self_attn.v_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.self_attn.v_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.self_attn.q_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.self_attn.q_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.self_attn.out_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.self_attn.out_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.self_attn.grep_linear.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.self_attn.grep_linear.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.self_attn_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.self_attn_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.fc1.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.fc1.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.fc2.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.fc2.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,032 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.final_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.19.final_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.self_attn.grep_a.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.self_attn.k_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.self_attn.k_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.self_attn.v_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.self_attn.v_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.self_attn.q_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.self_attn.q_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.self_attn.out_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.self_attn.out_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.self_attn.grep_linear.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.self_attn.grep_linear.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.self_attn_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.self_attn_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.fc1.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.fc1.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.fc2.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.fc2.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.final_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.20.final_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.self_attn.grep_a.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.self_attn.k_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.self_attn.k_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.self_attn.v_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.self_attn.v_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.self_attn.q_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.self_attn.q_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.self_attn.out_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.self_attn.out_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.self_attn.grep_linear.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.self_attn.grep_linear.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.self_attn_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.self_attn_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.fc1.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.fc1.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.fc2.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.fc2.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.final_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.21.final_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.self_attn.grep_a.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.self_attn.k_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.self_attn.k_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.self_attn.v_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.self_attn.v_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.self_attn.q_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.self_attn.q_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.self_attn.out_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.self_attn.out_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.self_attn.grep_linear.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.self_attn.grep_linear.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.self_attn_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,033 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.self_attn_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.fc1.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.fc1.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.fc2.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.fc2.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.final_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.22.final_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.self_attn.grep_a.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.self_attn.k_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.self_attn.k_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.self_attn.v_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.self_attn.v_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.self_attn.q_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.self_attn.q_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.self_attn.out_proj.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.self_attn.out_proj.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.self_attn.grep_linear.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.self_attn.grep_linear.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.self_attn_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.self_attn_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.fc1.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.fc1.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.fc2.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.fc2.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.final_layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layers.23.final_layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.encoder.layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.layer_norm.weight.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,034 (abs_task:1359) INFO: Setting frontend.upstream.upstream.model.layer_norm.bias.requires_grad = False
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,404 (abs_task:1387) INFO: pytorch.version=2.3.0+cu121, cuda.available=True, cudnn.version=8902, cudnn.benchmark=False, cudnn.deterministic=True
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,413 (abs_task:1388) INFO: Model structure:
+ESPnetASRModel(
+  (frontend): S3prlFrontend(
+    (upstream): S3PRLUpstream(
+      (upstream): UpstreamExpert(
+        (model): WavLM(
+          (feature_extractor): ConvFeatureExtractionModel(
+            (conv_layers): ModuleList(
+              (0): Sequential(
+                (0): Conv1d(1, 512, kernel_size=(10,), stride=(5,), bias=False)
+                (1): Dropout(p=0.0, inplace=False)
+                (2): Sequential(
+                  (0): TransposeLast()
+                  (1): Fp32LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+                  (2): TransposeLast()
+                )
+                (3): GELU(approximate='none')
+              )
+              (1-4): 4 x Sequential(
+                (0): Conv1d(512, 512, kernel_size=(3,), stride=(2,), bias=False)
+                (1): Dropout(p=0.0, inplace=False)
+                (2): Sequential(
+                  (0): TransposeLast()
+                  (1): Fp32LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+                  (2): TransposeLast()
+                )
+                (3): GELU(approximate='none')
+              )
+              (5-6): 2 x Sequential(
+                (0): Conv1d(512, 512, kernel_size=(2,), stride=(2,), bias=False)
+                (1): Dropout(p=0.0, inplace=False)
+                (2): Sequential(
+                  (0): TransposeLast()
+                  (1): Fp32LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+                  (2): TransposeLast()
+                )
+                (3): GELU(approximate='none')
+              )
+            )
+          )
+          (post_extract_proj): Linear(in_features=512, out_features=1024, bias=True)
+          (dropout_input): Dropout(p=0.0, inplace=False)
+          (dropout_features): Dropout(p=0.0, inplace=False)
+          (encoder): TransformerEncoder(
+            (pos_conv): Sequential(
+              (0): Conv1d(1024, 1024, kernel_size=(128,), stride=(1,), padding=(64,), groups=16)
+              (1): SamePad()
+              (2): GELU(approximate='none')
+            )
+            (layers): ModuleList(
+              (0): TransformerSentenceEncoderLayer(
+                (self_attn): MultiheadAttention(
+                  (dropout_module): Dropout(p=0.0, inplace=False)
+                  (relative_attention_bias): Embedding(320, 16)
+                  (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (grep_linear): Linear(in_features=64, out_features=8, bias=True)
+                )
+                (dropout1): Dropout(p=0.0, inplace=False)
+                (dropout2): Dropout(p=0.0, inplace=False)
+                (dropout3): Dropout(p=0.0, inplace=False)
+                (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+                (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+                (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+                (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              )
+              (1-23): 23 x TransformerSentenceEncoderLayer(
+                (self_attn): MultiheadAttention(
+                  (dropout_module): Dropout(p=0.0, inplace=False)
+                  (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                  (grep_linear): Linear(in_features=64, out_features=8, bias=True)
+                )
+                (dropout1): Dropout(p=0.0, inplace=False)
+                (dropout2): Dropout(p=0.0, inplace=False)
+                (dropout3): Dropout(p=0.0, inplace=False)
+                (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+                (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+                (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+                (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              )
+            )
+            (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          )
+          (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (featurizer): Featurizer()
+  )
+  (normalize): UtteranceMVN(norm_means=True, norm_vars=False)
+  (preencoder): LinearProjection(
+    (linear_out): Linear(in_features=1024, out_features=128, bias=True)
+    (dropout): Dropout(p=0.0, inplace=False)
+  )
+  (encoder): EBranchformerEncoder(
+    (embed): Conv2dSubsampling(
+      (conv): Sequential(
+        (0): Conv2d(1, 256, kernel_size=(3, 3), stride=(2, 2))
+        (1): ReLU()
+        (2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2))
+        (3): ReLU()
+      )
+      (out): Sequential(
+        (0): Linear(in_features=7936, out_features=256, bias=True)
+        (1): RelPositionalEncoding(
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+      )
+    )
+    (encoders): MultiSequential(
+      (0): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (1): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (2): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (3): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (4): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (5): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (6): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (7): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (8): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (9): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (10): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (11): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+    )
+    (after_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+  )
+  (criterion_att): LabelSmoothingLoss(
+    (criterion): KLDivLoss()
+  )
+  (ctc): CTC(
+    (ctc_lo): Linear(in_features=256, out_features=5000, bias=True)
+    (ctc_loss): CTCLoss()
+  )
+)
+
+Model summary:
+    Class Name: ESPnetASRModel
+    Total Number of model parameters: 342.80 M
+    Number of trainable parameters: 27.35 M (8.0%)
+    Size: 109.41 MB
+    Type: torch.float32
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,413 (abs_task:1391) INFO: Optimizer:
+Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    initial_lr: 0.002
+    lr: 1.3333333333333336e-07
+    maximize: False
+    weight_decay: 1e-06
+)
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,413 (abs_task:1392) INFO: Scheduler: WarmupLR(warmup_steps=15000)
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,413 (abs_task:1401) INFO: Saving the configuration in exp/asr_train_asr_wavlm_ebranchformer_onlyctc_raw_en_bpe5000/config.yaml
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,579 (asr:495) INFO: Optional Data Names: ('text_spk2', 'text_spk3', 'text_spk4', 'prompt')
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,982 (abs_task:1810) INFO: [train] dataset:
+ESPnetDataset(
+  speech: {"path": "dump/raw/train/wav.scp", "type": "sound"}
+  text: {"path": "dump/raw/train/text", "type": "text"}
+  preprocess: <espnet2.train.preprocessor.CommonPreprocessor object at 0x7853b7a3d450>)
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,982 (abs_task:1811) INFO: [train] Batch sampler: NumElementsBatchSampler(N-batch=3286, batch_bins=4000000, sort_in_batch=descending, sort_batch=descending)
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:06,983 (abs_task:1812) INFO: [train] mini-batch sizes summary: N-batch=3286, mean=17.0, min=5, max=111
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:07,003 (asr:495) INFO: Optional Data Names: ('text_spk2', 'text_spk3', 'text_spk4', 'prompt')
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:07,186 (abs_task:1810) INFO: [valid] dataset:
+ESPnetDataset(
+  speech: {"path": "dump/raw/dev/wav.scp", "type": "sound"}
+  text: {"path": "dump/raw/dev/text", "type": "text"}
+  preprocess: <espnet2.train.preprocessor.CommonPreprocessor object at 0x7853b784aad0>)
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:07,186 (abs_task:1811) INFO: [valid] Batch sampler: NumElementsBatchSampler(N-batch=514, batch_bins=4000000, sort_in_batch=descending, sort_batch=descending)
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:07,186 (abs_task:1812) INFO: [valid] mini-batch sizes summary: N-batch=514, mean=17.6, min=5, max=99
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:07,198 (asr:495) INFO: Optional Data Names: ('text_spk2', 'text_spk3', 'text_spk4', 'prompt')
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:07,207 (abs_task:1810) INFO: [plot_att] dataset:
+ESPnetDataset(
+  speech: {"path": "dump/raw/dev/wav.scp", "type": "sound"}
+  text: {"path": "dump/raw/dev/text", "type": "text"}
+  preprocess: <espnet2.train.preprocessor.CommonPreprocessor object at 0x7853be7a84c0>)
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:07,207 (abs_task:1811) INFO: [plot_att] Batch sampler: UnsortedBatchSampler(N-batch=9037, batch_size=1, key_file=exp/asr_stats_raw_en_bpe5000/valid/speech_shape, 
+[SPAPL-Psychic:0/2] 2024-10-25 23:35:07,207 (abs_task:1812) INFO: [plot_att] mini-batch sizes summary: N-batch=3, mean=1.0, min=1, max=1
+SPAPL-Psychic:2552223:2552223 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+SPAPL-Psychic:2552223:2552223 [0] NCCL INFO Bootstrap : Using enp179s0f0:164.67.196.69<0>
+SPAPL-Psychic:2552223:2552223 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+SPAPL-Psychic:2552223:2552223 [0] NCCL INFO cudaDriverVersion 12060
+NCCL version 2.20.5+cuda12.4
+Process SpawnProcess-2:
+Process SpawnProcess-1:
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/tasks/abs_task.py", line 1571, in main_worker
+    cls.trainer.run(
+  File "/data/mohan/workdir/espnet/espnet2/train/trainer.py", line 256, in run
+    dp_model = torch.nn.parallel.DistributedDataParallel(
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 798, in __init__
+    _verify_param_shape_across_processes(self.process_group, parameters)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/distributed/utils.py", line 269, in _verify_param_shape_across_processes
+    return dist._verify_params_across_processes(process_group, tensors, logger)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/tasks/abs_task.py", line 1571, in main_worker
+    cls.trainer.run(
+  File "/data/mohan/workdir/espnet/espnet2/train/trainer.py", line 256, in run
+    dp_model = torch.nn.parallel.DistributedDataParallel(
+torch.distributed.DistBackendError: NCCL error in: ../torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:1970, unhandled system error (run with NCCL_DEBUG=INFO for details), NCCL version 2.20.5
+ncclSystemError: System call (e.g. socket, malloc) or external library call failed or device error. 
+Last error:
+nvmlDeviceGetHandleByIndex(0) failed: Unknown Error
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 798, in __init__
+    _verify_param_shape_across_processes(self.process_group, parameters)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/distributed/utils.py", line 269, in _verify_param_shape_across_processes
+    return dist._verify_params_across_processes(process_group, tensors, logger)
+torch.distributed.DistBackendError: NCCL error in: ../torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:1970, unhandled system error (run with NCCL_DEBUG=INFO for details), NCCL version 2.20.5
+ncclSystemError: System call (e.g. socket, malloc) or external library call failed or device error. 
+Last error:
+nvmlDeviceGetHandleByIndex(0) failed: Unknown Error
+SPAPL-Psychic:2552224:2552224 [1] NCCL INFO cudaDriverVersion 12060
+SPAPL-Psychic:2552224:2552224 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+SPAPL-Psychic:2552224:2552224 [1] NCCL INFO Bootstrap : Using enp179s0f0:164.67.196.69<0>
+SPAPL-Psychic:2552224:2552224 [1] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+SPAPL-Psychic:2552224:2552406 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+SPAPL-Psychic:2552224:2552406 [1] NCCL INFO NET/IB : No device found.
+SPAPL-Psychic:2552224:2552406 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+SPAPL-Psychic:2552224:2552406 [1] NCCL INFO NET/Socket : Using [0]enp179s0f0:164.67.196.69<0>
+SPAPL-Psychic:2552224:2552406 [1] NCCL INFO Using non-device net plugin version 0
+SPAPL-Psychic:2552224:2552406 [1] NCCL INFO Using network Socket
+
+SPAPL-Psychic:2552224:2552406 [1] misc/nvmlwrap.cc:127 NCCL WARN nvmlDeviceGetHandleByIndex(0) failed: Unknown Error
+SPAPL-Psychic:2552224:2552406 [1] NCCL INFO misc/nvmlwrap.cc:185 -> 2
+SPAPL-Psychic:2552224:2552406 [1] NCCL INFO init.cc:338 -> 2
+SPAPL-Psychic:2552224:2552406 [1] NCCL INFO init.cc:1492 -> 2
+SPAPL-Psychic:2552224:2552406 [1] NCCL INFO group.cc:64 -> 2 [Async thread]
+SPAPL-Psychic:2552224:2552224 [1] NCCL INFO group.cc:418 -> 2
+SPAPL-Psychic:2552224:2552224 [1] NCCL INFO group.cc:95 -> 2
+SPAPL-Psychic:2552223:2552405 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+SPAPL-Psychic:2552223:2552405 [0] NCCL INFO NET/IB : No device found.
+SPAPL-Psychic:2552223:2552405 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+SPAPL-Psychic:2552223:2552405 [0] NCCL INFO NET/Socket : Using [0]enp179s0f0:164.67.196.69<0>
+SPAPL-Psychic:2552223:2552405 [0] NCCL INFO Using non-device net plugin version 0
+SPAPL-Psychic:2552223:2552405 [0] NCCL INFO Using network Socket
+
+SPAPL-Psychic:2552223:2552405 [0] misc/nvmlwrap.cc:127 NCCL WARN nvmlDeviceGetHandleByIndex(0) failed: Unknown Error
+SPAPL-Psychic:2552223:2552405 [0] NCCL INFO misc/nvmlwrap.cc:185 -> 2
+SPAPL-Psychic:2552223:2552405 [0] NCCL INFO init.cc:338 -> 2
+SPAPL-Psychic:2552223:2552405 [0] NCCL INFO init.cc:1492 -> 2
+SPAPL-Psychic:2552223:2552405 [0] NCCL INFO group.cc:64 -> 2 [Async thread]
+SPAPL-Psychic:2552223:2552223 [0] NCCL INFO group.cc:418 -> 2
+SPAPL-Psychic:2552223:2552223 [0] NCCL INFO group.cc:95 -> 2
+SPAPL-Psychic:2552223:2552408 [0] NCCL INFO comm 0xc6b3a70 rank 0 nranks 2 cudaDev 0 busId 1a000 - Abort COMPLETE
+SPAPL-Psychic:2552224:2552409 [0] NCCL INFO comm 0x597e67d0 rank 1 nranks 2 cudaDev 1 busId 67000 - Abort COMPLETE
+W1025 23:35:08.599000 130328679135040 torch/multiprocessing/spawn.py:145] Terminating process 2552224 via signal SIGTERM
+Traceback (most recent call last):
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/mohan/workdir/espnet/espnet2/bin/asr_train.py", line 23, in <module>
+    main()
+  File "/data/mohan/workdir/espnet/espnet2/bin/asr_train.py", line 19, in main
+    ASRTask.main(cmd=cmd)
+  File "/data/mohan/workdir/espnet/espnet2/tasks/abs_task.py", line 1273, in main
+    while not ProcessContext(processes, error_files).join():
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/multiprocessing/spawn.py", line 177, in join
+    raise ProcessExitedException(
+torch.multiprocessing.spawn.ProcessExitedException: process 0 terminated with exit code 1
+# Accounting: time=32 threads=1
+# Ended (code 1) at Fri Oct 25 23:35:09 PDT 2024, elapsed time 32 seconds
+
