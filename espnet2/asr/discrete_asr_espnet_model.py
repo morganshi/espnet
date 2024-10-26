@@ -87,6 +87,16 @@ class ESPnetDiscreteASRModel(ESPnetMTModel):
         self.ctc_weight = ctc_weight
         self.interctc_weight = interctc_weight
 
+        if ctc_weight < 1.0:
+            assert (
+                decoder is not None
+            ), "decoder should not be None when attention is used"
+        else:
+            decoder = None
+            logging.warning("Set decoder to none as ctc_weight==1.0")
+            
+        self.decoder = decoder
+
         if ctc_weight == 0.0:
             self.ctc = None
         else:
