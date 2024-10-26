@@ -141,7 +141,10 @@ class ESPnetDiscreteASRModel(ESPnetMTModel):
         if isinstance(encoder_out, tuple):
             intermediate_outs = encoder_out[1]
             encoder_out = encoder_out[0]
+        
+        loss_att, acc_att, cer_att, wer_att = None, None, None, None
         loss_ctc, cer_ctc = None, None
+        loss_transducer, cer_transducer, wer_transducer = None, None, None
         stats = dict()
 
         # 1. CTC branch
@@ -179,15 +182,19 @@ class ESPnetDiscreteASRModel(ESPnetMTModel):
             ) * loss_ctc + self.interctc_weight * loss_interctc
 
         # 2a. Attention-decoder branch (MT)
-        loss_att, acc_att, cer_att, wer_att = self._calc_att_loss(
-            encoder_out, encoder_out_lens, text, text_lengths
-        )
+        if self.ctc_weight != 1.0:
+            loss_att, acc_att, cer_att, wer_att = self._calc_att_loss(
+                encoder_out, encoder_out_lens, text, text_lengths
+            )
 
         # 3. Loss computation
-        if self.ctc_weight > 0.0:
-            loss = self.ctc_weight * loss_ctc + (1 - self.ctc_weight) * loss_att
-        else:
+        if self.ctc_weight == 0.0:
             loss = loss_att
+        elif self.ctc_weight == 1.0:
+            loss = loss_ctc
+        else:
+            loss = self.ctc_weight * loss_ctc + (1 - self.ctc_weight) * loss_att
+
 
         stats["loss_att"] = loss_att.detach() if loss_att is not None else None
         stats["acc"] = acc_att

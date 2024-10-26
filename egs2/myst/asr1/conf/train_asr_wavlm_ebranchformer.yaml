@@ -56,7 +56,7 @@ decoder_conf:
 
 # hybrid CTC/attention
 model_conf:
-    ctc_weight: 0.0
+    ctc_weight: 0.3
     lsm_weight: 0.1
     length_normalized_loss: false
 
@@ -65,8 +65,13 @@ model_conf:
 seed: 2022
 num_workers: 4
 batch_type: numel
+<<<<<<< HEAD
 batch_bins: 16000000
 accum_grad: 4
+=======
+batch_bins: 4000000
+accum_grad: 16
+>>>>>>> 0c3485d9898a9adda8d2aefb5489b5566b74ab42
 max_epoch: 70
 patience: none
 init: none

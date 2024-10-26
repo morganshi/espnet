@@ -22,19 +22,8 @@ encoder_conf:
     macaron_ffn: true
     merge_conv_kernel: 31
 
-decoder: transformer
-decoder_conf:
-    attention_heads: 4
-    linear_units: 2048
-    num_blocks: 6
-    dropout_rate: 0.1
-    positional_dropout_rate: 0.1
-    self_attention_dropout_rate: 0.1
-    src_attention_dropout_rate: 0.1
-    layer_drop_rate: 0.0
-
 model_conf:
-    ctc_weight: 0.3
+    ctc_weight: 1.0
     lsm_weight: 0.1
     length_normalized_loss: false
 
@@ -46,15 +35,15 @@ frontend_conf:
 seed: 2022
 num_workers: 4
 batch_type: numel
-batch_bins: 8000000
-accum_grad: 8
+batch_bins: 16000000
+accum_grad: 4
 max_epoch: 70
 patience: none
 init: none
 best_model_criterion:
 -   - valid
-    - acc
-    - max
+    - cer_ctc
+    - min
 keep_nbest_models: 10
 use_amp: true
 

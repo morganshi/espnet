@@ -1,4 +1,24 @@
-# Trained with A40 (48 GB) x 1 GPUs.
+# network architecture
+# wavlm
+# unused_parameters: true
+freeze_param: [
+    "frontend.upstream"
+]
+
+# network architecture
+frontend: s3prl
+frontend_conf:
+    frontend_conf:
+        upstream: wavlm_large
+    download_dir: ../asr2/ckpt
+    multilayer_feature: false
+
+preencoder: linear
+preencoder_conf:
+    input_size: 1024
+    output_size: 128
+
+# encoder related
 encoder: e_branchformer
 encoder_conf:
     output_size: 256
@@ -22,6 +42,7 @@ encoder_conf:
     macaron_ffn: true
     merge_conv_kernel: 31
 
+# decoder related
 decoder: transformer
 decoder_conf:
     attention_heads: 4
@@ -33,16 +54,14 @@ decoder_conf:
     src_attention_dropout_rate: 0.1
     layer_drop_rate: 0.0
 
+# hybrid CTC/attention
 model_conf:
     ctc_weight: 0.3
     lsm_weight: 0.1
     length_normalized_loss: false
 
-frontend_conf:
-    n_fft: 512
-    win_length: 400
-    hop_length: 160
 
+# minibatch related
 seed: 2022
 num_workers: 4
 batch_type: numel
@@ -57,6 +76,7 @@ best_model_criterion:
     - max
 keep_nbest_models: 10
 use_amp: true
+unused_parameters: true
 
 optim: adam
 optim_conf:
@@ -64,20 +84,6 @@ optim_conf:
     weight_decay: 0.000001
 scheduler: warmuplr
 scheduler_conf:
-    warmup_steps: 15000
+    warmup_steps: 10000
 
-specaug: specaug
-specaug_conf:
-    apply_time_warp: true
-    time_warp_window: 5
-    time_warp_mode: bicubic
-    apply_freq_mask: true
-    freq_mask_width_range:
-    - 0
-    - 27
-    num_freq_mask: 2
-    apply_time_mask: true
-    time_mask_width_ratio_range:
-    - 0.
-    - 0.05
-    num_time_mask: 5
+specaug: null

@@ -7,21 +7,21 @@ set -o pipefail
 
 train_set="train"
 valid_set="dev"
-test_sets="test"
+test_sets="dev test"
 
-asr_config=conf/train_asr_wavlm_ebranchformer.yaml
-inference_config=conf/decode_asr.yaml
+asr_config=conf/train_asr_wavlm_ebranchformer_noctc.yaml
+inference_config=conf/decode_asr_noctc.yaml
 
 
 CUDA_VISIBLE_DEVICES="0,1"    \
 ./asr.sh \
-    --stage 11   \
-    --stop_stage 11  \
+    --stage 13   \
+    --stop_stage 13  \
     --lang en \
     --ngpu 2 \
     --nj 16 \
-    --gpu_inference true \
-    --inference_nj 2 \
+    --gpu_inference false \
+    --inference_nj 8 \
     --nbpe 5000 \
     --max_wav_duration 30 \
     --feats_normalize utterance_mvn \

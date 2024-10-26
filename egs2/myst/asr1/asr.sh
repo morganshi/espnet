@@ -311,22 +311,22 @@ if [ -n "${train_set}" ] && [ "${train_set}" = "${valid_set}" ]; then
     exit 1
 fi
 
-_test_sets=
-for dset in ${test_sets}; do
-    if [ "${dset}" = "${train_set}" ]; then
-        log "Error: train_set and test_sets must be different. --train_set ${train_set} --test_sets ${test_sets}"
-        exit 1
-    fi
-    if [ "${dset}" = "${valid_set}" ]; then
-        log "Info: The valid_set '${valid_set}' is included in the test_sets. '--eval_valid_set true' is set and '${valid_set}' is removed from the test_sets"
-        eval_valid_set=true
-    elif [[ " ${_test_sets} " =~ [[:space:]]${dset}[[:space:]] ]]; then
-        log "Info: ${dset} is duplicated in the test_sets. One is removed"
-    else
-        _test_sets+="${dset} "
-    fi
-done
-test_sets=${_test_sets}
+# _test_sets=
+# for dset in ${test_sets}; do
+#     if [ "${dset}" = "${train_set}" ]; then
+#         log "Error: train_set and test_sets must be different. --train_set ${train_set} --test_sets ${test_sets}"
+#         exit 1
+#     fi
+#     if [ "${dset}" = "${valid_set}" ]; then
+#         log "Info: The valid_set '${valid_set}' is included in the test_sets. '--eval_valid_set true' is set and '${valid_set}' is removed from the test_sets"
+#         eval_valid_set=true
+#     elif [[ " ${_test_sets} " =~ [[:space:]]${dset}[[:space:]] ]]; then
+#         log "Info: ${dset} is duplicated in the test_sets. One is removed"
+#     else
+#         _test_sets+="${dset} "
+#     fi
+# done
+# test_sets=${_test_sets}
 
 # Check feature type
 if [ "${feats_type}" = raw ]; then
@@ -1526,11 +1526,13 @@ if [ ${stage} -le 12 ] && [ ${stop_stage} -ge 12 ] && ! [[ " ${skip_stages} " =~
         fi
     fi
 
-    if "${eval_valid_set}"; then
-        _dsets="org/${valid_set} ${test_sets}"
-    else
-        _dsets="${test_sets}"
-    fi
+    # if "${eval_valid_set}"; then
+    #     _dsets="org/${valid_set} ${test_sets}"
+    # else
+    #     _dsets="${test_sets}"
+    # fi
+    _dsets="${test_sets}"
+
     for dset in ${_dsets}; do
         _data="${data_feats}/${dset}"
         _dir="${asr_exp}/${inference_tag}/${dset}"
@@ -1624,11 +1626,13 @@ if [ ${stage} -le 13 ] && [ ${stop_stage} -ge 13 ] && ! [[ " ${skip_stages} " =~
         exit 1
     fi
 
-    if "${eval_valid_set}"; then
-        _dsets="org/${valid_set} ${test_sets}"
-    else
-        _dsets="${test_sets}"
-    fi
+    # if "${eval_valid_set}"; then
+    #     _dsets="org/${valid_set} ${test_sets}"
+    # else
+    #     _dsets="${test_sets}"
+    # fi
+    _dsets="${test_sets}"
+
     for dset in ${_dsets}; do
         _data="${data_feats}/${dset}"
         _dir="${asr_exp}/${inference_tag}/${dset}"

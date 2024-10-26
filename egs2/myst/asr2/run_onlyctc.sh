@@ -15,7 +15,11 @@ tgt_lang=en
 
 train_set="train"
 train_dev="dev"
+<<<<<<< HEAD
 test_sets="test"
+=======
+test_sets="dev"
+>>>>>>> 0c3485d9898a9adda8d2aefb5489b5566b74ab42
 
 # test_sets="test_clean test_other dev_clean dev_other"
 
@@ -30,10 +34,17 @@ tgt_nbpe=5000   # if token_joint is True, then only tgt_nbpe is used
 src_case="rm"
 tgt_case="ts"
 
+<<<<<<< HEAD
 CUDA_VISIBLE_DEVICES="3"    \
 ./asr2.sh \
     --stage 14   \
     --stop_stage 14  \
+=======
+CUDA_VISIBLE_DEVICES="0"    \
+./asr2.sh \
+    --stage 13   \
+    --stop_stage 13  \
+>>>>>>> 0c3485d9898a9adda8d2aefb5489b5566b74ab42
     --gpu_kmeans true  \
     --kmeans_opts "--batch_bins 400000 --nj 4" \
     --kmeans_feature "${kmeans_feature}" \

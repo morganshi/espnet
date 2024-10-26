@@ -1,13 +1,15 @@
-# Trained with A40 (48 GB) x 1 GPUs.
-encoder: e_branchformer
+# Trained with A100 (80 GB) x 1 GPUs. It takes 15 minutes per epoch.
+encoder: multiconv_conformer
 encoder_conf:
     output_size: 256
     attention_heads: 4
-    attention_layer_type: rel_selfattn
+    selfattention_layer_type: rel_selfattn
     pos_enc_layer_type: rel_pos
     rel_pos_type: latest
     cgmlp_linear_units: 1024
-    cgmlp_conv_kernel: 31
+    multicgmlp_type: concat_fusion
+    multicgmlp_kernel_sizes: 7,15,23,31
+    multicgmlp_merge_conv_kernel: 31
     use_linear_after_conv: false
     gate_activation: identity
     num_blocks: 12
@@ -18,9 +20,8 @@ encoder_conf:
     layer_drop_rate: 0.0
     linear_units: 1024
     positionwise_layer_type: linear
-    use_ffn: true
-    macaron_ffn: true
-    merge_conv_kernel: 31
+    macaron_style: true
+    use_cnn_module: true
 
 decoder: transformer
 decoder_conf:
@@ -46,8 +47,8 @@ frontend_conf:
 seed: 2022
 num_workers: 4
 batch_type: numel
-batch_bins: 8000000
-accum_grad: 8
+batch_bins: 16000000
+accum_grad: 4
 max_epoch: 70
 patience: none
 init: none

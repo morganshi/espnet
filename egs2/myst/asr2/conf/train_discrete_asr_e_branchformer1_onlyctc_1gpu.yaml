@@ -1,4 +1,31 @@
-# Trained with A40 (48 GB) x 1 GPUs.
+# Trained with A6000 (48 GB) x 1 GPUs for Kmeans2K+nbpe5K. It takes 6 minutes per epoch.
+# BPE-Dropout (https://github.com/google/sentencepiece#subword-regularization-and-bpe-dropout)
+src_tokenizer_encode_conf:
+    enable_sampling: true    # If set to true, bpe-dropout is used.
+    alpha: 0.4
+    nbest_size: -1
+
+frontend: embed     # embedding + positional encoding
+frontend_conf:
+    embed_dim: 512
+    positional_dropout_rate: 0.1
+
+specaug: specaug
+specaug_conf:
+    apply_time_warp: false
+    time_warp_window: 5
+    time_warp_mode: bicubic
+    apply_freq_mask: false
+    freq_mask_width_range:
+    - 0
+    - 10
+    num_freq_mask: 0
+    apply_time_mask: true
+    time_mask_width_ratio_range:
+    - 0.
+    - 0.05
+    num_time_mask: 10
+
 encoder: e_branchformer
 encoder_conf:
     output_size: 256
@@ -14,7 +41,7 @@ encoder_conf:
     dropout_rate: 0.1
     positional_dropout_rate: 0.1
     attention_dropout_rate: 0.1
-    input_layer: conv2d
+    input_layer: conv1d2
     layer_drop_rate: 0.0
     linear_units: 1024
     positionwise_layer_type: linear
@@ -33,30 +60,36 @@ decoder_conf:
     src_attention_dropout_rate: 0.1
     layer_drop_rate: 0.0
 
+model: discrete_asr
 model_conf:
-    ctc_weight: 0.3
+    ctc_weight: 1.0
     lsm_weight: 0.1
     length_normalized_loss: false
+    share_decoder_input_output_embed: false
+    share_encoder_decoder_input_embed: false
 
-frontend_conf:
-    n_fft: 512
-    win_length: 400
-    hop_length: 160
-
-seed: 2022
+use_amp: true
+num_att_plot: 0
+# log_interval: 100
 num_workers: 4
 batch_type: numel
-batch_bins: 8000000
-accum_grad: 8
+batch_bins: 64000000
+accum_grad: 1
 max_epoch: 70
 patience: none
 init: none
+val_scheduler_criterion:
+- valid
+- loss_ctc
+early_stopping_criterion:
+- valid
+- loss_ctc
+- min
 best_model_criterion:
 -   - valid
-    - acc
-    - max
+    - cer_ctc
+    - min
 keep_nbest_models: 10
-use_amp: true
 
 optim: adam
 optim_conf:
@@ -65,19 +98,3 @@ optim_conf:
 scheduler: warmuplr
 scheduler_conf:
     warmup_steps: 15000
-
-specaug: specaug
-specaug_conf:
-    apply_time_warp: true
-    time_warp_window: 5
-    time_warp_mode: bicubic
-    apply_freq_mask: true
-    freq_mask_width_range:
-    - 0
-    - 27
-    num_freq_mask: 2
-    apply_time_mask: true
-    time_mask_width_ratio_range:
-    - 0.
-    - 0.05
-    num_time_mask: 5

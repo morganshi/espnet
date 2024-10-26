@@ -1,42 +1,31 @@
-# Trained with A40 (48 GB) x 1 GPUs.
-encoder: e_branchformer
+# Trained with A40 (48 GB) x 4 GPUs.
+encoder: transformer
 encoder_conf:
     output_size: 256
     attention_heads: 4
-    attention_layer_type: rel_selfattn
-    pos_enc_layer_type: rel_pos
-    rel_pos_type: latest
-    cgmlp_linear_units: 1024
-    cgmlp_conv_kernel: 31
-    use_linear_after_conv: false
-    gate_activation: identity
-    num_blocks: 12
+    linear_units: 1024
+    num_blocks: 15
     dropout_rate: 0.1
     positional_dropout_rate: 0.1
     attention_dropout_rate: 0.1
     input_layer: conv2d
-    layer_drop_rate: 0.0
-    linear_units: 1024
-    positionwise_layer_type: linear
-    use_ffn: true
-    macaron_ffn: true
-    merge_conv_kernel: 31
+    normalize_before: true
 
-decoder: transformer
+decoder: transducer
 decoder_conf:
-    attention_heads: 4
-    linear_units: 2048
-    num_blocks: 6
-    dropout_rate: 0.1
-    positional_dropout_rate: 0.1
-    self_attention_dropout_rate: 0.1
-    src_attention_dropout_rate: 0.1
-    layer_drop_rate: 0.0
+    rnn_type: lstm
+    num_layers: 1
+    hidden_size: 256
+    dropout: 0.1
+    dropout_embed: 0.2
+
+joint_net_conf:
+    joint_space_size: 320
 
 model_conf:
     ctc_weight: 0.3
-    lsm_weight: 0.1
-    length_normalized_loss: false
+    report_cer: False
+    report_wer: False
 
 frontend_conf:
     n_fft: 512
@@ -44,19 +33,19 @@ frontend_conf:
     hop_length: 160
 
 seed: 2022
-num_workers: 4
+num_workers: 8
 batch_type: numel
 batch_bins: 8000000
 accum_grad: 8
-max_epoch: 70
+max_epoch: 200
 patience: none
 init: none
 best_model_criterion:
 -   - valid
-    - acc
-    - max
+    - loss
+    - min
 keep_nbest_models: 10
-use_amp: true
+use_amp: false
 
 optim: adam
 optim_conf:

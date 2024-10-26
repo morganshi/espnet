@@ -32,8 +32,8 @@ tgt_case="ts"
 
 CUDA_VISIBLE_DEVICES="0"    \
 ./asr2.sh \
-    --stage 14   \
-    --stop_stage 14  \
+    --stage 15   \
+    --stop_stage 15  \
     --gpu_kmeans true  \
     --kmeans_opts "--batch_bins 400000 --nj 4" \
     --kmeans_feature "${kmeans_feature}" \
