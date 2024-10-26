@@ -49,16 +49,17 @@ encoder_conf:
     macaron_ffn: true
     merge_conv_kernel: 31
 
-decoder: transformer
-decoder_conf:
-    attention_heads: 4
-    linear_units: 2048
-    num_blocks: 6
-    dropout_rate: 0.1
-    positional_dropout_rate: 0.1
-    self_attention_dropout_rate: 0.1
-    src_attention_dropout_rate: 0.1
-    layer_drop_rate: 0.0
+decoder: none
+# decoder: transformer
+# decoder_conf:
+#     attention_heads: 4
+#     linear_units: 2048
+#     num_blocks: 6
+#     dropout_rate: 0.1
+#     positional_dropout_rate: 0.1
+#     self_attention_dropout_rate: 0.1
+#     src_attention_dropout_rate: 0.1
+#     layer_drop_rate: 0.0
 
 model: discrete_asr
 model_conf:

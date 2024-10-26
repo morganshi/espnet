@@ -1,6 +1,6 @@
 from contextlib import contextmanager
 from typing import Dict, List, Optional, Tuple, Union
-
+import logging
 import torch
 from packaging.version import parse as V
 from typeguard import typechecked
@@ -40,7 +40,7 @@ class ESPnetDiscreteASRModel(ESPnetMTModel):
         preencoder: Optional[AbsPreEncoder],
         encoder: AbsEncoder,
         postencoder: Optional[AbsPostEncoder],
-        decoder: AbsDecoder,
+        decoder: Optional[AbsDecoder],
         ctc: Optional[CTC],
         ctc_weight: float = 0.5,
         interctc_weight: float = 0.0,

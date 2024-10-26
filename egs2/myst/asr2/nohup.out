@@ -1074,3 +1074,5 @@ torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 14.00 MiB. GP
 2024-10-26T14:13:56 (asr2.sh:1542:main) Stage 14: Decoding: training_dir=exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_raw_wavlm_large_21_km2000_bpe_rm6000_bpe_ts5000
 2024-10-26T14:13:56 (asr2.sh:1570:main) Generate 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_raw_wavlm_large_21_km2000_bpe_rm6000_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.ave/run.sh'. You can resume the process from stage 14 using this script
 2024-10-26T14:13:56 (asr2.sh:1601:main) Decoding started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_raw_wavlm_large_21_km2000_bpe_rm6000_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.ave/dev/logdir/asr_inference.*.log'
+2024-10-26T14:35:55 (asr2.sh:1601:main) Decoding started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_raw_wavlm_large_21_km2000_bpe_rm6000_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.ave/test/logdir/asr_inference.*.log'
+2024-10-26T15:04:51 (asr2.sh:1786:main) Successfully finished. [elapsed=3055s]

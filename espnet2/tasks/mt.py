@@ -408,13 +408,16 @@ class MTTask(AbsTask):
             postencoder = None
 
         # 5. Decoder
-        decoder_class = decoder_choices.get_class(args.decoder)
+        if getattr(args, "decoder", None) is not None:
+            decoder_class = decoder_choices.get_class(args.decoder)
 
-        decoder = decoder_class(
-            vocab_size=vocab_size,
-            encoder_output_size=encoder_output_size,
-            **args.decoder_conf,
-        )
+            decoder = decoder_class(
+                vocab_size=vocab_size,
+                encoder_output_size=encoder_output_size,
+                **args.decoder_conf,
+            )
+        else:
+            decoder = None
 
         # 6. CTC
         ctc = CTC(
