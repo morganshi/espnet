@@ -56,6 +56,10 @@ best_model_criterion:
 keep_nbest_models: 10
 use_amp: true
 
+init_param: [
+    "/data/mohan/workdir/espnet/egs2/myst/asr1/exp/librispeech_100_ctc_e_branchformer/exp/asr_train_asr_ctc_e_branchformer_e12_raw_en_bpe5000_sp/valid.cer_ctc.ave_10best.pth:encoder:encoder"
+]
+
 optim: adam
 optim_conf:
     lr: 0.002
