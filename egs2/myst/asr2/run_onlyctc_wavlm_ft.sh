@@ -7,7 +7,7 @@ set -o pipefail
 
 CUDA_VISIBLE_DEVICES="0"
 
-kmeans_feature="wavlm_large/24"  # use model_type/layer_index
+kmeans_feature="wavlm_large_fintune/21"  # use model_type/layer_index
 nclusters=2000
 
 src_lang=$(echo "${kmeans_feature}_km${nclusters}" | tr "/" "_")
@@ -30,12 +30,12 @@ tgt_nbpe=5000   # if token_joint is True, then only tgt_nbpe is used
 src_case="rm"
 tgt_case="ts"
 
-CUDA_VISIBLE_DEVICES="1"    \
-./asr2.sh \
+CUDA_VISIBLE_DEVICES="0"    \
+./asr2_hf.sh \
     --stage 15   \
     --stop_stage 15  \
     --gpu_kmeans true  \
-    --kmeans_opts "--batch_bins 1 --nj 4" \
+    --kmeans_opts "--batch_bins 1 --nj 8" \
     --kmeans_feature "${kmeans_feature}" \
     --nclusters "${nclusters}" \
     --ngpu 1 \

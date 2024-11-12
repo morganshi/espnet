@@ -69,7 +69,7 @@ model_conf:
     share_encoder_decoder_input_embed: false
 
 use_amp: true
-num_att_plot: 1
+num_att_plot: 0
 # log_interval: 100
 num_workers: 4
 batch_type: numel

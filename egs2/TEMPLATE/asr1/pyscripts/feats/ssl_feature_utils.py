@@ -351,6 +351,7 @@ class S3PRLFeatureReader(BaseFeatureReader):
         ref_len: Optional[int] = None,
     ) -> Tuple[torch.Tensor, torch.Tensor]:
         with torch.no_grad():
+            # import ipdb;ipdb.set_trace()
             x, x_lens = self.preprocess_data(data, data_lens)
             if self.resample is not None:
                 x = self.resample(x)
@@ -361,3 +362,25 @@ class S3PRLFeatureReader(BaseFeatureReader):
         feats = feats.cpu()
         feats_lens = feats_lens.cpu()
         return feats, feats_lens
+
+if __name__=="__main__":
+    # reader_conf={
+    #     "fs": 16000,
+    #     "audio_sample_rate": 16000,
+    #     "download_dir": "/data/mohan/workdir/espnet/egs2/myst/asr2/ckpt/",
+    #     "multilayer_feature": False,
+    #     "layer": 24,
+    #     "use_gpu": False
+    #     }
+    reader_conf={"s3prl_conf":{"upstream":"wavlm_large"},"download_dir":"/data/mohan/workdir/espnet/egs2/myst/asr2/ckpt/","multilayer_feature":False,"layer":21}
+    reader = S3PRLFeatureReader(**reader_conf)
+    dump_feature(
+        reader,
+        in_filetype="sound",
+        rspecifier="scp:/data/mohan/workdir/espnet/egs2/myst/asr2/dump/audio_raw/debug/wav.scp",
+        out_filetype="mat",
+        wspecifier="ark,scp:/data/mohan/workdir/espnet/egs2/myst/asr2/dump/audio_raw/debug/extract/feat.ark,/data/mohan/workdir/espnet/egs2/myst/asr2/dump/audio_raw/debug/extract/feat.scp",
+        utt2num_samples="/data/mohan/workdir/espnet/egs2/myst/asr2/dump/audio_raw/debug/utt2num_samples",
+        write_num_frames="ark,t:/data/mohan/workdir/espnet/egs2/myst/asr2/dump/audio_raw/debug/extract/utt2num_frames",
+        batch_bins=1,
+    )
