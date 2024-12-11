@@ -239,7 +239,7 @@ if [ ${stage} -le 3 ] && [ ${stop_stage} -ge 3 ] && ! [[ " ${skip_stages} " =~ [
                 _opts+="--in_filetype sound "
             fi
             _opts+="--online_feature_extract ${storage_save_mode} "
-            _opts+="--feature_conf \"{"type": "hf", "conf": {"download_dir": "/data/mohan/workdir/espnet/egs2/myst/asr2/exp/wavlm-large-myst-fullfinetune/", "multilayer_feature": false, "layer": ${layer}}}\" "
+            _opts+="--feature_conf \"{"type": "hf", "conf": {"download_dir": "/data/mohan/workdir/espnet/egs2/librispeech_100/asr2/exp/wavlm-libri-clean-100h-large", "multilayer_feature": false, "layer": ${layer}}}\" "
             if [ -n "${batch_bins}" ]; then
                 _opts+="--batch_bins ${batch_bins} "
             fi

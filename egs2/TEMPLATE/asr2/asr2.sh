@@ -784,9 +784,10 @@ if [ ${stage} -le 5 ] && [ ${stop_stage} -ge 5 ] && ! [[ " ${skip_stages} " =~ [
         _dev_set="${valid_set}"
     fi
 
+    kmeans_feature_conf="{type=s3prl,conf={s3prl_conf={upstream=wavlm_large},download_dir=ckpt,multilayer_feature=False,layer=${layer}}}"
     if [ "${tokenization_choice}" == "ssl" ]; then
         scripts/feats/perform_kmeans.sh \
-            --stage 1 --stop-stage 4 \
+            --stage 3 --stop-stage 3 \
             --train_set "${train_set}" \
             --dev_set "${_dev_set}" \
             --other_sets "${test_sets} ${train_sp_sets}" \
@@ -991,77 +992,77 @@ if [ ${stage} -le 7 ] && [ ${stop_stage} -ge 7 ] && ! [[ " ${skip_stages} " =~ [
     fi
 
     # First generate tgt lang
-    if [ "${tgt_token_type}" = bpe ]; then
-        log "Stage 7a: Generate token_list from ${tgt_bpe_train_text} using BPE for tgt_lang"
+    # if [ "${tgt_token_type}" = bpe ]; then
+    #     log "Stage 7a: Generate token_list from ${tgt_bpe_train_text} using BPE for tgt_lang"
 
-        mkdir -p "${tgt_bpedir}"
-        # shellcheck disable=SC2002
-        cat ${tgt_bpe_train_text} | cut -f 2- -d" "  > "${tgt_bpedir}"/train.txt
+    #     mkdir -p "${tgt_bpedir}"
+    #     # shellcheck disable=SC2002
+    #     cat ${tgt_bpe_train_text} | cut -f 2- -d" "  > "${tgt_bpedir}"/train.txt
 
-        if [ -n "${tgt_bpe_nlsyms}" ]; then
-            _opts_spm="--user_defined_symbols=${tgt_bpe_nlsyms}"
-        else
-            _opts_spm=""
-        fi
+    #     if [ -n "${tgt_bpe_nlsyms}" ]; then
+    #         _opts_spm="--user_defined_symbols=${tgt_bpe_nlsyms}"
+    #     else
+    #         _opts_spm=""
+    #     fi
 
-        spm_train \
-            --input="${tgt_bpedir}"/train.txt \
-            --vocab_size="${tgt_nbpe}" \
-            --model_type="${tgt_bpemode}" \
-            --model_prefix="${tgt_bpeprefix}" \
-            --character_coverage=${tgt_bpe_char_cover} \
-            --input_sentence_size="${tgt_bpe_input_sentence_size}" \
-            ${_opts_spm}
+    #     spm_train \
+    #         --input="${tgt_bpedir}"/train.txt \
+    #         --vocab_size="${tgt_nbpe}" \
+    #         --model_type="${tgt_bpemode}" \
+    #         --model_prefix="${tgt_bpeprefix}" \
+    #         --character_coverage=${tgt_bpe_char_cover} \
+    #         --input_sentence_size="${tgt_bpe_input_sentence_size}" \
+    #         ${_opts_spm}
 
-        {
-        echo "${blank}"
-        echo "${oov}"
-        # Remove <unk>, <s>, </s> from the vocabulary
-        <"${tgt_bpeprefix}".vocab awk '{ if( NR != 1 && NR != 2 && NR != 3 ){ print $1; } }'
-        echo "${sos_eos}"
-        } > "${tgt_token_list}"
+    #     {
+    #     echo "${blank}"
+    #     echo "${oov}"
+    #     # Remove <unk>, <s>, </s> from the vocabulary
+    #     <"${tgt_bpeprefix}".vocab awk '{ if( NR != 1 && NR != 2 && NR != 3 ){ print $1; } }'
+    #     echo "${sos_eos}"
+    #     } > "${tgt_token_list}"
 
-    elif [ "${tgt_token_type}" = char ] || [ "${tgt_token_type}" = word ]; then
-        log "Stage 7a: Generate character level token_list from ${tgt_bpe_train_text}  for tgt_lang"
+    # elif [ "${tgt_token_type}" = char ] || [ "${tgt_token_type}" = word ]; then
+    #     log "Stage 7a: Generate character level token_list from ${tgt_bpe_train_text}  for tgt_lang"
 
-        _opts="--non_linguistic_symbols ${nlsyms_txt}"
+    #     _opts="--non_linguistic_symbols ${nlsyms_txt}"
 
-        # shellcheck disable=SC2002
-        cat ${tgt_bpe_train_text} | cut -f 2- -d" "  > "${data_feats}"/token_train.txt
+    #     # shellcheck disable=SC2002
+    #     cat ${tgt_bpe_train_text} | cut -f 2- -d" "  > "${data_feats}"/token_train.txt
 
-        # The first symbol in token_list must be "<blank>" and the last must be also sos/eos:
-        # 0 is reserved for CTC-blank for ASR and also used as ignore-index in the other task
-        ${python} -m espnet2.bin.tokenize_text  \
-            --token_type "${tgt_token_type}" \
-            --input "${data_feats}/token_train.txt" --output "${tgt_token_list}" ${_opts} \
-            --field 1- \
-            --cleaner "${cleaner}" \
-            --g2p "${g2p}" \
-            --write_vocabulary true \
-            --add_symbol "${blank}:0" \
-            --add_symbol "${oov}:1" \
-            --add_symbol "${sos_eos}:-1"
+    #     # The first symbol in token_list must be "<blank>" and the last must be also sos/eos:
+    #     # 0 is reserved for CTC-blank for ASR and also used as ignore-index in the other task
+    #     ${python} -m espnet2.bin.tokenize_text  \
+    #         --token_type "${tgt_token_type}" \
+    #         --input "${data_feats}/token_train.txt" --output "${tgt_token_list}" ${_opts} \
+    #         --field 1- \
+    #         --cleaner "${cleaner}" \
+    #         --g2p "${g2p}" \
+    #         --write_vocabulary true \
+    #         --add_symbol "${blank}:0" \
+    #         --add_symbol "${oov}:1" \
+    #         --add_symbol "${sos_eos}:-1"
 
-    else
-        log "Error: not supported --token_type '${tgt_token_type}'"
-        exit 2
-    fi
+    # else
+    #     log "Error: not supported --token_type '${tgt_token_type}'"
+    #     exit 2
+    # fi
 
-    # Create word-list for word-LM training
-    if ${use_word_lm} && [ "${tgt_token_type}" != word ]; then
-        log "Generate word level token_list from ${data_feats}/lm_train.txt"
-        ${python} -m espnet2.bin.tokenize_text \
-            --token_type word \
-            --input "${data_feats}/lm_train.txt" --output "${lm_token_list}" \
-            --field 2- \
-            --cleaner "${cleaner}" \
-            --g2p "${g2p}" \
-            --write_vocabulary true \
-            --vocabulary_size "${word_vocab_size}" \
-            --add_symbol "${blank}:0" \
-            --add_symbol "${oov}:1" \
-            --add_symbol "${sos_eos}:-1"
-    fi
+    # # Create word-list for word-LM training
+    # if ${use_word_lm} && [ "${tgt_token_type}" != word ]; then
+    #     log "Generate word level token_list from ${data_feats}/lm_train.txt"
+    #     ${python} -m espnet2.bin.tokenize_text \
+    #         --token_type word \
+    #         --input "${data_feats}/lm_train.txt" --output "${lm_token_list}" \
+    #         --field 2- \
+    #         --cleaner "${cleaner}" \
+    #         --g2p "${g2p}" \
+    #         --write_vocabulary true \
+    #         --vocabulary_size "${word_vocab_size}" \
+    #         --add_symbol "${blank}:0" \
+    #         --add_symbol "${oov}:1" \
+    #         --add_symbol "${sos_eos}:-1"
+    # fi
 
     # Then generate src lang
     if "${token_joint}"; then
