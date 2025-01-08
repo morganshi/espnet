@@ -54,6 +54,8 @@ from espnet2.asr.frontend.abs_frontend import AbsFrontend
 from espnet2.asr.frontend.default import DefaultFrontend
 from espnet2.asr.frontend.fused import FusedFrontends
 from espnet2.asr.frontend.s3prl import S3prlFrontend
+from espnet2.asr.frontend.hf_freeze import HfFreezeCTCFrontend
+from espnet2.asr.frontend.hf_fsq_train import HfCTCFSQFrontend
 from espnet2.asr.frontend.whisper import WhisperFrontend
 from espnet2.asr.frontend.windowing import SlidingWindow
 from espnet2.asr.maskctc_model import MaskCTCModel
@@ -94,6 +96,8 @@ frontend_choices = ClassChoices(
         default=DefaultFrontend,
         sliding_window=SlidingWindow,
         s3prl=S3prlFrontend,
+        hf_freeze_ctc=HfFreezeCTCFrontend,
+        hf_train_fsq_ctc=HfCTCFSQFrontend,
         fused=FusedFrontends,
         whisper=WhisperFrontend,
     ),
@@ -116,7 +120,7 @@ normalize_choices = ClassChoices(
         utterance_mvn=UtteranceMVN,
     ),
     type_check=AbsNormalize,
-    default="utterance_mvn",
+    default=None,
     optional=True,
 )
 model_choices = ClassChoices(

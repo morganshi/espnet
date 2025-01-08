@@ -15,15 +15,17 @@ asr_config=conf/train_asr.yaml
 inference_config=conf/decode_asr.yaml
 
 ./asr.sh \
+    --stage 11   \
+    --stop_stage 11  \
     --lang en \
     --ngpu 1 \
-    --nj 16 \
+    --nj 4 \
     --gpu_inference true \
     --inference_nj 2 \
     --nbpe 200 \
     --max_wav_duration 30 \
     --speed_perturb_factors "0.9 1.0 1.1" \
-    --audio_format "flac.ark" \
+    --audio_format "wav" \
     --feats_type raw \
     --use_lm false \
     --asr_config "${asr_config}" \

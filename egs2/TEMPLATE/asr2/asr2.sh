@@ -790,7 +790,7 @@ if [ ${stage} -le 5 ] && [ ${stop_stage} -ge 5 ] && ! [[ " ${skip_stages} " =~ [
             --stage 3 --stop-stage 3 \
             --train_set "${train_set}" \
             --dev_set "${_dev_set}" \
-            --other_sets "${test_sets} ${train_sp_sets}" \
+            --other_sets "${test_sets}" \
             --datadir "${data_audio}" \
             --featdir "${data_extract}" \
             --audio_format "${audio_format}" \
@@ -931,21 +931,23 @@ if [ ${stage} -le 6 ] && [ ${stop_stage} -ge 6 ] && ! [[ " ${skip_stages} " =~ [
 
 
     if "${skip_train}"; then
-        if "${eval_valid_set}"; then
-            _dsets="org/${valid_set} ${test_sets}"
-        else
-            _dsets="${test_sets}"
-        fi
+        # if "${eval_valid_set}"; then
+        #     _dsets="org/${valid_set} ${test_sets}"
+        # else
+        #     _dsets="${test_sets}"
+        # fi
+        _dsets="${test_sets}"
     else
-        if "${eval_valid_set}"; then
-            _dsets="${train_set} ${valid_set} org/${valid_set} ${test_sets}"
-        else
-            _dsets="${train_set} ${valid_set} ${test_sets}"
-        fi
+        # if "${eval_valid_set}"; then
+        #     _dsets="${train_set} ${valid_set} org/${valid_set} ${test_sets}"
+        # else
+        #     _dsets="${train_set} ${valid_set} ${test_sets}"
+        # fi
+        _dsets="${train_set} ${valid_set} ${test_sets}"
     fi
     if [ "${feats_type}" = raw ]; then
         # NOTE(Jinchuan): data prep with codec tokenization has been done. Skip this part
-        if [ "${tokenization_choice}" == "codec"]; then
+        if [ "${tokenization_choice}" == "codec" ]; then
             continue
         fi
         log "Stage 6: ${data_extract} -> ${data_feats}"

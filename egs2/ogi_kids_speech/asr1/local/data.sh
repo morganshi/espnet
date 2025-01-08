@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the data path
-data_path=""
+data_path="/data/Databases/OGI_Kids/"
 
 # Check the data path
 if [ -z "$data_path" ]; then

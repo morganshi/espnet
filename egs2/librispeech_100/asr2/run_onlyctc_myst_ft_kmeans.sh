@@ -14,9 +14,9 @@ tgt_lang=en
 
 train_set="train_clean_100"
 train_dev="dev"
-test_sets="dev_clean dev_other"
+# test_sets="dev_clean dev_other"
 
-# test_sets="test_clean test_other dev_clean dev_other"
+test_sets="test_clean test_other dev_clean dev_other"
 
 asr_config=conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu.yaml
 inference_config=conf/decode_ctc1.0_greedy.yaml
@@ -29,7 +29,7 @@ tgt_nbpe=5000   # if token_joint is True, then only tgt_nbpe is used
 src_case="rm"
 tgt_case="ts"
 
-CUDA_VISIBLE_DEVICES="1"    \
+CUDA_VISIBLE_DEVICES="0"    \
 ./asr2_hf.sh \
     --stage 15   \
     --stop_stage 15  \
@@ -38,7 +38,7 @@ CUDA_VISIBLE_DEVICES="1"    \
     --kmeans_feature "${kmeans_feature}" \
     --nclusters "${nclusters}" \
     --ngpu 1 \
-    --nj 4  \
+    --nj 2  \
     --inference_nj 2    \
     --inference_asr_model "valid.cer_ctc.best.pth"   \
     --src_lang ${src_lang} \
@@ -49,7 +49,6 @@ CUDA_VISIBLE_DEVICES="1"    \
     --tgt_nbpe $tgt_nbpe \
     --src_case ${src_case} \
     --tgt_case ${tgt_case} \
-    --speed_perturb_factors "0.9 1.0 1.1" \
     --use_lm false \
     --asr_config "${asr_config}" \
     --inference_config "${inference_config}" \
