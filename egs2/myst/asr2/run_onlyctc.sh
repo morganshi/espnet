@@ -7,7 +7,7 @@ set -o pipefail
 
 CUDA_VISIBLE_DEVICES="0"
 
-kmeans_feature="wavlm_large/21"  # use model_type/layer_index
+kmeans_feature="wavlm_large/24"  # use model_type/layer_index
 nclusters=2000
 
 src_lang=$(echo "${kmeans_feature}_km${nclusters}" | tr "/" "_")
@@ -32,15 +32,16 @@ tgt_case="ts"
 
 CUDA_VISIBLE_DEVICES="1"    \
 ./asr2.sh \
-    --stage 13   \
-    --stop_stage 13  \
+    --stage 15   \
+    --stop_stage 15  \
     --gpu_kmeans true  \
-    --kmeans_opts "--batch_bins 400000 --nj 4" \
+    --kmeans_opts "--batch_bins 1 --nj 4" \
     --kmeans_feature "${kmeans_feature}" \
     --nclusters "${nclusters}" \
     --ngpu 1 \
+    --nj 4  \
     --inference_nj 4    \
-    --inference_asr_model "valid.cer_ctc.ave.pth"   \
+    --inference_asr_model "valid.cer_ctc.best.pth"   \
     --src_lang ${src_lang} \
     --tgt_lang ${tgt_lang} \
     --src_token_type "bpe" \

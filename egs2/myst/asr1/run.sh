@@ -10,19 +10,20 @@ train_set="train"
 valid_set="dev"
 test_sets="test"
 
-asr_config=conf/train_asr_onlyctc.yaml
+asr_config=conf/train_asr_onlyctc_nospecaug.yaml
 inference_config=conf/decode_asr_ctc_greedy.yaml
 
 
-CUDA_VISIBLE_DEVICES="0,1,2,3"    \
+CUDA_VISIBLE_DEVICES="0,1"    \
 ./asr.sh \
-    --stage 11   \
-    --stop_stage 11  \
+    --stage 13   \
+    --stop_stage 13  \
     --lang en \
-    --ngpu 4 \
+    --ngpu 2 \
     --nj 16 \
-    --gpu_inference true \
-    --inference_nj 2 \
+    --gpu_inference false \
+    --inference_asr_model "valid.cer_ctc.best.pth"  \
+    --inference_nj 4 \
     --nbpe 5000 \
     --max_wav_duration 30 \
     --audio_format "flac" \
