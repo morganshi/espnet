@@ -1,0 +1,95 @@
+# network architecture
+# wavlm
+# unused_parameters: true
+freeze_param: [
+    "frontend.upstream"
+]
+
+# network architecture
+frontend: hf_freeze_ctc
+frontend_conf:
+    download_dir: /data/mohan/workdir/espnet/egs2/myst/asr2/exp/wavlm-large-myst-fullfinetune
+    layer: 24
+
+
+preencoder: linear
+preencoder_conf:
+    input_size: 1024
+    output_size: 128
+
+# encoder related
+encoder: e_branchformer
+encoder_conf:
+    output_size: 256
+    attention_heads: 4
+    attention_layer_type: rel_selfattn
+    pos_enc_layer_type: rel_pos
+    rel_pos_type: latest
+    cgmlp_linear_units: 1024
+    cgmlp_conv_kernel: 31
+    use_linear_after_conv: false
+    gate_activation: identity
+    num_blocks: 12
+    dropout_rate: 0.1
+    positional_dropout_rate: 0.1
+    attention_dropout_rate: 0.1
+    input_layer: conv2d
+    layer_drop_rate: 0.0
+    linear_units: 1024
+    positionwise_layer_type: linear
+    use_ffn: true
+    macaron_ffn: true
+    merge_conv_kernel: 31
+
+# decoder related
+decoder: transformer
+decoder_conf:
+    attention_heads: 4
+    linear_units: 2048
+    num_blocks: 6
+    dropout_rate: 0.1
+    positional_dropout_rate: 0.1
+    self_attention_dropout_rate: 0.1
+    src_attention_dropout_rate: 0.1
+    layer_drop_rate: 0.0
+
+# hybrid CTC/attention
+model_conf:
+    ctc_weight: 1.0
+    lsm_weight: 0.1
+    length_normalized_loss: false
+
+
+# minibatch related
+seed: 2022
+num_workers: 4
+batch_type: numel
+batch_bins: 32000000
+accum_grad: 2
+max_epoch: 70
+patience: none
+init: none
+val_scheduler_criterion:
+- valid
+- loss_ctc
+early_stopping_criterion:
+- valid
+- loss_ctc
+- min
+best_model_criterion:
+-   - valid
+    - cer_ctc
+    - min
+keep_nbest_models: 10
+use_amp: true
+unused_parameters: true
+
+optim: adam
+optim_conf:
+    lr: 0.002
+    weight_decay: 0.000001
+scheduler: warmuplr
+scheduler_conf:
+    warmup_steps: 15000
+
+specaug: null

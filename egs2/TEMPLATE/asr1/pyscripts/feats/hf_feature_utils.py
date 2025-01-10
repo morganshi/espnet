@@ -17,7 +17,7 @@ from espnet2.samplers.num_elements_batch_sampler import NumElementsBatchSampler
 from espnet2.train.collate_fn import CommonCollateFn
 from espnet2.train.dataset import ESPnetDataset
 from espnet.utils.cli_writers import file_writer_helper
-from transformers import AutoModelForCTC, AutoProcessor
+from transformers import AutoModelForCTC, AutoFeatureExtractor
 
 logging.basicConfig(
     format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
@@ -151,8 +151,8 @@ class HuggingFaceFeatureReader(BaseFeatureReader):
         layer: int = -1,
         use_gpu: bool = True,
     ):  
+        self.processor = AutoFeatureExtractor.from_pretrained('/data/mohan/workdir/download/wavlm-large')
         self.model = AutoModelForCTC.from_pretrained(download_dir)
-        # self.processor = AutoProcessor.from_pretrained(download_dir)
 
         self.layer = layer
 
@@ -169,6 +169,16 @@ class HuggingFaceFeatureReader(BaseFeatureReader):
         self.device = "cuda" if use_gpu and torch.cuda.is_available() else "cpu"
         self.model = self.model.to(self.device)
 
+        self.conv_layers = [
+            {"K": 10, "S": 5, "P": 3},
+            {"K": 3, "S": 2, "P": 1},
+            {"K": 3, "S": 2, "P": 1},
+            {"K": 3, "S": 2, "P": 1},
+            {"K": 3, "S": 2, "P": 1},
+            {"K": 2, "S": 2, "P": 0},
+            {"K": 2, "S": 2, "P": 0},
+        ]
+
     def get_feats(
         self,
         data: torch.Tensor,
@@ -177,23 +187,50 @@ class HuggingFaceFeatureReader(BaseFeatureReader):
     ) -> Tuple[torch.Tensor, torch.Tensor]:
         with torch.no_grad():
             # import ipdb;ipdb.set_trace()
-            x, x_lens = self.preprocess_data(data, data_lens)
+            input_values = []
+            batch = data.shape[0]
+            assert data_lens.shape[0] == batch
 
-            if self.resample is not None:
-                x = self.resample(x)
-                x_lens = x_lens * self.sample_rate // self.audio_sample_rate
+            for i in range(batch):
+                input_values.append(data[i][:data_lens[i]].cpu().numpy())
 
-            x = x.to(self.device)
+            input_values = self.processor(input_values, return_tensors="pt", sampling_rate=self.sample_rate, padding=True).to(self.model.device)
 
             outputs = self.model.wavlm(
-                x,
+                **input_values,
                 output_hidden_states=True,
             )
+            
+            feats = outputs[-1][self.layer]
 
-            feats = outputs[-1][self.layer] #shape: 1,80,1024
-            #len(outputs[-1])==25
+            feats_lens = data_lens
 
-            feats_lens = torch.tensor([feats.shape[-2]]) # [80]
+            for i, conv_layer in enumerate(self.conv_layers):
+                K, S, P = conv_layer["K"], conv_layer["S"], conv_layer["P"]
+                feats_lens = (feats_lens + 2 * P - K) // S + 1
+
+
+            gap = feats.shape[1] - torch.max(feats_lens)
+
+            feats_lens = feats_lens + gap
+
+            # x, x_lens = self.preprocess_data(data, data_lens)
+
+            # if self.resample is not None:
+            #     x = self.resample(x)
+            #     x_lens = x_lens * self.sample_rate // self.audio_sample_rate
+
+            # x = x.to(self.device)
+
+            # outputs = self.model.wavlm(
+            #     x,
+            #     output_hidden_states=True,
+            # )
+
+            # feats = outputs[-1][self.layer] #shape: 1,80,1024
+            # #len(outputs[-1])==25
+
+            # feats_lens = torch.tensor([feats.shape[-2]]) # [80]
 
         feats = feats.cpu()
         feats_lens = feats_lens.cpu()

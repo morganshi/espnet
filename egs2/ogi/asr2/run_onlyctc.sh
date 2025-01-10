@@ -15,7 +15,7 @@ tgt_lang=en
 
 train_set="train"
 train_dev="dev"
-test_sets="dev test"
+test_sets="test"
 
 # test_sets="test_clean test_other dev_clean dev_other"
 
@@ -32,8 +32,8 @@ tgt_case="ts"
 
 CUDA_VISIBLE_DEVICES="0"    \
 ./asr2.sh \
-    --stage 15   \
-    --stop_stage 15  \
+    --stage 5   \
+    --stop_stage 7  \
     --gpu_kmeans true  \
     --portion 1.0   \
     --kmeans_opts "--batch_bins 1 --nj 4" \
