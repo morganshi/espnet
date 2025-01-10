@@ -19,10 +19,10 @@ test_sets="dev test"
 
 # test_sets="test_clean test_other dev_clean dev_other"
 
-asr_config=conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr2e-4.yaml
+asr_config=conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr1e-4.yaml
 inference_config=conf/decode_ctc1.0_greedy.yaml
 
-src_nbpe=10000   # I use src_nbpe=6000 for 2000-cluster kmeans.
+src_nbpe=6000   # I use src_nbpe=6000 for 2000-cluster kmeans.
 tgt_nbpe=200   # if token_joint is True, then only tgt_nbpe is used
 
 # ts: true sequence
@@ -30,7 +30,7 @@ tgt_nbpe=200   # if token_joint is True, then only tgt_nbpe is used
 src_case="rm"
 tgt_case="ts"
 
-CUDA_VISIBLE_DEVICES="0"    \
+CUDA_VISIBLE_DEVICES="3"    \
 ./asr2_fsq.sh \
     --stage 15   \
     --stop_stage 15  \
@@ -43,6 +43,7 @@ CUDA_VISIBLE_DEVICES="0"    \
     --nj 4  \
     --inference_nj 4    \
     --inference_asr_model "valid.cer_ctc.best.pth"   \
+    --gpu_inference true    \
     --src_lang ${src_lang} \
     --tgt_lang ${tgt_lang} \
     --src_token_type "bpe" \

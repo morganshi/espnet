@@ -859,10 +859,10 @@ if [ ${stage} -le 5 ] && [ ${stop_stage} -ge 5 ] && ! [[ " ${skip_stages} " =~ [
             echo "Unrecognized src_case ${src_case}" && exit 1;
         fi
 
-        # for dset in "${train_set}" ${train_sp_sets} "${_dev_set}" ${test_sets}; do
-        #     cp ${data_extract}/FSQ/FSQ/${dset}/text \
-        #         ${data_extract}/FSQ/FSQ/${dset}/text.${tgt_case}.${tgt_lang}
-        # done
+        for dset in "${train_set}" ${train_sp_sets} "${_dev_set}" ${test_sets}; do
+            cp ${data_extract}/FSQ/FSQ/${dset}/text \
+                ${data_extract}/FSQ/FSQ/${dset}/text.${tgt_case}.${tgt_lang}
+        done
 
         if ${eval_valid_set}; then
             utils/copy_data_dir.sh --validate_opts --non-print ${data_audio}/org/${valid_set} \

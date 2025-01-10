@@ -27222,3 +27222,2054 @@ torch.multiprocessing.spawn.ProcessExitedException: process 1 terminated with ex
 2024-11-09T17:43:02 (asr.sh:1591:main) Calculating RTF & latency... log: 'exp/asr_train_asr_onlyctc_nospecaug_raw_en_bpe5000/decode_asr_ctc_greedy_asr_model_valid.cer_ctc.best/test/logdir/calculate_rtf.log'
 2024-11-09T17:43:03 (asr.sh:1813:main) Successfully finished. [elapsed=4315s]
 >>>>>>> cea3af74175b4f1b718b2c4afeb0a5f028e5698c
+2025-01-09T04:23:57 (asr_fsq.sh:283:main) ./asr_fsq.sh --stage 11 --stop_stage 11 --lang en --ngpu 4 --nj 4 --gpu_inference false --inference_asr_model valid.cer_ctc.best.pth --inference_nj 4 --nbpe 5000 --max_wav_duration 30 --feats_normalize None --audio_format flac --feats_type raw --use_lm false --asr_config conf/train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4.yaml --inference_config conf/decode_asr_ctc_greedy.yaml --train_set train --valid_set dev --test_sets test --lm_train_text dump/raw/train/text --bpe_train_text dump/raw/train/text
+2025-01-09T04:23:57 (asr_fsq.sh:564:main) Skipped stages:  6 7 8 9 14 15 
+2025-01-09T04:23:57 (asr_fsq.sh:1308:main) Stage 11: ASR Training: train_set=dump/raw/train, valid_set=dump/raw/dev
+2025-01-09T04:23:57 (asr_fsq.sh:1407:main) Generate 'exp/asr_train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/run.sh'. You can resume the process from stage 11 using this script
+2025-01-09T04:23:57 (asr_fsq.sh:1411:main) ASR training started... log: 'exp/asr_train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log'
+2025-01-09 04:23:58,042 (launch:94) INFO: /data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/launch.py --cmd 'run.pl --name exp/asr_train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log' --log exp/asr_train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log --ngpu 4 --num_nodes 1 --init_file_prefix exp/asr_train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_unigram5000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_unigram5000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,sound --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir exp/asr_train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000 --config conf/train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4.yaml --frontend_conf fs=16k --train_data_path_and_name_and_type dump/raw/train/wav.scp,speech,sound --train_shape_file exp/asr_stats_raw_en_bpe5000/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe5000/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/text_shape.bpe
+2025-01-09 04:23:58,058 (launch:237) INFO: single-node with 4gpu on distributed mode
+2025-01-09 04:23:58,059 (launch:348) INFO: log file: exp/asr_train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log
+run.pl: job failed, log is in exp/asr_train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log
+Command '['run.pl', '--name', 'exp/asr_train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log', '--gpu', '4', 'exp/asr_train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log', 'python3', '-m', 'espnet2.bin.asr_train', '--use_preprocessor', 'true', '--bpemodel', 'data/en_token_list/bpe_unigram5000/bpe.model', '--token_type', 'bpe', '--token_list', 'data/en_token_list/bpe_unigram5000/tokens.txt', '--non_linguistic_symbols', 'none', '--cleaner', 'none', '--g2p', 'none', '--valid_data_path_and_name_and_type', 'dump/raw/dev/wav.scp,speech,sound', '--valid_shape_file', 'exp/asr_stats_raw_en_bpe5000/valid/speech_shape', '--resume', 'true', '--ignore_init_mismatch', 'false', '--fold_length', '80000', '--output_dir', 'exp/asr_train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000', '--config', 'conf/train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4.yaml', '--frontend_conf', 'fs=16k', '--train_data_path_and_name_and_type', 'dump/raw/train/wav.scp,speech,sound', '--train_shape_file', 'exp/asr_stats_raw_en_bpe5000/train/speech_shape', '--fold_length', '150', '--train_data_path_and_name_and_type', 'dump/raw/train/text,text,text', '--train_shape_file', 'exp/asr_stats_raw_en_bpe5000/train/text_shape.bpe', '--valid_data_path_and_name_and_type', 'dump/raw/dev/text,text,text', '--valid_shape_file', 'exp/asr_stats_raw_en_bpe5000/valid/text_shape.bpe', '--ngpu', '4', '--multiprocessing_distributed', 'True']' returned non-zero exit status 1.
+Traceback (most recent call last):
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/mohan/workdir/espnet/espnet2/bin/launch.py", line 384, in <module>
+    main()
+  File "/data/mohan/workdir/espnet/espnet2/bin/launch.py", line 375, in main
+    raise RuntimeError(
+RuntimeError: 
+################### The last 1000 lines of exp/asr_train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log ###################
+# python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_unigram5000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_unigram5000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,sound --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir exp/asr_train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000 --config conf/train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4.yaml --frontend_conf fs=16k --train_data_path_and_name_and_type dump/raw/train/wav.scp,speech,sound --train_shape_file exp/asr_stats_raw_en_bpe5000/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe5000/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/text_shape.bpe --ngpu 4 --multiprocessing_distributed True 
+# Started at Thu Jan  9 04:23:58 EST 2025
+#
+/data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/asr_train.py --use_preprocessor true --bpemodel data/en_token_list/bpe_unigram5000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_unigram5000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,sound --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir exp/asr_train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000 --config conf/train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4.yaml --frontend_conf fs=16k --train_data_path_and_name_and_type dump/raw/train/wav.scp,speech,sound --train_shape_file exp/asr_stats_raw_en_bpe5000/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe5000/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/text_shape.bpe --ngpu 4 --multiprocessing_distributed True
+usage: asr_train.py [-h] [--config CONFIG] [--print_config]
+                    [--log_level {ERROR,WARNING,INFO,DEBUG,NOTSET}]
+                    [--drop_last_iter DROP_LAST_ITER] [--dry_run DRY_RUN]
+                    [--iterator_type {sequence,category,chunk,task,none}]
+                    [--valid_iterator_type {sequence,category,chunk,task,none}]
+                    [--output_dir OUTPUT_DIR] [--ngpu NGPU] [--seed SEED]
+                    [--num_workers NUM_WORKERS] [--num_att_plot NUM_ATT_PLOT]
+                    [--dist_backend DIST_BACKEND]
+                    [--dist_init_method DIST_INIT_METHOD]
+                    [--dist_world_size DIST_WORLD_SIZE]
+                    [--dist_rank DIST_RANK] [--local_rank LOCAL_RANK]
+                    [--dist_master_addr DIST_MASTER_ADDR]
+                    [--dist_master_port DIST_MASTER_PORT]
+                    [--dist_launcher {slurm,mpi,None}]
+                    [--multiprocessing_distributed MULTIPROCESSING_DISTRIBUTED]
+                    [--unused_parameters UNUSED_PARAMETERS]
+                    [--sharded_ddp SHARDED_DDP]
+                    [--use_deepspeed USE_DEEPSPEED]
+                    [--deepspeed_config DEEPSPEED_CONFIG]
+                    [--cudnn_enabled CUDNN_ENABLED]
+                    [--cudnn_benchmark CUDNN_BENCHMARK]
+                    [--cudnn_deterministic CUDNN_DETERMINISTIC]
+                    [--use_tf32 USE_TF32] [--collect_stats COLLECT_STATS]
+                    [--write_collected_feats WRITE_COLLECTED_FEATS]
+                    [--max_epoch MAX_EPOCH] [--patience PATIENCE]
+                    [--val_scheduler_criterion VAL_SCHEDULER_CRITERION VAL_SCHEDULER_CRITERION]
+                    [--early_stopping_criterion EARLY_STOPPING_CRITERION EARLY_STOPPING_CRITERION EARLY_STOPPING_CRITERION]
+                    [--best_model_criterion BEST_MODEL_CRITERION [BEST_MODEL_CRITERION ...]]
+                    [--keep_nbest_models KEEP_NBEST_MODELS [KEEP_NBEST_MODELS ...]]
+                    [--nbest_averaging_interval NBEST_AVERAGING_INTERVAL]
+                    [--grad_clip GRAD_CLIP] [--grad_clip_type GRAD_CLIP_TYPE]
+                    [--grad_noise GRAD_NOISE] [--accum_grad ACCUM_GRAD]
+                    [--no_forward_run NO_FORWARD_RUN] [--resume RESUME]
+                    [--train_dtype {float16,float32,float64}]
+                    [--use_amp USE_AMP] [--log_interval LOG_INTERVAL]
+                    [--use_matplotlib USE_MATPLOTLIB]
+                    [--use_tensorboard USE_TENSORBOARD]
+                    [--create_graph_in_tensorboard CREATE_GRAPH_IN_TENSORBOARD]
+                    [--use_wandb USE_WANDB] [--wandb_project WANDB_PROJECT]
+                    [--wandb_id WANDB_ID] [--wandb_entity WANDB_ENTITY]
+                    [--wandb_name WANDB_NAME]
+                    [--wandb_model_log_interval WANDB_MODEL_LOG_INTERVAL]
+                    [--detect_anomaly DETECT_ANOMALY]
+                    [--use_adapter USE_ADAPTER] [--adapter {lora,houlsby}]
+                    [--save_strategy {all,adapter_only,required_grad_only}]
+                    [--adapter_conf ADAPTER_CONF]
+                    [--pretrain_path PRETRAIN_PATH]
+                    [--init_param [INIT_PARAM ...]]
+                    [--ignore_init_mismatch IGNORE_INIT_MISMATCH]
+                    [--freeze_param [FREEZE_PARAM ...]]
+                    [--num_iters_per_epoch NUM_ITERS_PER_EPOCH]
+                    [--batch_size BATCH_SIZE]
+                    [--valid_batch_size VALID_BATCH_SIZE]
+                    [--batch_bins BATCH_BINS]
+                    [--valid_batch_bins VALID_BATCH_BINS]
+                    [--category_sample_size CATEGORY_SAMPLE_SIZE]
+                    [--train_shape_file TRAIN_SHAPE_FILE]
+                    [--valid_shape_file VALID_SHAPE_FILE]
+                    [--batch_type {unsorted,sorted,folded,length,numel}]
+                    [--valid_batch_type {unsorted,sorted,folded,length,numel,None}]
+                    [--fold_length FOLD_LENGTH]
+                    [--sort_in_batch {descending,ascending}]
+                    [--shuffle_within_batch SHUFFLE_WITHIN_BATCH]
+                    [--sort_batch {descending,ascending}]
+                    [--multiple_iterator MULTIPLE_ITERATOR]
+                    [--chunk_length CHUNK_LENGTH]
+                    [--chunk_shift_ratio CHUNK_SHIFT_RATIO]
+                    [--num_cache_chunks NUM_CACHE_CHUNKS]
+                    [--chunk_excluded_key_prefixes CHUNK_EXCLUDED_KEY_PREFIXES [CHUNK_EXCLUDED_KEY_PREFIXES ...]]
+                    [--chunk_default_fs CHUNK_DEFAULT_FS]
+                    [--chunk_max_abs_length CHUNK_MAX_ABS_LENGTH]
+                    [--chunk_discard_short_samples CHUNK_DISCARD_SHORT_SAMPLES]
+                    [--train_data_path_and_name_and_type TRAIN_DATA_PATH_AND_NAME_AND_TYPE]
+                    [--valid_data_path_and_name_and_type VALID_DATA_PATH_AND_NAME_AND_TYPE]
+                    [--multi_task_dataset MULTI_TASK_DATASET]
+                    [--allow_variable_data_keys ALLOW_VARIABLE_DATA_KEYS]
+                    [--max_cache_size MAX_CACHE_SIZE]
+                    [--max_cache_fd MAX_CACHE_FD]
+                    [--allow_multi_rates ALLOW_MULTI_RATES]
+                    [--valid_max_cache_size VALID_MAX_CACHE_SIZE]
+                    [--exclude_weight_decay EXCLUDE_WEIGHT_DECAY]
+                    [--exclude_weight_decay_conf EXCLUDE_WEIGHT_DECAY_CONF]
+                    [--optim {adam,adamw,sgd,adadelta,adagrad,adamax,asgd,lbfgs,rmsprop,rprop,radam}]
+                    [--optim_conf OPTIM_CONF]
+                    [--scheduler {reducelronplateau,lambdalr,steplr,multisteplr,exponentiallr,cosineannealinglr,noamlr,warmuplr,piecewiselinearwarmuplr,warmupsteplr,warmupreducelronplateau,cycliclr,onecyclelr,cosineannealingwarmrestarts,cosineannealingwarmuprestarts,None}]
+                    [--scheduler_conf SCHEDULER_CONF]
+                    [--token_list TOKEN_LIST]
+                    [--init {chainer,xavier_uniform,xavier_normal,kaiming_uniform,kaiming_normal,None}]
+                    [--input_size INPUT_SIZE] [--ctc_conf CTC_CONF]
+                    [--joint_net_conf JOINT_NET_CONF]
+                    [--use_preprocessor USE_PREPROCESSOR]
+                    [--use_lang_prompt USE_LANG_PROMPT]
+                    [--use_nlp_prompt USE_NLP_PROMPT]
+                    [--token_type {bpe,char,word,phn,hugging_face,whisper_en,whisper_multilingual}]
+                    [--bpemodel BPEMODEL]
+                    [--non_linguistic_symbols NON_LINGUISTIC_SYMBOLS]
+                    [--cleaner {None,tacotron,jaconv,vietnamese,whisper_en,whisper_basic}]
+                    [--g2p {None,g2p_en,g2p_en_no_space,pyopenjtalk,pyopenjtalk_kana,pyopenjtalk_accent,pyopenjtalk_accent_with_pause,pyopenjtalk_prosody,pypinyin_g2p,pypinyin_g2p_phone,pypinyin_g2p_phone_without_prosody,espeak_ng_arabic,espeak_ng_german,espeak_ng_french,espeak_ng_spanish,espeak_ng_russian,espeak_ng_greek,espeak_ng_finnish,espeak_ng_hungarian,espeak_ng_dutch,espeak_ng_english_us_vits,espeak_ng_hindi,espeak_ng_italian,espeak_ng_ukrainian,espeak_ng_polish,g2pk,g2pk_no_space,g2pk_explicit_space,korean_jaso,korean_jaso_no_space,g2p_is}]
+                    [--speech_volume_normalize SPEECH_VOLUME_NORMALIZE]
+                    [--rir_scp RIR_SCP] [--rir_apply_prob RIR_APPLY_PROB]
+                    [--noise_scp NOISE_SCP]
+                    [--noise_apply_prob NOISE_APPLY_PROB]
+                    [--noise_db_range NOISE_DB_RANGE]
+                    [--short_noise_thres SHORT_NOISE_THRES]
+                    [--aux_ctc_tasks AUX_CTC_TASKS [AUX_CTC_TASKS ...]]
+                    [--frontend {default,sliding_window,s3prl,hf_freeze_ctc,hf_train_fsq_ctc,fused,whisper}]
+                    [--frontend_conf FRONTEND_CONF] [--specaug {specaug,None}]
+                    [--specaug_conf SPECAUG_CONF]
+                    [--normalize {global_mvn,utterance_mvn,None}]
+                    [--normalize_conf NORMALIZE_CONF]
+                    [--model {espnet,maskctc,pit_espnet}]
+                    [--model_conf MODEL_CONF]
+                    [--preencoder {sinc,linear,None}]
+                    [--preencoder_conf PREENCODER_CONF]
+                    [--encoder {conformer,transformer,transformer_multispkr,contextual_block_transformer,contextual_block_conformer,vgg_rnn,rnn,wav2vec2,hubert,hubert_pretrain,torchaudiohubert,longformer,branchformer,whisper,e_branchformer,avhubert,multiconv_conformer}]
+                    [--encoder_conf ENCODER_CONF]
+                    [--postencoder {hugging_face_transformers,length_adaptor,None}]
+                    [--postencoder_conf POSTENCODER_CONF]
+                    [--decoder {transformer,lightweight_conv,lightweight_conv2d,dynamic_conv,dynamic_conv2d,rnn,transducer,mlm,whisper,hugging_face_transformers,s4,None}]
+                    [--decoder_conf DECODER_CONF]
+                    [--preprocessor {default,multi}]
+                    [--preprocessor_conf PREPROCESSOR_CONF]
+asr_train.py: error: No such file: conf/train_asr_wavlm_ogi_myst_ebranchformer_onlyctc_lr1e-4.yaml
+# Accounting: time=10 threads=1
+# Ended (code 2) at Thu Jan  9 04:24:08 EST 2025, elapsed time 10 seconds
+
+2025-01-09T04:25:00 (asr_fsq.sh:283:main) ./asr_fsq.sh --stage 11 --stop_stage 11 --lang en --ngpu 4 --nj 4 --gpu_inference false --inference_asr_model valid.cer_ctc.best.pth --inference_nj 4 --nbpe 5000 --max_wav_duration 30 --feats_normalize None --audio_format flac --feats_type raw --use_lm false --asr_config conf/train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4.yaml --inference_config conf/decode_asr_ctc_greedy.yaml --train_set train --valid_set dev --test_sets test --lm_train_text dump/raw/train/text --bpe_train_text dump/raw/train/text
+2025-01-09T04:25:01 (asr_fsq.sh:564:main) Skipped stages:  6 7 8 9 14 15 
+2025-01-09T04:25:01 (asr_fsq.sh:1308:main) Stage 11: ASR Training: train_set=dump/raw/train, valid_set=dump/raw/dev
+2025-01-09T04:25:01 (asr_fsq.sh:1407:main) Generate 'exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/run.sh'. You can resume the process from stage 11 using this script
+2025-01-09T04:25:01 (asr_fsq.sh:1411:main) ASR training started... log: 'exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log'
+2025-01-09 04:25:01,266 (launch:94) INFO: /data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/launch.py --cmd 'run.pl --name exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log' --log exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log --ngpu 4 --num_nodes 1 --init_file_prefix exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_unigram5000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_unigram5000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,sound --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000 --config conf/train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4.yaml --frontend_conf fs=16k --train_data_path_and_name_and_type dump/raw/train/wav.scp,speech,sound --train_shape_file exp/asr_stats_raw_en_bpe5000/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe5000/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/text_shape.bpe
+2025-01-09 04:25:01,282 (launch:237) INFO: single-node with 4gpu on distributed mode
+2025-01-09 04:25:01,283 (launch:348) INFO: log file: exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log
+run.pl: job failed, log is in exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log
+Command '['run.pl', '--name', 'exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log', '--gpu', '4', 'exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log', 'python3', '-m', 'espnet2.bin.asr_train', '--use_preprocessor', 'true', '--bpemodel', 'data/en_token_list/bpe_unigram5000/bpe.model', '--token_type', 'bpe', '--token_list', 'data/en_token_list/bpe_unigram5000/tokens.txt', '--non_linguistic_symbols', 'none', '--cleaner', 'none', '--g2p', 'none', '--valid_data_path_and_name_and_type', 'dump/raw/dev/wav.scp,speech,sound', '--valid_shape_file', 'exp/asr_stats_raw_en_bpe5000/valid/speech_shape', '--resume', 'true', '--ignore_init_mismatch', 'false', '--fold_length', '80000', '--output_dir', 'exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000', '--config', 'conf/train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4.yaml', '--frontend_conf', 'fs=16k', '--train_data_path_and_name_and_type', 'dump/raw/train/wav.scp,speech,sound', '--train_shape_file', 'exp/asr_stats_raw_en_bpe5000/train/speech_shape', '--fold_length', '150', '--train_data_path_and_name_and_type', 'dump/raw/train/text,text,text', '--train_shape_file', 'exp/asr_stats_raw_en_bpe5000/train/text_shape.bpe', '--valid_data_path_and_name_and_type', 'dump/raw/dev/text,text,text', '--valid_shape_file', 'exp/asr_stats_raw_en_bpe5000/valid/text_shape.bpe', '--ngpu', '4', '--multiprocessing_distributed', 'True']' returned non-zero exit status 1.
+Traceback (most recent call last):
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/mohan/workdir/espnet/espnet2/bin/launch.py", line 384, in <module>
+    main()
+  File "/data/mohan/workdir/espnet/espnet2/bin/launch.py", line 375, in main
+    raise RuntimeError(
+RuntimeError: 
+################### The last 1000 lines of exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log ###################
+# python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_unigram5000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_unigram5000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,sound --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000 --config conf/train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4.yaml --frontend_conf fs=16k --train_data_path_and_name_and_type dump/raw/train/wav.scp,speech,sound --train_shape_file exp/asr_stats_raw_en_bpe5000/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe5000/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/text_shape.bpe --ngpu 4 --multiprocessing_distributed True 
+# Started at Thu Jan  9 04:25:01 EST 2025
+#
+/data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/asr_train.py --use_preprocessor true --bpemodel data/en_token_list/bpe_unigram5000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_unigram5000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,sound --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000 --config conf/train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4.yaml --frontend_conf fs=16k --train_data_path_and_name_and_type dump/raw/train/wav.scp,speech,sound --train_shape_file exp/asr_stats_raw_en_bpe5000/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe5000/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/text_shape.bpe --ngpu 4 --multiprocessing_distributed True
+[W Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function getCvarBool)
+[W Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function getCvarBool)
+[W Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function getCvarBool)
+[W Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function getCvarBool)
+[dl:0/4] 2025-01-09 04:25:20,753 (asr:527) INFO: Vocabulary size: 5000
+[dl:0/4] 2025-01-09 04:25:23,668 (espnet_model:169) WARNING: Set decoder to none as ctc_weight==1.0
+[dl:0/4] 2025-01-09 04:25:24,758 (abs_task:1387) INFO: pytorch.version=2.3.0+cu121, cuda.available=True, cudnn.version=8902, cudnn.benchmark=False, cudnn.deterministic=True
+[dl:0/4] 2025-01-09 04:25:24,767 (abs_task:1388) INFO: Model structure:
+ESPnetASRModel(
+  (frontend): HfCTCFSQFrontend(
+    (upstream): WavLMForCTC(
+      (wavlm): WavLMModel(
+        (feature_extractor): WavLMFeatureEncoder(
+          (conv_layers): ModuleList(
+            (0): WavLMLayerNormConvLayer(
+              (conv): Conv1d(1, 512, kernel_size=(10,), stride=(5,), bias=False)
+              (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+              (activation): GELUActivation()
+            )
+            (1-4): 4 x WavLMLayerNormConvLayer(
+              (conv): Conv1d(512, 512, kernel_size=(3,), stride=(2,), bias=False)
+              (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+              (activation): GELUActivation()
+            )
+            (5-6): 2 x WavLMLayerNormConvLayer(
+              (conv): Conv1d(512, 512, kernel_size=(2,), stride=(2,), bias=False)
+              (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+              (activation): GELUActivation()
+            )
+          )
+        )
+        (feature_projection): WavLMFeatureProjection(
+          (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (projection): Linear(in_features=512, out_features=1024, bias=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+        )
+        (encoder): WavLMEncoderStableLayerNorm(
+          (pos_conv_embed): WavLMPositionalConvEmbedding(
+            (conv): ParametrizedConv1d(
+              1024, 1024, kernel_size=(128,), stride=(1,), padding=(64,), groups=16
+              (parametrizations): ModuleDict(
+                (weight): ParametrizationList(
+                  (0): _WeightNorm()
+                )
+              )
+            )
+            (padding): WavLMSamePadLayer()
+            (activation): GELUActivation()
+          )
+          (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+          (layers): ModuleList(
+            (0): WavLMEncoderLayerStableLayerNorm(
+              (attention): WavLMAttention(
+                (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (gru_rel_pos_linear): Linear(in_features=64, out_features=8, bias=True)
+                (rel_attn_embed): Embedding(320, 16)
+              )
+              (dropout): Dropout(p=0.0, inplace=False)
+              (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              (feed_forward): WavLMFeedForward(
+                (intermediate_dropout): Dropout(p=0.1, inplace=False)
+                (intermediate_dense): Linear(in_features=1024, out_features=4096, bias=True)
+                (intermediate_act_fn): GELUActivation()
+                (output_dense): Linear(in_features=4096, out_features=1024, bias=True)
+                (output_dropout): Dropout(p=0.0, inplace=False)
+              )
+              (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+            )
+            (1-23): 23 x WavLMEncoderLayerStableLayerNorm(
+              (attention): WavLMAttention(
+                (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (gru_rel_pos_linear): Linear(in_features=64, out_features=8, bias=True)
+              )
+              (dropout): Dropout(p=0.0, inplace=False)
+              (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              (feed_forward): WavLMFeedForward(
+                (intermediate_dropout): Dropout(p=0.1, inplace=False)
+                (intermediate_dense): Linear(in_features=1024, out_features=4096, bias=True)
+                (intermediate_act_fn): GELUActivation()
+                (output_dense): Linear(in_features=4096, out_features=1024, bias=True)
+                (output_dropout): Dropout(p=0.0, inplace=False)
+              )
+              (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+            )
+          )
+        )
+      )
+      (dropout): Dropout(p=0.0, inplace=False)
+      (lm_head): Linear(in_features=1024, out_features=42, bias=True)
+    )
+    (quantizer): FSQ(
+      (project_in): Linear(in_features=1024, out_features=5, bias=True)
+      (project_out): Linear(in_features=5, out_features=1024, bias=True)
+    )
+  )
+  (preencoder): LinearProjection(
+    (linear_out): Linear(in_features=1024, out_features=128, bias=True)
+    (dropout): Dropout(p=0.0, inplace=False)
+  )
+  (encoder): EBranchformerEncoder(
+    (embed): Conv2dSubsampling(
+      (conv): Sequential(
+        (0): Conv2d(1, 256, kernel_size=(3, 3), stride=(2, 2))
+        (1): ReLU()
+        (2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2))
+        (3): ReLU()
+      )
+      (out): Sequential(
+        (0): Linear(in_features=7936, out_features=256, bias=True)
+        (1): RelPositionalEncoding(
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+      )
+    )
+    (encoders): MultiSequential(
+      (0): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (1): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (2): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (3): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (4): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (5): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (6): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (7): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (8): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (9): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (10): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (11): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+    )
+    (after_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+  )
+  (criterion_att): LabelSmoothingLoss(
+    (criterion): KLDivLoss()
+  )
+  (ctc): CTC(
+    (ctc_lo): Linear(in_features=256, out_features=5000, bias=True)
+    (ctc_loss): CTCLoss()
+  )
+)
+
+Model summary:
+    Class Name: ESPnetASRModel
+    Total Number of model parameters: 342.86 M
+    Number of trainable parameters: 338.65 M (98.8%)
+    Size: 1.35 GB
+    Type: torch.float32
+[dl:0/4] 2025-01-09 04:25:24,767 (abs_task:1391) INFO: Optimizer:
+Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    initial_lr: 0.0001
+    lr: 6.666666666666668e-09
+    maximize: False
+    weight_decay: 1e-06
+)
+[dl:0/4] 2025-01-09 04:25:24,767 (abs_task:1392) INFO: Scheduler: WarmupLR(warmup_steps=15000)
+[dl:0/4] 2025-01-09 04:25:24,767 (abs_task:1401) INFO: Saving the configuration in exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/config.yaml
+[dl:0/4] 2025-01-09 04:25:24,926 (asr:499) INFO: Optional Data Names: ('text_spk2', 'text_spk3', 'text_spk4', 'prompt')
+[dl:0/4] 2025-01-09 04:25:25,621 (abs_task:1810) INFO: [train] dataset:
+ESPnetDataset(
+  speech: {"path": "dump/raw/train/wav.scp", "type": "sound"}
+  text: {"path": "dump/raw/train/text", "type": "text"}
+  preprocess: <espnet2.train.preprocessor.CommonPreprocessor object at 0x7918aa7234f0>)
+[dl:0/4] 2025-01-09 04:25:25,621 (abs_task:1811) INFO: [train] Batch sampler: NumElementsBatchSampler(N-batch=5974, batch_bins=2000000, sort_in_batch=descending, sort_batch=descending)
+[dl:0/4] 2025-01-09 04:25:25,622 (abs_task:1812) INFO: [train] mini-batch sizes summary: N-batch=5974, mean=9.3, min=4, max=57
+[dl:0/4] 2025-01-09 04:25:25,638 (asr:499) INFO: Optional Data Names: ('text_spk2', 'text_spk3', 'text_spk4', 'prompt')
+[dl:0/4] 2025-01-09 04:25:25,674 (abs_task:1810) INFO: [valid] dataset:
+ESPnetDataset(
+  speech: {"path": "dump/raw/dev/wav.scp", "type": "sound"}
+  text: {"path": "dump/raw/dev/text", "type": "text"}
+  preprocess: <espnet2.train.preprocessor.CommonPreprocessor object at 0x7918aa3e3550>)
+[dl:0/4] 2025-01-09 04:25:25,674 (abs_task:1811) INFO: [valid] Batch sampler: NumElementsBatchSampler(N-batch=954, batch_bins=2000000, sort_in_batch=descending, sort_batch=descending)
+[dl:0/4] 2025-01-09 04:25:25,674 (abs_task:1812) INFO: [valid] mini-batch sizes summary: N-batch=954, mean=9.5, min=4, max=55
+[dl:0/4] 2025-01-09 04:25:25,686 (asr:499) INFO: Optional Data Names: ('text_spk2', 'text_spk3', 'text_spk4', 'prompt')
+[dl:0/4] 2025-01-09 04:25:25,693 (abs_task:1810) INFO: [plot_att] dataset:
+ESPnetDataset(
+  speech: {"path": "dump/raw/dev/wav.scp", "type": "sound"}
+  text: {"path": "dump/raw/dev/text", "type": "text"}
+  preprocess: <espnet2.train.preprocessor.CommonPreprocessor object at 0x7918aa3fbd30>)
+[dl:0/4] 2025-01-09 04:25:25,693 (abs_task:1811) INFO: [plot_att] Batch sampler: UnsortedBatchSampler(N-batch=9037, batch_size=1, key_file=exp/asr_stats_raw_en_bpe5000/valid/speech_shape, 
+[dl:0/4] 2025-01-09 04:25:25,693 (abs_task:1812) INFO: [plot_att] mini-batch sizes summary: N-batch=3, mean=1.0, min=1, max=1
+dl:1650678:1650678 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1650678:1650678 [0] NCCL INFO Bootstrap : Using enp67s0:128.97.91.100<0>
+dl:1650678:1650678 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+dl:1650678:1650678 [0] NCCL INFO cudaDriverVersion 12050
+NCCL version 2.20.5+cuda12.4
+dl:1650681:1650681 [2] NCCL INFO cudaDriverVersion 12050
+dl:1650681:1650681 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1650681:1650681 [2] NCCL INFO Bootstrap : Using enp67s0:128.97.91.100<0>
+dl:1650681:1650681 [2] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+dl:1650681:1650858 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1650681:1650858 [2] NCCL INFO NET/IB : No device found.
+dl:1650681:1650858 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1650681:1650858 [2] NCCL INFO NET/Socket : Using [0]enp67s0:128.97.91.100<0>
+dl:1650681:1650858 [2] NCCL INFO Using non-device net plugin version 0
+dl:1650681:1650858 [2] NCCL INFO Using network Socket
+dl:1650681:1650858 [2] NCCL INFO comm 0x58699d80 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId 49000 commId 0xce73e7998c3f4506 - Init START
+dl:1650681:1650858 [2] NCCL INFO NVLS multicast support is not available on dev 2
+dl:1650681:1650858 [2] NCCL INFO comm 0x58699d80 rank 2 nRanks 4 nNodes 1 localRanks 4 localRank 2 MNNVL 0
+dl:1650681:1650858 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1
+dl:1650681:1650858 [2] NCCL INFO P2P Chunksize set to 131072
+dl:1650681:1650858 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/CUMEM
+dl:1650681:1650858 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/CUMEM
+dl:1650681:1650858 [2] NCCL INFO Connected all rings
+dl:1650681:1650858 [2] NCCL INFO Channel 00/0 : 2[2] -> 1[1] via P2P/CUMEM
+dl:1650681:1650858 [2] NCCL INFO Channel 01/0 : 2[2] -> 1[1] via P2P/CUMEM
+dl:1650681:1650858 [2] NCCL INFO Connected all trees
+dl:1650681:1650858 [2] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+dl:1650681:1650858 [2] NCCL INFO 2 coll channels, 0 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+dl:1650681:1650858 [2] NCCL INFO comm 0x58699d80 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId 49000 commId 0xce73e7998c3f4506 - Init COMPLETE
+dl:1650680:1650680 [1] NCCL INFO cudaDriverVersion 12050
+dl:1650680:1650680 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1650680:1650680 [1] NCCL INFO Bootstrap : Using enp67s0:128.97.91.100<0>
+dl:1650680:1650680 [1] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+dl:1650680:1650856 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1650680:1650856 [1] NCCL INFO NET/IB : No device found.
+dl:1650680:1650856 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1650680:1650856 [1] NCCL INFO NET/Socket : Using [0]enp67s0:128.97.91.100<0>
+dl:1650680:1650856 [1] NCCL INFO Using non-device net plugin version 0
+dl:1650680:1650856 [1] NCCL INFO Using network Socket
+dl:1650680:1650856 [1] NCCL INFO comm 0xc849470 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 21000 commId 0xce73e7998c3f4506 - Init START
+dl:1650680:1650856 [1] NCCL INFO NVLS multicast support is not available on dev 1
+dl:1650680:1650856 [1] NCCL INFO comm 0xc849470 rank 1 nRanks 4 nNodes 1 localRanks 4 localRank 1 MNNVL 0
+dl:1650680:1650856 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0
+dl:1650680:1650856 [1] NCCL INFO P2P Chunksize set to 131072
+dl:1650680:1650856 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[2] via P2P/CUMEM
+dl:1650680:1650856 [1] NCCL INFO Channel 01/0 : 1[1] -> 2[2] via P2P/CUMEM
+dl:1650680:1650856 [1] NCCL INFO Connected all rings
+dl:1650680:1650856 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+dl:1650680:1650856 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+dl:1650680:1650856 [1] NCCL INFO Connected all trees
+dl:1650680:1650856 [1] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+dl:1650680:1650856 [1] NCCL INFO 2 coll channels, 0 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+dl:1650680:1650856 [1] NCCL INFO comm 0xc849470 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 21000 commId 0xce73e7998c3f4506 - Init COMPLETE
+[rank2]:[W Utils.hpp:108] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function getCvarString)
+[rank1]:[W Utils.hpp:108] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function getCvarString)
+dl:1650678:1650855 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1650678:1650855 [0] NCCL INFO NET/IB : No device found.
+dl:1650678:1650855 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1650678:1650855 [0] NCCL INFO NET/Socket : Using [0]enp67s0:128.97.91.100<0>
+dl:1650678:1650855 [0] NCCL INFO Using non-device net plugin version 0
+dl:1650678:1650855 [0] NCCL INFO Using network Socket
+dl:1650678:1650855 [0] NCCL INFO comm 0x376cfbe0 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 2000 commId 0xce73e7998c3f4506 - Init START
+dl:1650678:1650855 [0] NCCL INFO NVLS multicast support is not available on dev 0
+dl:1650678:1650855 [0] NCCL INFO comm 0x376cfbe0 rank 0 nRanks 4 nNodes 1 localRanks 4 localRank 0 MNNVL 0
+dl:1650678:1650855 [0] NCCL INFO Channel 00/02 :    0   1   2   3
+dl:1650678:1650855 [0] NCCL INFO Channel 01/02 :    0   1   2   3
+dl:1650678:1650855 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1
+dl:1650678:1650855 [0] NCCL INFO P2P Chunksize set to 131072
+dl:1650678:1650855 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+dl:1650678:1650855 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM
+dl:1650678:1650855 [0] NCCL INFO Connected all rings
+dl:1650678:1650855 [0] NCCL INFO Connected all trees
+dl:1650678:1650855 [0] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+dl:1650678:1650855 [0] NCCL INFO 2 coll channels, 0 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+dl:1650678:1650855 [0] NCCL INFO comm 0x376cfbe0 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 2000 commId 0xce73e7998c3f4506 - Init COMPLETE
+[rank0]:[W Utils.hpp:108] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function getCvarString)
+dl:1650683:1650683 [3] NCCL INFO cudaDriverVersion 12050
+dl:1650683:1650683 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1650683:1650683 [3] NCCL INFO Bootstrap : Using enp67s0:128.97.91.100<0>
+dl:1650683:1650683 [3] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+dl:1650683:1650857 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1650683:1650857 [3] NCCL INFO NET/IB : No device found.
+dl:1650683:1650857 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1650683:1650857 [3] NCCL INFO NET/Socket : Using [0]enp67s0:128.97.91.100<0>
+dl:1650683:1650857 [3] NCCL INFO Using non-device net plugin version 0
+dl:1650683:1650857 [3] NCCL INFO Using network Socket
+dl:1650683:1650857 [3] NCCL INFO comm 0xa9247d0 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId 4a000 commId 0xce73e7998c3f4506 - Init START
+dl:1650683:1650857 [3] NCCL INFO NVLS multicast support is not available on dev 3
+dl:1650683:1650857 [3] NCCL INFO comm 0xa9247d0 rank 3 nRanks 4 nNodes 1 localRanks 4 localRank 3 MNNVL 0
+dl:1650683:1650857 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] -1/-1/-1->3->2
+dl:1650683:1650857 [3] NCCL INFO P2P Chunksize set to 131072
+dl:1650683:1650857 [3] NCCL INFO Channel 00/0 : 3[3] -> 0[0] via P2P/CUMEM
+dl:1650683:1650857 [3] NCCL INFO Channel 01/0 : 3[3] -> 0[0] via P2P/CUMEM
+dl:1650683:1650857 [3] NCCL INFO Connected all rings
+dl:1650683:1650857 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/CUMEM
+dl:1650683:1650857 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/CUMEM
+dl:1650683:1650857 [3] NCCL INFO Connected all trees
+dl:1650683:1650857 [3] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+dl:1650683:1650857 [3] NCCL INFO 2 coll channels, 0 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+dl:1650683:1650857 [3] NCCL INFO comm 0xa9247d0 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId 4a000 commId 0xce73e7998c3f4506 - Init COMPLETE
+[rank3]:[W Utils.hpp:108] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function getCvarString)
+[dl:0/4] 2025-01-09 04:25:26,502 (trainer:311) INFO: 1/70epoch started
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/functional.py:5137: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+  warnings.warn(
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/functional.py:5137: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+  warnings.warn(
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/functional.py:5137: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+  warnings.warn(
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/functional.py:5137: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+  warnings.warn(
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+Process SpawnProcess-1:
+Traceback (most recent call last):
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/tasks/abs_task.py", line 1571, in main_worker
+    cls.trainer.run(
+  File "/data/mohan/workdir/espnet/espnet2/train/trainer.py", line 317, in run
+    all_steps_are_invalid = cls.train_one_epoch(
+  File "/data/mohan/workdir/espnet/espnet2/train/trainer.py", line 614, in train_one_epoch
+    retval = model(**batch)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1593, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1411, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/asr/espnet_model.py", line 237, in forward
+    encoder_out, encoder_out_lens = self.encode(speech, speech_lengths)
+  File "/data/mohan/workdir/espnet/espnet2/asr/espnet_model.py", line 402, in encode
+    encoder_out, encoder_out_lens, _ = self.encoder(feats, feats_lengths)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/asr/encoder/e_branchformer_encoder.py", line 495, in forward
+    xs_pad, masks = self.encoders(xs_pad, masks)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/mohan/workdir/espnet/espnet/nets/pytorch_backend/transformer/repeat.py", line 30, in forward
+    args = m(*args)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/asr/encoder/e_branchformer_encoder.py", line 157, in forward
+    x2 = self.cgmlp(x2, mask)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/asr/layers/cgmlp.py", line 118, in forward
+    xs_pad = self.channel_proj2(xs_pad)  # linear_units/2 -> size
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 116, in forward
+    return F.linear(input, self.weight, self.bias)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.00 MiB. GPU 
+dl:1650678:1650859 [0] NCCL INFO [Service thread] Connection closed by localRank 0
+dl:1650678:1653049 [0] NCCL INFO comm 0x376cfbe0 rank 0 nranks 4 cudaDev 0 busId 2000 - Abort COMPLETE
+W0109 04:30:19.545000 126123558676288 torch/multiprocessing/spawn.py:145] Terminating process 1650680 via signal SIGTERM
+W0109 04:30:19.546000 126123558676288 torch/multiprocessing/spawn.py:145] Terminating process 1650681 via signal SIGTERM
+W0109 04:30:19.546000 126123558676288 torch/multiprocessing/spawn.py:145] Terminating process 1650683 via signal SIGTERM
+Traceback (most recent call last):
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/mohan/workdir/espnet/espnet2/bin/asr_train.py", line 23, in <module>
+    main()
+  File "/data/mohan/workdir/espnet/espnet2/bin/asr_train.py", line 19, in main
+    ASRTask.main(cmd=cmd)
+  File "/data/mohan/workdir/espnet/espnet2/tasks/abs_task.py", line 1273, in main
+    while not ProcessContext(processes, error_files).join():
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/multiprocessing/spawn.py", line 177, in join
+    raise ProcessExitedException(
+torch.multiprocessing.spawn.ProcessExitedException: process 0 terminated with exit code 1
+# Accounting: time=320 threads=1
+# Ended (code 1) at Thu Jan  9 04:30:21 EST 2025, elapsed time 320 seconds
+
+2025-01-09T04:32:57 (asr_fsq.sh:283:main) ./asr_fsq.sh --stage 11 --stop_stage 11 --lang en --ngpu 4 --nj 4 --gpu_inference false --inference_asr_model valid.cer_ctc.best.pth --inference_nj 4 --nbpe 5000 --max_wav_duration 30 --feats_normalize None --audio_format flac --feats_type raw --use_lm false --asr_config conf/train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4.yaml --inference_config conf/decode_asr_ctc_greedy.yaml --train_set train --valid_set dev --test_sets test --lm_train_text dump/raw/train/text --bpe_train_text dump/raw/train/text
+2025-01-09T04:32:57 (asr_fsq.sh:564:main) Skipped stages:  6 7 8 9 14 15 
+2025-01-09T04:32:57 (asr_fsq.sh:1308:main) Stage 11: ASR Training: train_set=dump/raw/train, valid_set=dump/raw/dev
+2025-01-09T04:32:57 (asr_fsq.sh:1407:main) Generate 'exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/run.sh'. You can resume the process from stage 11 using this script
+2025-01-09T04:32:57 (asr_fsq.sh:1411:main) ASR training started... log: 'exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log'
+2025-01-09 04:32:59,309 (launch:94) INFO: /data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/launch.py --cmd 'run.pl --name exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log' --log exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log --ngpu 4 --num_nodes 1 --init_file_prefix exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/.dist_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_unigram5000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_unigram5000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,sound --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000 --config conf/train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4.yaml --frontend_conf fs=16k --train_data_path_and_name_and_type dump/raw/train/wav.scp,speech,sound --train_shape_file exp/asr_stats_raw_en_bpe5000/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe5000/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/text_shape.bpe
+2025-01-09 04:32:59,326 (launch:237) INFO: single-node with 4gpu on distributed mode
+2025-01-09 04:32:59,330 (launch:348) INFO: log file: exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log
+run.pl: job failed, log is in exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log
+Command '['run.pl', '--name', 'exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log', '--gpu', '4', 'exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log', 'python3', '-m', 'espnet2.bin.asr_train', '--use_preprocessor', 'true', '--bpemodel', 'data/en_token_list/bpe_unigram5000/bpe.model', '--token_type', 'bpe', '--token_list', 'data/en_token_list/bpe_unigram5000/tokens.txt', '--non_linguistic_symbols', 'none', '--cleaner', 'none', '--g2p', 'none', '--valid_data_path_and_name_and_type', 'dump/raw/dev/wav.scp,speech,sound', '--valid_shape_file', 'exp/asr_stats_raw_en_bpe5000/valid/speech_shape', '--resume', 'true', '--ignore_init_mismatch', 'false', '--fold_length', '80000', '--output_dir', 'exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000', '--config', 'conf/train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4.yaml', '--frontend_conf', 'fs=16k', '--train_data_path_and_name_and_type', 'dump/raw/train/wav.scp,speech,sound', '--train_shape_file', 'exp/asr_stats_raw_en_bpe5000/train/speech_shape', '--fold_length', '150', '--train_data_path_and_name_and_type', 'dump/raw/train/text,text,text', '--train_shape_file', 'exp/asr_stats_raw_en_bpe5000/train/text_shape.bpe', '--valid_data_path_and_name_and_type', 'dump/raw/dev/text,text,text', '--valid_shape_file', 'exp/asr_stats_raw_en_bpe5000/valid/text_shape.bpe', '--ngpu', '4', '--multiprocessing_distributed', 'True']' returned non-zero exit status 1.
+Traceback (most recent call last):
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/mohan/workdir/espnet/espnet2/bin/launch.py", line 384, in <module>
+    main()
+  File "/data/mohan/workdir/espnet/espnet2/bin/launch.py", line 375, in main
+    raise RuntimeError(
+RuntimeError: 
+################### The last 1000 lines of exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/train.log ###################
+# python3 -m espnet2.bin.asr_train --use_preprocessor true --bpemodel data/en_token_list/bpe_unigram5000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_unigram5000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,sound --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000 --config conf/train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4.yaml --frontend_conf fs=16k --train_data_path_and_name_and_type dump/raw/train/wav.scp,speech,sound --train_shape_file exp/asr_stats_raw_en_bpe5000/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe5000/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/text_shape.bpe --ngpu 4 --multiprocessing_distributed True 
+# Started at Thu Jan  9 04:32:59 EST 2025
+#
+/data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/asr_train.py --use_preprocessor true --bpemodel data/en_token_list/bpe_unigram5000/bpe.model --token_type bpe --token_list data/en_token_list/bpe_unigram5000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/wav.scp,speech,sound --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/speech_shape --resume true --ignore_init_mismatch false --fold_length 80000 --output_dir exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000 --config conf/train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4.yaml --frontend_conf fs=16k --train_data_path_and_name_and_type dump/raw/train/wav.scp,speech,sound --train_shape_file exp/asr_stats_raw_en_bpe5000/train/speech_shape --fold_length 150 --train_data_path_and_name_and_type dump/raw/train/text,text,text --train_shape_file exp/asr_stats_raw_en_bpe5000/train/text_shape.bpe --valid_data_path_and_name_and_type dump/raw/dev/text,text,text --valid_shape_file exp/asr_stats_raw_en_bpe5000/valid/text_shape.bpe --ngpu 4 --multiprocessing_distributed True
+[W Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function getCvarBool)
+[W Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function getCvarBool)
+[W Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function getCvarBool)
+[W Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function getCvarBool)
+[dl:0/4] 2025-01-09 04:33:31,455 (asr:527) INFO: Vocabulary size: 5000
+[dl:0/4] 2025-01-09 04:33:40,722 (espnet_model:169) WARNING: Set decoder to none as ctc_weight==1.0
+[dl:0/4] 2025-01-09 04:33:41,704 (abs_task:1387) INFO: pytorch.version=2.3.0+cu121, cuda.available=True, cudnn.version=8902, cudnn.benchmark=False, cudnn.deterministic=True
+[dl:0/4] 2025-01-09 04:33:41,714 (abs_task:1388) INFO: Model structure:
+ESPnetASRModel(
+  (frontend): HfCTCFSQFrontend(
+    (upstream): WavLMForCTC(
+      (wavlm): WavLMModel(
+        (feature_extractor): WavLMFeatureEncoder(
+          (conv_layers): ModuleList(
+            (0): WavLMLayerNormConvLayer(
+              (conv): Conv1d(1, 512, kernel_size=(10,), stride=(5,), bias=False)
+              (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+              (activation): GELUActivation()
+            )
+            (1-4): 4 x WavLMLayerNormConvLayer(
+              (conv): Conv1d(512, 512, kernel_size=(3,), stride=(2,), bias=False)
+              (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+              (activation): GELUActivation()
+            )
+            (5-6): 2 x WavLMLayerNormConvLayer(
+              (conv): Conv1d(512, 512, kernel_size=(2,), stride=(2,), bias=False)
+              (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+              (activation): GELUActivation()
+            )
+          )
+        )
+        (feature_projection): WavLMFeatureProjection(
+          (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (projection): Linear(in_features=512, out_features=1024, bias=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+        )
+        (encoder): WavLMEncoderStableLayerNorm(
+          (pos_conv_embed): WavLMPositionalConvEmbedding(
+            (conv): ParametrizedConv1d(
+              1024, 1024, kernel_size=(128,), stride=(1,), padding=(64,), groups=16
+              (parametrizations): ModuleDict(
+                (weight): ParametrizationList(
+                  (0): _WeightNorm()
+                )
+              )
+            )
+            (padding): WavLMSamePadLayer()
+            (activation): GELUActivation()
+          )
+          (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+          (layers): ModuleList(
+            (0): WavLMEncoderLayerStableLayerNorm(
+              (attention): WavLMAttention(
+                (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (gru_rel_pos_linear): Linear(in_features=64, out_features=8, bias=True)
+                (rel_attn_embed): Embedding(320, 16)
+              )
+              (dropout): Dropout(p=0.0, inplace=False)
+              (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              (feed_forward): WavLMFeedForward(
+                (intermediate_dropout): Dropout(p=0.1, inplace=False)
+                (intermediate_dense): Linear(in_features=1024, out_features=4096, bias=True)
+                (intermediate_act_fn): GELUActivation()
+                (output_dense): Linear(in_features=4096, out_features=1024, bias=True)
+                (output_dropout): Dropout(p=0.0, inplace=False)
+              )
+              (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+            )
+            (1-23): 23 x WavLMEncoderLayerStableLayerNorm(
+              (attention): WavLMAttention(
+                (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+                (gru_rel_pos_linear): Linear(in_features=64, out_features=8, bias=True)
+              )
+              (dropout): Dropout(p=0.0, inplace=False)
+              (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+              (feed_forward): WavLMFeedForward(
+                (intermediate_dropout): Dropout(p=0.1, inplace=False)
+                (intermediate_dense): Linear(in_features=1024, out_features=4096, bias=True)
+                (intermediate_act_fn): GELUActivation()
+                (output_dense): Linear(in_features=4096, out_features=1024, bias=True)
+                (output_dropout): Dropout(p=0.0, inplace=False)
+              )
+              (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+            )
+          )
+        )
+      )
+      (dropout): Dropout(p=0.0, inplace=False)
+      (lm_head): Linear(in_features=1024, out_features=42, bias=True)
+    )
+    (quantizer): FSQ(
+      (project_in): Linear(in_features=1024, out_features=5, bias=True)
+      (project_out): Linear(in_features=5, out_features=1024, bias=True)
+    )
+  )
+  (preencoder): LinearProjection(
+    (linear_out): Linear(in_features=1024, out_features=128, bias=True)
+    (dropout): Dropout(p=0.0, inplace=False)
+  )
+  (encoder): EBranchformerEncoder(
+    (embed): Conv2dSubsampling(
+      (conv): Sequential(
+        (0): Conv2d(1, 256, kernel_size=(3, 3), stride=(2, 2))
+        (1): ReLU()
+        (2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2))
+        (3): ReLU()
+      )
+      (out): Sequential(
+        (0): Linear(in_features=7936, out_features=256, bias=True)
+        (1): RelPositionalEncoding(
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+      )
+    )
+    (encoders): MultiSequential(
+      (0): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (1): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (2): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (3): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (4): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (5): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (6): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (7): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (8): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (9): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (10): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (11): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+    )
+    (after_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+  )
+  (criterion_att): LabelSmoothingLoss(
+    (criterion): KLDivLoss()
+  )
+  (ctc): CTC(
+    (ctc_lo): Linear(in_features=256, out_features=5000, bias=True)
+    (ctc_loss): CTCLoss()
+  )
+)
+
+Model summary:
+    Class Name: ESPnetASRModel
+    Total Number of model parameters: 342.86 M
+    Number of trainable parameters: 338.65 M (98.8%)
+    Size: 1.35 GB
+    Type: torch.float32
+[dl:0/4] 2025-01-09 04:33:41,714 (abs_task:1391) INFO: Optimizer:
+Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    initial_lr: 0.0001
+    lr: 6.666666666666668e-09
+    maximize: False
+    weight_decay: 1e-06
+)
+[dl:0/4] 2025-01-09 04:33:41,714 (abs_task:1392) INFO: Scheduler: WarmupLR(warmup_steps=15000)
+[dl:0/4] 2025-01-09 04:33:41,714 (abs_task:1401) INFO: Saving the configuration in exp/asr_train_asr_wavlm_myst_fsq_ebranchformer_onlyctc_lr1e-4_raw_en_bpe5000/config.yaml
+[dl:0/4] 2025-01-09 04:33:41,884 (asr:499) INFO: Optional Data Names: ('text_spk2', 'text_spk3', 'text_spk4', 'prompt')
+[dl:0/4] 2025-01-09 04:33:42,637 (abs_task:1810) INFO: [train] dataset:
+ESPnetDataset(
+  speech: {"path": "dump/raw/train/wav.scp", "type": "sound"}
+  text: {"path": "dump/raw/train/text", "type": "text"}
+  preprocess: <espnet2.train.preprocessor.CommonPreprocessor object at 0x7e9387011210>)
+[dl:0/4] 2025-01-09 04:33:42,637 (abs_task:1811) INFO: [train] Batch sampler: NumElementsBatchSampler(N-batch=9198, batch_bins=1000000, sort_in_batch=descending, sort_batch=descending)
+[dl:0/4] 2025-01-09 04:33:42,639 (abs_task:1812) INFO: [train] mini-batch sizes summary: N-batch=9198, mean=6.1, min=4, max=32
+[dl:0/4] 2025-01-09 04:33:42,660 (asr:499) INFO: Optional Data Names: ('text_spk2', 'text_spk3', 'text_spk4', 'prompt')
+[dl:0/4] 2025-01-09 04:33:42,711 (abs_task:1810) INFO: [valid] dataset:
+ESPnetDataset(
+  speech: {"path": "dump/raw/dev/wav.scp", "type": "sound"}
+  text: {"path": "dump/raw/dev/text", "type": "text"}
+  preprocess: <espnet2.train.preprocessor.CommonPreprocessor object at 0x7e938701c910>)
+[dl:0/4] 2025-01-09 04:33:42,712 (abs_task:1811) INFO: [valid] Batch sampler: NumElementsBatchSampler(N-batch=1483, batch_bins=1000000, sort_in_batch=descending, sort_batch=descending)
+[dl:0/4] 2025-01-09 04:33:42,712 (abs_task:1812) INFO: [valid] mini-batch sizes summary: N-batch=1483, mean=6.1, min=4, max=28
+[dl:0/4] 2025-01-09 04:33:42,726 (asr:499) INFO: Optional Data Names: ('text_spk2', 'text_spk3', 'text_spk4', 'prompt')
+[dl:0/4] 2025-01-09 04:33:42,734 (abs_task:1810) INFO: [plot_att] dataset:
+ESPnetDataset(
+  speech: {"path": "dump/raw/dev/wav.scp", "type": "sound"}
+  text: {"path": "dump/raw/dev/text", "type": "text"}
+  preprocess: <espnet2.train.preprocessor.CommonPreprocessor object at 0x7e9381145d20>)
+[dl:0/4] 2025-01-09 04:33:42,734 (abs_task:1811) INFO: [plot_att] Batch sampler: UnsortedBatchSampler(N-batch=9037, batch_size=1, key_file=exp/asr_stats_raw_en_bpe5000/valid/speech_shape, 
+[dl:0/4] 2025-01-09 04:33:42,735 (abs_task:1812) INFO: [plot_att] mini-batch sizes summary: N-batch=3, mean=1.0, min=1, max=1
+dl:1653741:1653741 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1653741:1653741 [0] NCCL INFO Bootstrap : Using enp67s0:128.97.91.100<0>
+dl:1653741:1653741 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+dl:1653741:1653741 [0] NCCL INFO cudaDriverVersion 12050
+NCCL version 2.20.5+cuda12.4
+dl:1653743:1653743 [2] NCCL INFO cudaDriverVersion 12050
+dl:1653743:1653743 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1653743:1653743 [2] NCCL INFO Bootstrap : Using enp67s0:128.97.91.100<0>
+dl:1653743:1653743 [2] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+dl:1653743:1653981 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1653743:1653981 [2] NCCL INFO NET/IB : No device found.
+dl:1653743:1653981 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1653743:1653981 [2] NCCL INFO NET/Socket : Using [0]enp67s0:128.97.91.100<0>
+dl:1653743:1653981 [2] NCCL INFO Using non-device net plugin version 0
+dl:1653743:1653981 [2] NCCL INFO Using network Socket
+dl:1653743:1653981 [2] NCCL INFO comm 0xc12daf0 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId 49000 commId 0x408e9fc53d949dff - Init START
+dl:1653743:1653981 [2] NCCL INFO NVLS multicast support is not available on dev 2
+dl:1653743:1653981 [2] NCCL INFO comm 0xc12daf0 rank 2 nRanks 4 nNodes 1 localRanks 4 localRank 2 MNNVL 0
+dl:1653743:1653981 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1
+dl:1653743:1653981 [2] NCCL INFO P2P Chunksize set to 131072
+dl:1653743:1653981 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/CUMEM
+dl:1653743:1653981 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/CUMEM
+dl:1653743:1653981 [2] NCCL INFO Connected all rings
+dl:1653743:1653981 [2] NCCL INFO Channel 00/0 : 2[2] -> 1[1] via P2P/CUMEM
+dl:1653743:1653981 [2] NCCL INFO Channel 01/0 : 2[2] -> 1[1] via P2P/CUMEM
+dl:1653743:1653981 [2] NCCL INFO Connected all trees
+dl:1653743:1653981 [2] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+dl:1653743:1653981 [2] NCCL INFO 2 coll channels, 0 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+dl:1653743:1653981 [2] NCCL INFO comm 0xc12daf0 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId 49000 commId 0x408e9fc53d949dff - Init COMPLETE
+[rank2]:[W Utils.hpp:108] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function getCvarString)
+dl:1653744:1653744 [3] NCCL INFO cudaDriverVersion 12050
+dl:1653744:1653744 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1653744:1653744 [3] NCCL INFO Bootstrap : Using enp67s0:128.97.91.100<0>
+dl:1653744:1653744 [3] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+dl:1653744:1653979 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1653744:1653979 [3] NCCL INFO NET/IB : No device found.
+dl:1653744:1653979 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1653744:1653979 [3] NCCL INFO NET/Socket : Using [0]enp67s0:128.97.91.100<0>
+dl:1653744:1653979 [3] NCCL INFO Using non-device net plugin version 0
+dl:1653744:1653979 [3] NCCL INFO Using network Socket
+dl:1653744:1653979 [3] NCCL INFO comm 0x4e1607d0 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId 4a000 commId 0x408e9fc53d949dff - Init START
+dl:1653744:1653979 [3] NCCL INFO NVLS multicast support is not available on dev 3
+dl:1653744:1653979 [3] NCCL INFO comm 0x4e1607d0 rank 3 nRanks 4 nNodes 1 localRanks 4 localRank 3 MNNVL 0
+dl:1653744:1653979 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] -1/-1/-1->3->2
+dl:1653744:1653979 [3] NCCL INFO P2P Chunksize set to 131072
+dl:1653744:1653979 [3] NCCL INFO Channel 00/0 : 3[3] -> 0[0] via P2P/CUMEM
+dl:1653744:1653979 [3] NCCL INFO Channel 01/0 : 3[3] -> 0[0] via P2P/CUMEM
+dl:1653744:1653979 [3] NCCL INFO Connected all rings
+dl:1653744:1653979 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/CUMEM
+dl:1653744:1653979 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/CUMEM
+dl:1653744:1653979 [3] NCCL INFO Connected all trees
+dl:1653744:1653979 [3] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+dl:1653744:1653979 [3] NCCL INFO 2 coll channels, 0 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+dl:1653744:1653979 [3] NCCL INFO comm 0x4e1607d0 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId 4a000 commId 0x408e9fc53d949dff - Init COMPLETE
+[rank3]:[W Utils.hpp:108] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function getCvarString)
+dl:1653741:1653978 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1653741:1653978 [0] NCCL INFO NET/IB : No device found.
+dl:1653741:1653978 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1653741:1653978 [0] NCCL INFO NET/Socket : Using [0]enp67s0:128.97.91.100<0>
+dl:1653741:1653978 [0] NCCL INFO Using non-device net plugin version 0
+dl:1653741:1653978 [0] NCCL INFO Using network Socket
+dl:1653741:1653978 [0] NCCL INFO comm 0x44f87ea0 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 2000 commId 0x408e9fc53d949dff - Init START
+dl:1653741:1653978 [0] NCCL INFO NVLS multicast support is not available on dev 0
+dl:1653741:1653978 [0] NCCL INFO comm 0x44f87ea0 rank 0 nRanks 4 nNodes 1 localRanks 4 localRank 0 MNNVL 0
+dl:1653741:1653978 [0] NCCL INFO Channel 00/02 :    0   1   2   3
+dl:1653741:1653978 [0] NCCL INFO Channel 01/02 :    0   1   2   3
+dl:1653741:1653978 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1
+dl:1653741:1653978 [0] NCCL INFO P2P Chunksize set to 131072
+dl:1653741:1653978 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+dl:1653741:1653978 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM
+dl:1653741:1653978 [0] NCCL INFO Connected all rings
+dl:1653741:1653978 [0] NCCL INFO Connected all trees
+dl:1653741:1653978 [0] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+dl:1653741:1653978 [0] NCCL INFO 2 coll channels, 0 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+dl:1653741:1653978 [0] NCCL INFO comm 0x44f87ea0 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 2000 commId 0x408e9fc53d949dff - Init COMPLETE
+[rank0]:[W Utils.hpp:108] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function getCvarString)
+dl:1653742:1653742 [1] NCCL INFO cudaDriverVersion 12050
+dl:1653742:1653742 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1653742:1653742 [1] NCCL INFO Bootstrap : Using enp67s0:128.97.91.100<0>
+dl:1653742:1653742 [1] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+dl:1653742:1653980 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1653742:1653980 [1] NCCL INFO NET/IB : No device found.
+dl:1653742:1653980 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker,virbr,vmnet,vboxnet
+dl:1653742:1653980 [1] NCCL INFO NET/Socket : Using [0]enp67s0:128.97.91.100<0>
+dl:1653742:1653980 [1] NCCL INFO Using non-device net plugin version 0
+dl:1653742:1653980 [1] NCCL INFO Using network Socket
+dl:1653742:1653980 [1] NCCL INFO comm 0x59ce0090 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 21000 commId 0x408e9fc53d949dff - Init START
+dl:1653742:1653980 [1] NCCL INFO NVLS multicast support is not available on dev 1
+dl:1653742:1653980 [1] NCCL INFO comm 0x59ce0090 rank 1 nRanks 4 nNodes 1 localRanks 4 localRank 1 MNNVL 0
+dl:1653742:1653980 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0
+dl:1653742:1653980 [1] NCCL INFO P2P Chunksize set to 131072
+dl:1653742:1653980 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[2] via P2P/CUMEM
+dl:1653742:1653980 [1] NCCL INFO Channel 01/0 : 1[1] -> 2[2] via P2P/CUMEM
+dl:1653742:1653980 [1] NCCL INFO Connected all rings
+dl:1653742:1653980 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+dl:1653742:1653980 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+dl:1653742:1653980 [1] NCCL INFO Connected all trees
+dl:1653742:1653980 [1] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+dl:1653742:1653980 [1] NCCL INFO 2 coll channels, 0 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+dl:1653742:1653980 [1] NCCL INFO comm 0x59ce0090 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 21000 commId 0x408e9fc53d949dff - Init COMPLETE
+[rank1]:[W Utils.hpp:108] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function getCvarString)
+[dl:0/4] 2025-01-09 04:33:43,402 (trainer:311) INFO: 1/70epoch started
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/functional.py:5137: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+  warnings.warn(
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/functional.py:5137: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+  warnings.warn(
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/functional.py:5137: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+  warnings.warn(
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/functional.py:5137: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+  warnings.warn(
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/autograd/graph.py:744: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+[dl:0/4] 2025-01-09 04:39:26,872 (trainer:779) INFO: 1epoch:train:1-459batch: iter_time=4.084e-04, forward_time=0.207, loss_ctc=820.796, loss=820.796, backward_time=0.400, grad_norm=2.444e+03, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.023, optim0_lr0=1.033e-07, train_time=11.994
+[dl:0/4] 2025-01-09 04:44:24,242 (trainer:779) INFO: 1epoch:train:460-918batch: iter_time=2.724e-04, forward_time=0.202, loss_ctc=815.300, loss=815.300, backward_time=0.397, grad_norm=2.835e+03, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.021, optim0_lr0=2.933e-07, train_time=10.376
+[dl:0/4] 2025-01-09 04:49:35,130 (trainer:779) INFO: 1epoch:train:919-1377batch: iter_time=2.735e-04, forward_time=0.220, loss_ctc=792.735, loss=792.735, backward_time=0.405, grad_norm=5.410e+03, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.021, optim0_lr0=4.867e-07, train_time=10.834
+[dl:0/4] 2025-01-09 04:54:38,939 (trainer:779) INFO: 1epoch:train:1378-1836batch: iter_time=2.355e-04, forward_time=0.208, loss_ctc=651.194, loss=651.194, backward_time=0.400, grad_norm=5.732e+03, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.021, optim0_lr0=6.767e-07, train_time=10.585
+[dl:0/4] 2025-01-09 04:59:48,095 (trainer:779) INFO: 1epoch:train:1837-2295batch: iter_time=2.849e-04, forward_time=0.219, loss_ctc=560.796, loss=560.796, backward_time=0.400, grad_norm=4.010e+03, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.022, optim0_lr0=8.667e-07, train_time=10.782
+[dl:0/4] 2025-01-09 05:04:53,663 (trainer:779) INFO: 1epoch:train:2296-2754batch: iter_time=2.320e-04, forward_time=0.213, loss_ctc=480.817, loss=480.817, backward_time=0.400, grad_norm=2.325e+03, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.020, optim0_lr0=1.060e-06, train_time=10.661
+[dl:0/4] 2025-01-09 05:09:41,726 (trainer:779) INFO: 1epoch:train:2755-3213batch: iter_time=1.736e-04, forward_time=0.191, loss_ctc=419.804, loss=419.804, backward_time=0.386, grad_norm=1.545e+03, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.016, optim0_lr0=1.250e-06, train_time=10.045
+[dl:0/4] 2025-01-09 05:14:56,877 (trainer:779) INFO: 1epoch:train:3214-3672batch: iter_time=4.172e-04, forward_time=0.223, loss_ctc=383.714, loss=383.714, backward_time=0.406, grad_norm=1.326e+03, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.022, optim0_lr0=1.440e-06, train_time=10.933
+[dl:0/4] 2025-01-09 05:20:13,363 (trainer:779) INFO: 1epoch:train:3673-4131batch: iter_time=2.977e-04, forward_time=0.227, loss_ctc=335.541, loss=335.541, backward_time=0.403, grad_norm=1.116e+03, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.024, optim0_lr0=1.633e-06, train_time=11.050
+[dl:0/4] 2025-01-09 05:25:27,165 (trainer:779) INFO: 1epoch:train:4132-4590batch: iter_time=2.699e-04, forward_time=0.228, loss_ctc=349.711, loss=349.711, backward_time=0.403, grad_norm=1.068e+03, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.025, optim0_lr0=1.823e-06, train_time=10.924
+[dl:0/4] 2025-01-09 05:30:48,154 (trainer:779) INFO: 1epoch:train:4591-5049batch: iter_time=2.628e-04, forward_time=0.234, loss_ctc=346.744, loss=346.744, backward_time=0.409, grad_norm=1.034e+03, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.025, optim0_lr0=2.013e-06, train_time=11.207
+[dl:0/4] 2025-01-09 05:36:04,495 (trainer:779) INFO: 1epoch:train:5050-5508batch: iter_time=2.875e-04, forward_time=0.230, loss_ctc=339.174, loss=339.174, backward_time=0.404, grad_norm=1.001e+03, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.024, optim0_lr0=2.207e-06, train_time=11.014
+[dl:0/4] 2025-01-09 05:41:21,617 (trainer:779) INFO: 1epoch:train:5509-5967batch: iter_time=2.610e-04, forward_time=0.230, loss_ctc=320.948, loss=320.948, backward_time=0.403, grad_norm=996.920, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.038, optim0_lr0=2.397e-06, train_time=11.064
+[dl:0/4] 2025-01-09 05:46:40,494 (trainer:779) INFO: 1epoch:train:5968-6426batch: iter_time=2.113e-04, forward_time=0.226, loss_ctc=237.084, loss=237.084, backward_time=0.409, grad_norm=1.664e+03, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.022, optim0_lr0=2.587e-06, train_time=11.103
+[dl:0/4] 2025-01-09 05:51:58,938 (trainer:779) INFO: 1epoch:train:6427-6885batch: iter_time=2.007e-04, forward_time=0.228, loss_ctc=178.305, loss=178.305, backward_time=0.406, grad_norm=496.213, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.021, optim0_lr0=2.780e-06, train_time=11.107
+[dl:0/4] 2025-01-09 05:57:12,626 (trainer:779) INFO: 1epoch:train:6886-7344batch: iter_time=1.980e-04, forward_time=0.214, loss_ctc=172.182, loss=172.182, backward_time=0.401, grad_norm=394.727, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.020, optim0_lr0=2.973e-06, train_time=10.934
+[dl:0/4] 2025-01-09 06:02:30,182 (trainer:779) INFO: 1epoch:train:7345-7803batch: iter_time=1.988e-04, forward_time=0.221, loss_ctc=171.158, loss=171.158, backward_time=0.403, grad_norm=360.756, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.020, optim0_lr0=3.163e-06, train_time=11.067
+[dl:0/4] 2025-01-09 06:07:51,830 (trainer:779) INFO: 1epoch:train:7804-8262batch: iter_time=2.075e-04, forward_time=0.230, loss_ctc=168.643, loss=168.643, backward_time=0.406, grad_norm=321.227, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.021, optim0_lr0=3.353e-06, train_time=11.216
+[dl:0/4] 2025-01-09 06:13:13,234 (trainer:779) INFO: 1epoch:train:8263-8721batch: iter_time=2.560e-04, forward_time=0.234, loss_ctc=164.246, loss=164.246, backward_time=0.404, grad_norm=282.617, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.023, optim0_lr0=3.547e-06, train_time=11.199
+[dl:0/4] 2025-01-09 06:18:29,370 (trainer:779) INFO: 1epoch:train:8722-9180batch: iter_time=2.444e-04, forward_time=0.225, loss_ctc=155.266, loss=155.266, backward_time=0.403, grad_norm=244.800, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.024, optim0_lr0=3.737e-06, train_time=11.032
+/data/mohan/workdir/espnet/espnet2/train/reporter.py:79: UserWarning: No valid stats found
+  warnings.warn("No valid stats found")
+/data/mohan/workdir/espnet/espnet2/train/reporter.py:79: UserWarning: No valid stats found
+  warnings.warn("No valid stats found")
+/data/mohan/workdir/espnet/espnet2/train/reporter.py:79: UserWarning: No valid stats found
+  warnings.warn("No valid stats found")
+/data/mohan/workdir/espnet/espnet2/train/reporter.py:79: UserWarning: No valid stats found
+  warnings.warn("No valid stats found")
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/functional.py:5137: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+  warnings.warn(
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+[dl:0/4] 2025-01-09 06:27:30,739 (trainer:365) INFO: 1epoch results: [train] iter_time=2.595e-04, forward_time=0.221, loss_ctc=392.333, loss=392.333, backward_time=0.402, grad_norm=1.727e+03, clip=100.000, loss_scale=6.554e+04, optim_step_time=0.023, optim0_lr0=1.923e-06, train_time=10.956, time=1 hour, 45 minutes and 8.35 seconds, total_count=9198, gpu_max_cached_mem_GB=15.240, [valid] loss_ctc=154.724, cer_ctc=1.000, loss_att=nan, acc=nan, cer=nan, wer=nan, loss=154.724, time=7 minutes and 6.43 seconds, total_count=1483, gpu_max_cached_mem_GB=15.240, [att_plot] time=1 minute and 32.49 seconds, total_count=0, gpu_max_cached_mem_GB=15.240
+[dl:0/4] 2025-01-09 06:27:56,053 (trainer:433) INFO: The best model has been updated: valid.cer_ctc
+[dl:0/4] 2025-01-09 06:27:56,086 (trainer:299) INFO: 2/70epoch started. Estimated time to finish: 5 days, 11 hours and 20 minutes
+W0109 06:35:02.523000 136733754685248 torch/multiprocessing/spawn.py:145] Terminating process 1653742 via signal SIGTERM
+W0109 06:35:02.641000 136733754685248 torch/multiprocessing/spawn.py:145] Terminating process 1653743 via signal SIGTERM
+W0109 06:35:02.642000 136733754685248 torch/multiprocessing/spawn.py:145] Terminating process 1653744 via signal SIGTERM
+Traceback (most recent call last):
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/mohan/workdir/espnet/espnet2/bin/asr_train.py", line 23, in <module>
+    main()
+  File "/data/mohan/workdir/espnet/espnet2/bin/asr_train.py", line 19, in main
+    ASRTask.main(cmd=cmd)
+  File "/data/mohan/workdir/espnet/espnet2/tasks/abs_task.py", line 1273, in main
+    while not ProcessContext(processes, error_files).join():
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/multiprocessing/spawn.py", line 169, in join
+    raise ProcessExitedException(
+torch.multiprocessing.spawn.ProcessExitedException: process 0 terminated with signal SIGKILL
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 80 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+# Accounting: time=7333 threads=1
+# Ended (code 1) at Thu Jan  9 06:35:12 EST 2025, elapsed time 7333 seconds
+

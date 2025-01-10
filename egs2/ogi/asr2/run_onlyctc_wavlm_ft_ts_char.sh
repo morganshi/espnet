@@ -19,7 +19,7 @@ test_sets="dev test"
 
 # test_sets="test_clean test_other dev_clean dev_other"
 
-asr_config=conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr2e-4.yaml
+asr_config=conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr1e-4.yaml
 inference_config=conf/decode_ctc1.0_greedy.yaml
 
 src_nbpe=6000   # I use src_nbpe=6000 for 2000-cluster kmeans.
@@ -35,7 +35,7 @@ CUDA_VISIBLE_DEVICES="0"    \
     --stage 15   \
     --stop_stage 15  \
     --gpu_kmeans true  \
-    --portion 0.1   \
+    --portion 1.0   \
     --kmeans_opts "--batch_bins 1 --nj 4" \
     --kmeans_feature "${kmeans_feature}" \
     --nclusters "${nclusters}" \
@@ -43,6 +43,7 @@ CUDA_VISIBLE_DEVICES="0"    \
     --nj 4  \
     --inference_nj 4    \
     --inference_asr_model "valid.cer_ctc.best.pth"   \
+    --gpu_inference true    \
     --src_lang ${src_lang} \
     --tgt_lang ${tgt_lang} \
     --src_token_type "char" \

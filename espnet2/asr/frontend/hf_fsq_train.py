@@ -35,7 +35,7 @@ class HfCTCFSQFrontend(AbsFrontend):
 
         self.upstream.freeze_feature_encoder()
 
-        self.quantizer = FSQ(levels = [3, 3, 3, 3, 3, 3, 3, 3], dim = self.upstream.config.hidden_size)
+        self.quantizer = FSQ(levels = [5,5,5,4,4], dim = self.upstream.config.hidden_size)
 
         self.layer = layer
 

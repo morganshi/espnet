@@ -16,8 +16,8 @@ inference_config=conf/decode_asr_ctc_greedy.yaml
 
 CUDA_VISIBLE_DEVICES="0"    \
 ./asr.sh \
-    --stage 13   \
-    --stop_stage 13  \
+    --stage 10   \
+    --stop_stage 10  \
     --lang en \
     --ngpu 1 \
     --nj 4 \
