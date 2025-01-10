@@ -791,7 +791,11 @@ if [ ${stage} -le 5 ] && [ ${stop_stage} -ge 5 ] && ! [[ " ${skip_stages} " =~ [
         #     --stage 3 --stop-stage 3 \
         #     --train_set "${train_set}" \
         #     --dev_set "${_dev_set}" \
+<<<<<<< HEAD
         #     --other_sets "${test_sets}" \
+=======
+        #     --other_sets "${test_sets} ${train_sp_sets}" \
+>>>>>>> 5ebf8f1b6dc51bfa26a032f85e8e4b6ca01d6936
         #     --datadir "${data_audio}" \
         #     --featdir "${data_extract}" \
         #     --audio_format "${audio_format}" \

@@ -15,11 +15,19 @@ tgt_lang=en
 
 train_set="train"
 train_dev="dev"
+<<<<<<< HEAD
 test_sets="test"
 
 # test_sets="test_clean test_other dev_clean dev_other"
 
 asr_config=conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu.yaml
+=======
+test_sets="dev test"
+
+# test_sets="test_clean test_other dev_clean dev_other"
+
+asr_config=conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml
+>>>>>>> 5ebf8f1b6dc51bfa26a032f85e8e4b6ca01d6936
 inference_config=conf/decode_ctc1.0_greedy.yaml
 
 src_nbpe=6000   # I use src_nbpe=6000 for 2000-cluster kmeans.
@@ -30,6 +38,7 @@ tgt_nbpe=5000   # if token_joint is True, then only tgt_nbpe is used
 src_case="ts"
 tgt_case="ts"
 
+<<<<<<< HEAD
 CUDA_VISIBLE_DEVICES="0"    \
 ./asr2_hf.sh \
     --stage 6   \
@@ -39,10 +48,25 @@ CUDA_VISIBLE_DEVICES="0"    \
     --kmeans_feature "${kmeans_feature}" \
     --nclusters "${nclusters}" \
     --portion 1.0   \
+=======
+CUDA_VISIBLE_DEVICES="2"    \
+./asr2_hf.sh \
+    --stage 14   \
+    --stop_stage 14  \
+    --gpu_kmeans true  \
+    --portion 1.0   \
+    --kmeans_opts "--batch_bins 1 --nj 8" \
+    --kmeans_feature "${kmeans_feature}" \
+    --nclusters "${nclusters}" \
+>>>>>>> 5ebf8f1b6dc51bfa26a032f85e8e4b6ca01d6936
     --ngpu 1 \
     --nj 4  \
     --inference_nj 4    \
     --inference_asr_model "valid.cer_ctc.best.pth"   \
+<<<<<<< HEAD
+=======
+    --gpu_inference true    \
+>>>>>>> 5ebf8f1b6dc51bfa26a032f85e8e4b6ca01d6936
     --src_lang ${src_lang} \
     --tgt_lang ${tgt_lang} \
     --src_token_type "char" \

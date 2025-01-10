@@ -1248,3 +1248,868 @@ unigram_model_trainer.cc(507) LOG(INFO) EM sub_iter=1 size=368543 obj=919.32 num
 2024-11-17T11:35:09 (asr2.sh:1605:main) Decoding started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_raw_wavlm_large_libri100_21_km2000_bpe_rm6000_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/asr_inference.*.log'
 2024-11-17T11:52:55 (asr2.sh:1605:main) Decoding started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_raw_wavlm_large_libri100_21_km2000_bpe_rm6000_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/test/logdir/asr_inference.*.log'
 2024-11-17T12:16:25 (asr2.sh:1790:main) Successfully finished. [elapsed=2476s]
+2025-01-10T03:06:15 (asr2_hf.sh:288:main) ./asr2_hf.sh --stage 13 --stop_stage 13 --gpu_kmeans true --portion 1.0 --kmeans_opts --batch_bins 1 --nj 8 --kmeans_feature wavlm_large_finetune/24 --nclusters 2000 --ngpu 1 --nj 4 --inference_nj 4 --inference_asr_model valid.cer_ctc.best.pth --gpu_inference true --src_lang wavlm_large_finetune_24_km2000 --tgt_lang en --src_token_type char --src_nbpe 6000 --tgt_token_type bpe --tgt_nbpe 5000 --src_case ts --tgt_case ts --use_lm false --asr_config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --inference_config conf/decode_ctc1.0_greedy.yaml --train_set train --valid_set dev --test_sets dev test --src_bpe_train_text dump/raw/train/text.ts.wavlm_large_finetune_24_km2000 --tgt_bpe_train_text dump/raw/train/text.ts.en --lm_train_text dump/raw/train/text.ts.en
+2025-01-10T03:06:15 (asr2_hf.sh:625:main) Skipped stages:  8 9 10 11 16 17 
+2025-01-10T03:06:15 (asr2_hf.sh:1423:main) Stage 13: ASR Training: train_set=dump/raw/train, valid_set=dump/raw/dev
+2025-01-10T03:06:15 (asr2_hf.sh:1466:main) Generate 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/run.sh'. You can resume the process from stage 13 using this script
+2025-01-10T03:06:15 (asr2_hf.sh:1470:main) ASR training started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/train.log'
+2025-01-10 03:06:15,976 (launch:94) INFO: /data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/launch.py --cmd 'run.pl --name exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/train.log' --log exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/train.log --ngpu 1 --num_nodes 1 --init_file_prefix exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/.dimt_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.mt_train --use_preprocessor true --bpemodel data/token_list/tgt_bpe_unigram5000_ts_en/bpe.model --token_type bpe --token_list data/token_list/tgt_bpe_unigram5000_ts_en/tokens.txt --src_bpemodel none --src_token_type char --src_token_list data/token_list/char_wavlm_large_finetune_24_km2000/src_tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/text.ts.en,text,text --valid_data_path_and_name_and_type dump/raw/dev/text.ts.wavlm_large_finetune_24_km2000,src_text,text --valid_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/valid/text_shape.bpe --valid_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/valid/src_text_shape.char --resume true --ignore_init_mismatch false --fold_length 150 --fold_length 150 --output_dir exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000 --config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --train_data_path_and_name_and_type dump/raw/train/text.ts.wavlm_large_finetune_24_km2000,src_text,text --train_data_path_and_name_and_type dump/raw/train/text.ts.en,text,text --train_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/train/src_text_shape.char --train_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/train/text_shape.bpe
+2025-01-10 03:06:15,992 (launch:348) INFO: log file: exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/train.log
+run.pl: job failed, log is in exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/train.log
+Command '['run.pl', '--name', 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/train.log', '--gpu', '1', 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/train.log', 'python3', '-m', 'espnet2.bin.mt_train', '--use_preprocessor', 'true', '--bpemodel', 'data/token_list/tgt_bpe_unigram5000_ts_en/bpe.model', '--token_type', 'bpe', '--token_list', 'data/token_list/tgt_bpe_unigram5000_ts_en/tokens.txt', '--src_bpemodel', 'none', '--src_token_type', 'char', '--src_token_list', 'data/token_list/char_wavlm_large_finetune_24_km2000/src_tokens.txt', '--non_linguistic_symbols', 'none', '--cleaner', 'none', '--g2p', 'none', '--valid_data_path_and_name_and_type', 'dump/raw/dev/text.ts.en,text,text', '--valid_data_path_and_name_and_type', 'dump/raw/dev/text.ts.wavlm_large_finetune_24_km2000,src_text,text', '--valid_shape_file', 'exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/valid/text_shape.bpe', '--valid_shape_file', 'exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/valid/src_text_shape.char', '--resume', 'true', '--ignore_init_mismatch', 'false', '--fold_length', '150', '--fold_length', '150', '--output_dir', 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000', '--config', 'conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml', '--train_data_path_and_name_and_type', 'dump/raw/train/text.ts.wavlm_large_finetune_24_km2000,src_text,text', '--train_data_path_and_name_and_type', 'dump/raw/train/text.ts.en,text,text', '--train_shape_file', 'exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/train/src_text_shape.char', '--train_shape_file', 'exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/train/text_shape.bpe', '--ngpu', '1', '--multiprocessing_distributed', 'True']' returned non-zero exit status 1.
+Traceback (most recent call last):
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/mohan/workdir/espnet/espnet2/bin/launch.py", line 384, in <module>
+    main()
+  File "/data/mohan/workdir/espnet/espnet2/bin/launch.py", line 375, in main
+    raise RuntimeError(
+RuntimeError: 
+################### The last 1000 lines of exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/train.log ###################
+# python3 -m espnet2.bin.mt_train --use_preprocessor true --bpemodel data/token_list/tgt_bpe_unigram5000_ts_en/bpe.model --token_type bpe --token_list data/token_list/tgt_bpe_unigram5000_ts_en/tokens.txt --src_bpemodel none --src_token_type char --src_token_list data/token_list/char_wavlm_large_finetune_24_km2000/src_tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/text.ts.en,text,text --valid_data_path_and_name_and_type dump/raw/dev/text.ts.wavlm_large_finetune_24_km2000,src_text,text --valid_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/valid/text_shape.bpe --valid_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/valid/src_text_shape.char --resume true --ignore_init_mismatch false --fold_length 150 --fold_length 150 --output_dir exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000 --config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --train_data_path_and_name_and_type dump/raw/train/text.ts.wavlm_large_finetune_24_km2000,src_text,text --train_data_path_and_name_and_type dump/raw/train/text.ts.en,text,text --train_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/train/src_text_shape.char --train_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/train/text_shape.bpe --ngpu 1 --multiprocessing_distributed True 
+# Started at Fri Jan 10 03:06:16 EST 2025
+#
+/data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/mt_train.py --use_preprocessor true --bpemodel data/token_list/tgt_bpe_unigram5000_ts_en/bpe.model --token_type bpe --token_list data/token_list/tgt_bpe_unigram5000_ts_en/tokens.txt --src_bpemodel none --src_token_type char --src_token_list data/token_list/char_wavlm_large_finetune_24_km2000/src_tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/text.ts.en,text,text --valid_data_path_and_name_and_type dump/raw/dev/text.ts.wavlm_large_finetune_24_km2000,src_text,text --valid_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/valid/text_shape.bpe --valid_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/valid/src_text_shape.char --resume true --ignore_init_mismatch false --fold_length 150 --fold_length 150 --output_dir exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000 --config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --train_data_path_and_name_and_type dump/raw/train/text.ts.wavlm_large_finetune_24_km2000,src_text,text --train_data_path_and_name_and_type dump/raw/train/text.ts.en,text,text --train_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/train/src_text_shape.char --train_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/train/text_shape.bpe --ngpu 1 --multiprocessing_distributed True
+[dl] 2025-01-10 03:06:22,810 (mt:347) INFO: Vocabulary size: 5000
+[dl] 2025-01-10 03:06:22,811 (mt:361) INFO: Source vocabulary size: 2003
+[dl] 2025-01-10 03:06:23,004 (discrete_asr_espnet_model:96) WARNING: Set decoder to none as ctc_weight==1.0
+[dl] 2025-01-10 03:06:24,016 (abs_task:1387) INFO: pytorch.version=2.3.0+cu121, cuda.available=True, cudnn.version=8902, cudnn.benchmark=False, cudnn.deterministic=True
+[dl] 2025-01-10 03:06:24,021 (abs_task:1388) INFO: Model structure:
+ESPnetDiscreteASRModel(
+  (frontend): Embedding(
+    (embed): Sequential(
+      (0): Embedding(2003, 512)
+      (1): PositionalEncoding(
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (encoder): EBranchformerEncoder(
+    (embed): Conv1dSubsampling2(
+      (conv): Sequential(
+        (0): Conv1d(512, 256, kernel_size=(3,), stride=(1,))
+        (1): ReLU()
+        (2): Conv1d(256, 256, kernel_size=(3,), stride=(2,))
+        (3): ReLU()
+      )
+      (out): Sequential(
+        (0): Linear(in_features=256, out_features=256, bias=True)
+        (1): RelPositionalEncoding(
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+      )
+    )
+    (encoders): MultiSequential(
+      (0): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (1): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (2): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (3): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (4): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (5): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (6): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (7): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (8): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (9): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (10): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+      (11): EBranchformerEncoderLayer(
+        (attn): RelPositionMultiHeadedAttention(
+          (linear_q): Linear(in_features=256, out_features=256, bias=True)
+          (linear_k): Linear(in_features=256, out_features=256, bias=True)
+          (linear_v): Linear(in_features=256, out_features=256, bias=True)
+          (linear_out): Linear(in_features=256, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (q_norm): Identity()
+          (k_norm): Identity()
+          (linear_pos): Linear(in_features=256, out_features=256, bias=False)
+        )
+        (cgmlp): ConvolutionalGatingMLP(
+          (channel_proj1): Sequential(
+            (0): Linear(in_features=256, out_features=1024, bias=True)
+            (1): GELU(approximate='none')
+          )
+          (csgu): ConvolutionalSpatialGatingUnit(
+            (norm): LayerNorm((512,), eps=1e-12, elementwise_affine=True)
+            (conv): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+            (act): Identity()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (channel_proj2): Linear(in_features=512, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (feed_forward_macaron): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=1024, bias=True)
+          (w_2): Linear(in_features=1024, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): Swish()
+        )
+        (norm_ff): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_ff_macaron): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mha): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_mlp): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (norm_final): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (depthwise_conv_fusion): Conv1d(512, 512, kernel_size=(31,), stride=(1,), padding=(15,), groups=512)
+        (merge_proj): Linear(in_features=512, out_features=256, bias=True)
+      )
+    )
+    (after_norm): LayerNorm((256,), eps=1e-12, elementwise_affine=True)
+  )
+  (criterion_mt): LabelSmoothingLoss(
+    (criterion): KLDivLoss()
+  )
+  (specaug): SpecAug(
+    (time_mask): MaskAlongAxisVariableMaxWidth(mask_width_ratio_range=[0.0, 0.05], num_mask=10, axis=time)
+  )
+  (ctc): CTC(
+    (ctc_lo): Linear(in_features=256, out_features=5000, bias=True)
+    (ctc_loss): CTCLoss()
+  )
+)
+
+Model summary:
+    Class Name: ESPnetDiscreteASRModel
+    Total Number of model parameters: 26.28 M
+    Number of trainable parameters: 26.28 M (100.0%)
+    Size: 105.11 MB
+    Type: torch.float32
+[dl] 2025-01-10 03:06:24,022 (abs_task:1391) INFO: Optimizer:
+Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    initial_lr: 0.0005
+    lr: 3.333333333333334e-08
+    maximize: False
+    weight_decay: 1e-06
+)
+[dl] 2025-01-10 03:06:24,022 (abs_task:1392) INFO: Scheduler: WarmupLR(warmup_steps=15000)
+[dl] 2025-01-10 03:06:24,022 (abs_task:1401) INFO: Saving the configuration in exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/config.yaml
+[dl] 2025-01-10 03:06:24,764 (abs_task:1810) INFO: [train] dataset:
+ESPnetDataset(
+  src_text: {"path": "dump/raw/train/text.ts.wavlm_large_finetune_24_km2000", "type": "text"}
+  text: {"path": "dump/raw/train/text.ts.en", "type": "text"}
+  preprocess: <espnet2.train.preprocessor.MutliTokenizerCommonPreprocessor object at 0x7552dd384790>)
+[dl] 2025-01-10 03:06:24,765 (abs_task:1811) INFO: [train] Batch sampler: NumElementsBatchSampler(N-batch=839, batch_bins=64000000, sort_in_batch=descending, sort_batch=descending)
+[dl] 2025-01-10 03:06:24,765 (abs_task:1812) INFO: [train] mini-batch sizes summary: N-batch=839, mean=66.4, min=8, max=486
+[dl] 2025-01-10 03:06:24,828 (abs_task:1810) INFO: [valid] dataset:
+ESPnetDataset(
+  text: {"path": "dump/raw/dev/text.ts.en", "type": "text"}
+  src_text: {"path": "dump/raw/dev/text.ts.wavlm_large_finetune_24_km2000", "type": "text"}
+  preprocess: <espnet2.train.preprocessor.MutliTokenizerCommonPreprocessor object at 0x7552dd3858d0>)
+[dl] 2025-01-10 03:06:24,829 (abs_task:1811) INFO: [valid] Batch sampler: NumElementsBatchSampler(N-batch=185, batch_bins=64000000, sort_in_batch=descending, sort_batch=descending)
+[dl] 2025-01-10 03:06:24,829 (abs_task:1812) INFO: [valid] mini-batch sizes summary: N-batch=185, mean=48.8, min=11, max=133
+[dl] 2025-01-10 03:06:24,831 (trainer:311) INFO: 1/70epoch started
+/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/conv.py:306: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv1d(input, weight, bias, self.stride,
+Traceback (most recent call last):
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_train.py", line 23, in <module>
+    main()
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_train.py", line 19, in main
+    MTTask.main(cmd=cmd)
+  File "/data/mohan/workdir/espnet/espnet2/tasks/abs_task.py", line 1210, in main
+    cls.main_worker(args)
+  File "/data/mohan/workdir/espnet/espnet2/tasks/abs_task.py", line 1571, in main_worker
+    cls.trainer.run(
+  File "/data/mohan/workdir/espnet/espnet2/train/trainer.py", line 317, in run
+    all_steps_are_invalid = cls.train_one_epoch(
+  File "/data/mohan/workdir/espnet/espnet2/train/trainer.py", line 614, in train_one_epoch
+    retval = model(**batch)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/asr/discrete_asr_espnet_model.py", line 162, in forward
+    loss_ctc, cer_ctc = self._calc_ctc_loss(
+  File "/data/mohan/workdir/espnet/espnet2/asr/discrete_asr_espnet_model.py", line 316, in _calc_ctc_loss
+    loss_ctc = self.ctc(encoder_out, encoder_out_lens, ys_pad, ys_pad_lens)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/asr/ctc.py", line 180, in forward
+    loss = self.loss_fn(ys_hat, ys_true, hlens, ys_lens).to(
+  File "/data/mohan/workdir/espnet/espnet2/asr/ctc.py", line 77, in loss_fn
+    th_pred = th_pred.log_softmax(2).float()
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 278.00 MiB. GPU 
+# Accounting: time=12 threads=1
+# Ended (code 1) at Fri Jan 10 03:06:28 EST 2025, elapsed time 12 seconds
+
+2025-01-10T03:09:23 (asr2_hf.sh:288:main) ./asr2_hf.sh --stage 14 --stop_stage 14 --gpu_kmeans true --portion 1.0 --kmeans_opts --batch_bins 1 --nj 8 --kmeans_feature wavlm_large_finetune/24 --nclusters 2000 --ngpu 1 --nj 4 --inference_nj 4 --inference_asr_model valid.cer_ctc.best.pth --gpu_inference true --src_lang wavlm_large_finetune_24_km2000 --tgt_lang en --src_token_type char --src_nbpe 6000 --tgt_token_type bpe --tgt_nbpe 5000 --src_case rm --tgt_case ts --use_lm false --asr_config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --inference_config conf/decode_ctc1.0_greedy.yaml --train_set train --valid_set dev --test_sets dev test --src_bpe_train_text dump/raw/train/text.rm.wavlm_large_finetune_24_km2000 --tgt_bpe_train_text dump/raw/train/text.ts.en --lm_train_text dump/raw/train/text.ts.en
+2025-01-10T03:09:24 (asr2_hf.sh:625:main) Skipped stages:  8 9 10 11 16 17 
+2025-01-10T03:09:24 (asr2_hf.sh:1545:main) Stage 14: Decoding: training_dir=exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000
+2025-01-10T03:09:24 (asr2_hf.sh:1573:main) Generate 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/run.sh'. You can resume the process from stage 14 using this script
+2025-01-10T03:09:24 (asr2_hf.sh:1604:main) Decoding started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/asr_inference.*.log'
+run.pl: 4 / 4 failed, log is in exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/asr_inference.*.log
+# python3 -m espnet2.bin.mt_inference --batch_size 1 --ngpu 1 --data_path_and_name_and_type dump/raw/dev/text.rm.wavlm_large_finetune_24_km2000,src_text,text --key_file exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/keys.1.scp --mt_train_config exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/config.yaml --mt_model_file exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/valid.cer_ctc.best.pth --output_dir exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/output.1 --config conf/decode_ctc1.0_greedy.yaml 
+# Started at Fri Jan 10 03:09:24 EST 2025
+#
+/data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/mt_inference.py --batch_size 1 --ngpu 1 --data_path_and_name_and_type dump/raw/dev/text.rm.wavlm_large_finetune_24_km2000,src_text,text --key_file exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/keys.1.scp --mt_train_config exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/config.yaml --mt_model_file exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/valid.cer_ctc.best.pth --output_dir exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/output.1 --config conf/decode_ctc1.0_greedy.yaml
+2025-01-10 03:09:31,402 (abs_task:2300) INFO: config file: exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/config.yaml
+Traceback (most recent call last):
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 561, in <module>
+    main()
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 557, in main
+    inference(**kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 348, in inference
+    text2text = Text2Text.from_pretrained(
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 269, in from_pretrained
+    return Text2Text(**kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 67, in __init__
+    mt_model, mt_train_args = MTTask.build_model_from_file(
+  File "/data/mohan/workdir/espnet/espnet2/tasks/abs_task.py", line 2301, in build_model_from_file
+    with config_file.open("r", encoding="utf-8") as f:
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileNotFoundError: [Errno 2] No such file or directory: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/config.yaml'
+# Accounting: time=8 threads=1
+# Ended (code 1) at Fri Jan 10 03:09:32 EST 2025, elapsed time 8 seconds
+# python3 -m espnet2.bin.mt_inference --batch_size 1 --ngpu 1 --data_path_and_name_and_type dump/raw/dev/text.rm.wavlm_large_finetune_24_km2000,src_text,text --key_file exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/keys.2.scp --mt_train_config exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/config.yaml --mt_model_file exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/valid.cer_ctc.best.pth --output_dir exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/output.2 --config conf/decode_ctc1.0_greedy.yaml 
+# Started at Fri Jan 10 03:09:24 EST 2025
+#
+/data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/mt_inference.py --batch_size 1 --ngpu 1 --data_path_and_name_and_type dump/raw/dev/text.rm.wavlm_large_finetune_24_km2000,src_text,text --key_file exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/keys.2.scp --mt_train_config exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/config.yaml --mt_model_file exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/valid.cer_ctc.best.pth --output_dir exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/output.2 --config conf/decode_ctc1.0_greedy.yaml
+2025-01-10 03:09:31,562 (abs_task:2300) INFO: config file: exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/config.yaml
+Traceback (most recent call last):
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 561, in <module>
+    main()
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 557, in main
+    inference(**kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 348, in inference
+    text2text = Text2Text.from_pretrained(
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 269, in from_pretrained
+    return Text2Text(**kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 67, in __init__
+    mt_model, mt_train_args = MTTask.build_model_from_file(
+  File "/data/mohan/workdir/espnet/espnet2/tasks/abs_task.py", line 2301, in build_model_from_file
+    with config_file.open("r", encoding="utf-8") as f:
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileNotFoundError: [Errno 2] No such file or directory: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/config.yaml'
+# Accounting: time=8 threads=1
+# Ended (code 1) at Fri Jan 10 03:09:32 EST 2025, elapsed time 8 seconds
+# python3 -m espnet2.bin.mt_inference --batch_size 1 --ngpu 1 --data_path_and_name_and_type dump/raw/dev/text.rm.wavlm_large_finetune_24_km2000,src_text,text --key_file exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/keys.3.scp --mt_train_config exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/config.yaml --mt_model_file exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/valid.cer_ctc.best.pth --output_dir exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/output.3 --config conf/decode_ctc1.0_greedy.yaml 
+# Started at Fri Jan 10 03:09:24 EST 2025
+#
+/data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/mt_inference.py --batch_size 1 --ngpu 1 --data_path_and_name_and_type dump/raw/dev/text.rm.wavlm_large_finetune_24_km2000,src_text,text --key_file exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/keys.3.scp --mt_train_config exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/config.yaml --mt_model_file exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/valid.cer_ctc.best.pth --output_dir exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/output.3 --config conf/decode_ctc1.0_greedy.yaml
+2025-01-10 03:09:31,544 (abs_task:2300) INFO: config file: exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/config.yaml
+Traceback (most recent call last):
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 561, in <module>
+    main()
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 557, in main
+    inference(**kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 348, in inference
+    text2text = Text2Text.from_pretrained(
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 269, in from_pretrained
+    return Text2Text(**kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 67, in __init__
+    mt_model, mt_train_args = MTTask.build_model_from_file(
+  File "/data/mohan/workdir/espnet/espnet2/tasks/abs_task.py", line 2301, in build_model_from_file
+    with config_file.open("r", encoding="utf-8") as f:
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileNotFoundError: [Errno 2] No such file or directory: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/config.yaml'
+# Accounting: time=8 threads=1
+# Ended (code 1) at Fri Jan 10 03:09:32 EST 2025, elapsed time 8 seconds
+# python3 -m espnet2.bin.mt_inference --batch_size 1 --ngpu 1 --data_path_and_name_and_type dump/raw/dev/text.rm.wavlm_large_finetune_24_km2000,src_text,text --key_file exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/keys.4.scp --mt_train_config exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/config.yaml --mt_model_file exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/valid.cer_ctc.best.pth --output_dir exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/output.4 --config conf/decode_ctc1.0_greedy.yaml 
+# Started at Fri Jan 10 03:09:24 EST 2025
+#
+/data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/mt_inference.py --batch_size 1 --ngpu 1 --data_path_and_name_and_type dump/raw/dev/text.rm.wavlm_large_finetune_24_km2000,src_text,text --key_file exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/keys.4.scp --mt_train_config exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/config.yaml --mt_model_file exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/valid.cer_ctc.best.pth --output_dir exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/output.4 --config conf/decode_ctc1.0_greedy.yaml
+2025-01-10 03:09:30,861 (abs_task:2300) INFO: config file: exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/config.yaml
+Traceback (most recent call last):
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 561, in <module>
+    main()
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 557, in main
+    inference(**kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 348, in inference
+    text2text = Text2Text.from_pretrained(
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 269, in from_pretrained
+    return Text2Text(**kwargs)
+  File "/data/mohan/workdir/espnet/espnet2/bin/mt_inference.py", line 67, in __init__
+    mt_model, mt_train_args = MTTask.build_model_from_file(
+  File "/data/mohan/workdir/espnet/espnet2/tasks/abs_task.py", line 2301, in build_model_from_file
+    with config_file.open("r", encoding="utf-8") as f:
+  File "/data/mohan/anaconda3/envs/espnet/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileNotFoundError: [Errno 2] No such file or directory: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/config.yaml'
+# Accounting: time=7 threads=1
+# Ended (code 1) at Fri Jan 10 03:09:31 EST 2025, elapsed time 7 seconds
+2025-01-10T03:09:59 (asr2_hf.sh:288:main) ./asr2_hf.sh --stage 13 --stop_stage 13 --gpu_kmeans true --portion 1.0 --kmeans_opts --batch_bins 1 --nj 8 --kmeans_feature wavlm_large_finetune/24 --nclusters 2000 --ngpu 1 --nj 4 --inference_nj 4 --inference_asr_model valid.cer_ctc.best.pth --gpu_inference true --src_lang wavlm_large_finetune_24_km2000 --tgt_lang en --src_token_type char --src_nbpe 6000 --tgt_token_type bpe --tgt_nbpe 5000 --src_case rm --tgt_case ts --use_lm false --asr_config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --inference_config conf/decode_ctc1.0_greedy.yaml --train_set train --valid_set dev --test_sets dev test --src_bpe_train_text dump/raw/train/text.rm.wavlm_large_finetune_24_km2000 --tgt_bpe_train_text dump/raw/train/text.ts.en --lm_train_text dump/raw/train/text.ts.en
+2025-01-10T03:09:59 (asr2_hf.sh:625:main) Skipped stages:  8 9 10 11 16 17 
+2025-01-10T03:09:59 (asr2_hf.sh:1423:main) Stage 13: ASR Training: train_set=dump/raw/train, valid_set=dump/raw/dev
+2025-01-10T03:09:59 (asr2_hf.sh:1466:main) Generate 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/run.sh'. You can resume the process from stage 13 using this script
+2025-01-10T03:09:59 (asr2_hf.sh:1470:main) ASR training started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/train.log'
+2025-01-10 03:09:59,657 (launch:94) INFO: /data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/launch.py --cmd 'run.pl --name exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/train.log' --log exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/train.log --ngpu 1 --num_nodes 1 --init_file_prefix exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/.dimt_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.mt_train --use_preprocessor true --bpemodel data/token_list/tgt_bpe_unigram5000_ts_en/bpe.model --token_type bpe --token_list data/token_list/tgt_bpe_unigram5000_ts_en/tokens.txt --src_bpemodel none --src_token_type char --src_token_list data/token_list/char_wavlm_large_finetune_24_km2000/src_tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/text.ts.en,text,text --valid_data_path_and_name_and_type dump/raw/dev/text.rm.wavlm_large_finetune_24_km2000,src_text,text --valid_shape_file exp/asr_stats_raw_rm_wavlm_large_finetune_24_km2000_char_bpe5000/valid/text_shape.bpe --valid_shape_file exp/asr_stats_raw_rm_wavlm_large_finetune_24_km2000_char_bpe5000/valid/src_text_shape.char --resume true --ignore_init_mismatch false --fold_length 150 --fold_length 150 --output_dir exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000 --config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --train_data_path_and_name_and_type dump/raw/train/text.rm.wavlm_large_finetune_24_km2000,src_text,text --train_data_path_and_name_and_type dump/raw/train/text.ts.en,text,text --train_shape_file exp/asr_stats_raw_rm_wavlm_large_finetune_24_km2000_char_bpe5000/train/src_text_shape.char --train_shape_file exp/asr_stats_raw_rm_wavlm_large_finetune_24_km2000_char_bpe5000/train/text_shape.bpe
+2025-01-10 03:09:59,674 (launch:348) INFO: log file: exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/train.log
+2025-01-10T03:14:30 (asr2_hf.sh:288:main) ./asr2_hf.sh --stage 13 --stop_stage 13 --gpu_kmeans true --portion 1.0 --kmeans_opts --batch_bins 1 --nj 8 --kmeans_feature wavlm_large_finetune/24 --nclusters 2000 --ngpu 1 --nj 4 --inference_nj 4 --inference_asr_model valid.cer_ctc.best.pth --gpu_inference true --src_lang wavlm_large_finetune_24_km2000 --tgt_lang en --src_token_type bpe --src_nbpe 6000 --tgt_token_type bpe --tgt_nbpe 5000 --src_case ts --tgt_case ts --use_lm false --asr_config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --inference_config conf/decode_ctc1.0_greedy.yaml --train_set train --valid_set dev --test_sets dev test --src_bpe_train_text dump/raw/train/text.ts.wavlm_large_finetune_24_km2000 --tgt_bpe_train_text dump/raw/train/text.ts.en --lm_train_text dump/raw/train/text.ts.en
+2025-01-10T03:14:30 (asr2_hf.sh:625:main) Skipped stages:  8 9 10 11 16 17 
+2025-01-10T03:14:30 (asr2_hf.sh:1423:main) Stage 13: ASR Training: train_set=dump/raw/train, valid_set=dump/raw/dev
+2025-01-10T03:14:30 (asr2_hf.sh:1466:main) Generate 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000/run.sh'. You can resume the process from stage 13 using this script
+2025-01-10T03:14:30 (asr2_hf.sh:1470:main) ASR training started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000/train.log'
+2025-01-10 03:14:30,563 (launch:94) INFO: /data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/launch.py --cmd 'run.pl --name exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000/train.log' --log exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000/train.log --ngpu 1 --num_nodes 1 --init_file_prefix exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000/.dimt_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.mt_train --use_preprocessor true --bpemodel data/token_list/tgt_bpe_unigram5000_ts_en/bpe.model --token_type bpe --token_list data/token_list/tgt_bpe_unigram5000_ts_en/tokens.txt --src_bpemodel data/token_list/src_bpe_unigram6000_ts_wavlm_large_finetune_24_km2000/bpe.model --src_token_type bpe --src_token_list data/token_list/src_bpe_unigram6000_ts_wavlm_large_finetune_24_km2000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/text.ts.en,text,text --valid_data_path_and_name_and_type dump/raw/dev/text.ts.wavlm_large_finetune_24_km2000,src_text,text --valid_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_bpe6000_bpe5000/valid/text_shape.bpe --valid_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_bpe6000_bpe5000/valid/src_text_shape.bpe --resume true --ignore_init_mismatch false --fold_length 150 --fold_length 150 --output_dir exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000 --config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --train_data_path_and_name_and_type dump/raw/train/text.ts.wavlm_large_finetune_24_km2000,src_text,text --train_data_path_and_name_and_type dump/raw/train/text.ts.en,text,text --train_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_bpe6000_bpe5000/train/src_text_shape.bpe --train_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_bpe6000_bpe5000/train/text_shape.bpe
+2025-01-10 03:14:30,580 (launch:348) INFO: log file: exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000/train.log
+2025-01-10T03:16:27 (asr2_hf.sh:288:main) ./asr2_hf.sh --stage 13 --stop_stage 13 --gpu_kmeans true --portion 1.0 --kmeans_opts --batch_bins 1 --nj 8 --kmeans_feature wavlm_large_finetune/24 --nclusters 2000 --ngpu 1 --nj 4 --inference_nj 4 --inference_asr_model valid.cer_ctc.best.pth --gpu_inference true --src_lang wavlm_large_finetune_24_km2000 --tgt_lang en --src_token_type char --src_nbpe 6000 --tgt_token_type bpe --tgt_nbpe 5000 --src_case ts --tgt_case ts --use_lm false --asr_config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --inference_config conf/decode_ctc1.0_greedy.yaml --train_set train --valid_set dev --test_sets dev test --src_bpe_train_text dump/raw/train/text.ts.wavlm_large_finetune_24_km2000 --tgt_bpe_train_text dump/raw/train/text.ts.en --lm_train_text dump/raw/train/text.ts.en
+2025-01-10T03:16:27 (asr2_hf.sh:625:main) Skipped stages:  8 9 10 11 16 17 
+2025-01-10T03:16:27 (asr2_hf.sh:1423:main) Stage 13: ASR Training: train_set=dump/raw/train, valid_set=dump/raw/dev
+2025-01-10T03:16:27 (asr2_hf.sh:1466:main) Generate 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/run.sh'. You can resume the process from stage 13 using this script
+2025-01-10T03:16:27 (asr2_hf.sh:1470:main) ASR training started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/train.log'
+2025-01-10 03:16:27,580 (launch:94) INFO: /data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/launch.py --cmd 'run.pl --name exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/train.log' --log exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/train.log --ngpu 1 --num_nodes 1 --init_file_prefix exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/.dimt_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.mt_train --use_preprocessor true --bpemodel data/token_list/tgt_bpe_unigram5000_ts_en/bpe.model --token_type bpe --token_list data/token_list/tgt_bpe_unigram5000_ts_en/tokens.txt --src_bpemodel none --src_token_type char --src_token_list data/token_list/char_wavlm_large_finetune_24_km2000/src_tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/text.ts.en,text,text --valid_data_path_and_name_and_type dump/raw/dev/text.ts.wavlm_large_finetune_24_km2000,src_text,text --valid_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/valid/text_shape.bpe --valid_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/valid/src_text_shape.char --resume true --ignore_init_mismatch false --fold_length 150 --fold_length 150 --output_dir exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000 --config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --train_data_path_and_name_and_type dump/raw/train/text.ts.wavlm_large_finetune_24_km2000,src_text,text --train_data_path_and_name_and_type dump/raw/train/text.ts.en,text,text --train_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/train/src_text_shape.char --train_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_char_bpe5000/train/text_shape.bpe
+2025-01-10 03:16:27,596 (launch:348) INFO: log file: exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/train.log
+2025-01-10T04:30:59 (asr2_hf.sh:288:main) ./asr2_hf.sh --stage 13 --stop_stage 13 --gpu_kmeans true --portion 1.0 --kmeans_opts --batch_bins 1 --nj 8 --kmeans_feature wavlm_large_finetune/24 --nclusters 2000 --ngpu 1 --nj 4 --inference_nj 4 --inference_asr_model valid.cer_ctc.best.pth --gpu_inference true --src_lang wavlm_large_finetune_24_km2000 --tgt_lang en --src_token_type bpe --src_nbpe 6000 --tgt_token_type bpe --tgt_nbpe 5000 --src_case rm --tgt_case ts --use_lm false --asr_config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --inference_config conf/decode_ctc1.0_greedy.yaml --train_set train --valid_set dev --test_sets dev test --src_bpe_train_text dump/raw/train/text.rm.wavlm_large_finetune_24_km2000 --tgt_bpe_train_text dump/raw/train/text.ts.en --lm_train_text dump/raw/train/text.ts.en
+2025-01-10T04:30:59 (asr2_hf.sh:625:main) Skipped stages:  8 9 10 11 16 17 
+2025-01-10T04:30:59 (asr2_hf.sh:1423:main) Stage 13: ASR Training: train_set=dump/raw/train, valid_set=dump/raw/dev
+2025-01-10T04:30:59 (asr2_hf.sh:1466:main) Generate 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_rm6000_bpe_ts5000/run.sh'. You can resume the process from stage 13 using this script
+2025-01-10T04:30:59 (asr2_hf.sh:1470:main) ASR training started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_rm6000_bpe_ts5000/train.log'
+2025-01-10 04:30:59,415 (launch:94) INFO: /data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/launch.py --cmd 'run.pl --name exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_rm6000_bpe_ts5000/train.log' --log exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_rm6000_bpe_ts5000/train.log --ngpu 1 --num_nodes 1 --init_file_prefix exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_rm6000_bpe_ts5000/.dimt_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.mt_train --use_preprocessor true --bpemodel data/token_list/tgt_bpe_unigram5000_ts_en/bpe.model --token_type bpe --token_list data/token_list/tgt_bpe_unigram5000_ts_en/tokens.txt --src_bpemodel data/token_list/src_bpe_unigram6000_rm_wavlm_large_finetune_24_km2000/bpe.model --src_token_type bpe --src_token_list data/token_list/src_bpe_unigram6000_rm_wavlm_large_finetune_24_km2000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/text.ts.en,text,text --valid_data_path_and_name_and_type dump/raw/dev/text.rm.wavlm_large_finetune_24_km2000,src_text,text --valid_shape_file exp/asr_stats_raw_rm_wavlm_large_finetune_24_km2000_bpe6000_bpe5000/valid/text_shape.bpe --valid_shape_file exp/asr_stats_raw_rm_wavlm_large_finetune_24_km2000_bpe6000_bpe5000/valid/src_text_shape.bpe --resume true --ignore_init_mismatch false --fold_length 150 --fold_length 150 --output_dir exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_rm6000_bpe_ts5000 --config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --train_data_path_and_name_and_type dump/raw/train/text.rm.wavlm_large_finetune_24_km2000,src_text,text --train_data_path_and_name_and_type dump/raw/train/text.ts.en,text,text --train_shape_file exp/asr_stats_raw_rm_wavlm_large_finetune_24_km2000_bpe6000_bpe5000/train/src_text_shape.bpe --train_shape_file exp/asr_stats_raw_rm_wavlm_large_finetune_24_km2000_bpe6000_bpe5000/train/text_shape.bpe
+2025-01-10 04:30:59,432 (launch:348) INFO: log file: exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_rm6000_bpe_ts5000/train.log
+2025-01-10T04:33:46 (asr2_hf.sh:288:main) ./asr2_hf.sh --stage 13 --stop_stage 13 --gpu_kmeans true --portion 1.0 --kmeans_opts --batch_bins 1 --nj 8 --kmeans_feature wavlm_large_finetune/24 --nclusters 2000 --ngpu 2 --nj 4 --inference_nj 4 --inference_asr_model valid.cer_ctc.best.pth --gpu_inference true --src_lang wavlm_large_finetune_24_km2000 --tgt_lang en --src_token_type bpe --src_nbpe 6000 --tgt_token_type bpe --tgt_nbpe 5000 --src_case ts --tgt_case ts --use_lm false --asr_config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --inference_config conf/decode_ctc1.0_greedy.yaml --train_set train --valid_set dev --test_sets dev test --src_bpe_train_text dump/raw/train/text.ts.wavlm_large_finetune_24_km2000 --tgt_bpe_train_text dump/raw/train/text.ts.en --lm_train_text dump/raw/train/text.ts.en
+2025-01-10T04:33:46 (asr2_hf.sh:625:main) Skipped stages:  8 9 10 11 16 17 
+2025-01-10T04:33:46 (asr2_hf.sh:1423:main) Stage 13: ASR Training: train_set=dump/raw/train, valid_set=dump/raw/dev
+2025-01-10T04:33:46 (asr2_hf.sh:1466:main) Generate 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000/run.sh'. You can resume the process from stage 13 using this script
+2025-01-10T04:33:47 (asr2_hf.sh:1470:main) ASR training started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000/train.log'
+2025-01-10 04:33:47,128 (launch:94) INFO: /data/mohan/anaconda3/envs/espnet/bin/python3 /data/mohan/workdir/espnet/espnet2/bin/launch.py --cmd 'run.pl --name exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000/train.log' --log exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000/train.log --ngpu 2 --num_nodes 1 --init_file_prefix exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000/.dimt_init_ --multiprocessing_distributed true -- python3 -m espnet2.bin.mt_train --use_preprocessor true --bpemodel data/token_list/tgt_bpe_unigram5000_ts_en/bpe.model --token_type bpe --token_list data/token_list/tgt_bpe_unigram5000_ts_en/tokens.txt --src_bpemodel data/token_list/src_bpe_unigram6000_ts_wavlm_large_finetune_24_km2000/bpe.model --src_token_type bpe --src_token_list data/token_list/src_bpe_unigram6000_ts_wavlm_large_finetune_24_km2000/tokens.txt --non_linguistic_symbols none --cleaner none --g2p none --valid_data_path_and_name_and_type dump/raw/dev/text.ts.en,text,text --valid_data_path_and_name_and_type dump/raw/dev/text.ts.wavlm_large_finetune_24_km2000,src_text,text --valid_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_bpe6000_bpe5000/valid/text_shape.bpe --valid_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_bpe6000_bpe5000/valid/src_text_shape.bpe --resume true --ignore_init_mismatch false --fold_length 150 --fold_length 150 --output_dir exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000 --config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --train_data_path_and_name_and_type dump/raw/train/text.ts.wavlm_large_finetune_24_km2000,src_text,text --train_data_path_and_name_and_type dump/raw/train/text.ts.en,text,text --train_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_bpe6000_bpe5000/train/src_text_shape.bpe --train_shape_file exp/asr_stats_raw_ts_wavlm_large_finetune_24_km2000_bpe6000_bpe5000/train/text_shape.bpe
+2025-01-10 04:33:47,144 (launch:237) INFO: single-node with 2gpu on distributed mode
+2025-01-10 04:33:47,144 (launch:348) INFO: log file: exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000/train.log
+2025-01-10T09:14:05 (asr2_hf.sh:1789:main) Successfully finished. [elapsed=21846s]
+2025-01-10T10:46:13 (asr2_hf.sh:1789:main) Successfully finished. [elapsed=22514s]
+2025-01-10T11:55:25 (asr2_hf.sh:288:main) ./asr2_hf.sh --stage 14 --stop_stage 14 --gpu_kmeans true --portion 1.0 --kmeans_opts --batch_bins 1 --nj 8 --kmeans_feature wavlm_large_finetune/24 --nclusters 2000 --ngpu 1 --nj 4 --inference_nj 4 --inference_asr_model valid.cer_ctc.best.pth --gpu_inference true --src_lang wavlm_large_finetune_24_km2000 --tgt_lang en --src_token_type bpe --src_nbpe 6000 --tgt_token_type bpe --tgt_nbpe 5000 --src_case rm --tgt_case ts --use_lm false --asr_config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --inference_config conf/decode_ctc1.0_greedy.yaml --train_set train --valid_set dev --test_sets dev test --src_bpe_train_text dump/raw/train/text.rm.wavlm_large_finetune_24_km2000 --tgt_bpe_train_text dump/raw/train/text.ts.en --lm_train_text dump/raw/train/text.ts.en
+2025-01-10T11:55:25 (asr2_hf.sh:625:main) Skipped stages:  8 9 10 11 16 17 
+2025-01-10T11:55:25 (asr2_hf.sh:1545:main) Stage 14: Decoding: training_dir=exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_rm6000_bpe_ts5000
+2025-01-10T11:55:25 (asr2_hf.sh:1573:main) Generate 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_rm6000_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/run.sh'. You can resume the process from stage 14 using this script
+2025-01-10T11:55:25 (asr2_hf.sh:1604:main) Decoding started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_rm6000_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/asr_inference.*.log'
+2025-01-10T11:56:12 (asr2_hf.sh:288:main) ./asr2_hf.sh --stage 14 --stop_stage 14 --gpu_kmeans true --portion 1.0 --kmeans_opts --batch_bins 1 --nj 8 --kmeans_feature wavlm_large_finetune/24 --nclusters 2000 --ngpu 1 --nj 4 --inference_nj 4 --inference_asr_model valid.cer_ctc.best.pth --gpu_inference true --src_lang wavlm_large_finetune_24_km2000 --tgt_lang en --src_token_type char --src_nbpe 6000 --tgt_token_type bpe --tgt_nbpe 5000 --src_case rm --tgt_case ts --use_lm false --asr_config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --inference_config conf/decode_ctc1.0_greedy.yaml --train_set train --valid_set dev --test_sets dev test --src_bpe_train_text dump/raw/train/text.rm.wavlm_large_finetune_24_km2000 --tgt_bpe_train_text dump/raw/train/text.ts.en --lm_train_text dump/raw/train/text.ts.en
+2025-01-10T11:56:12 (asr2_hf.sh:625:main) Skipped stages:  8 9 10 11 16 17 
+2025-01-10T11:56:12 (asr2_hf.sh:1545:main) Stage 14: Decoding: training_dir=exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000
+2025-01-10T11:56:12 (asr2_hf.sh:1573:main) Generate 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/run.sh'. You can resume the process from stage 14 using this script
+2025-01-10T11:56:12 (asr2_hf.sh:1604:main) Decoding started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/asr_inference.*.log'
+2025-01-10T12:24:46 (asr2_hf.sh:1604:main) Decoding started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_rm6000_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/test/logdir/asr_inference.*.log'
+2025-01-10T12:27:16 (asr2_hf.sh:1604:main) Decoding started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_rm_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/test/logdir/asr_inference.*.log'
+2025-01-10T12:49:04 (asr2_hf.sh:1789:main) Successfully finished. [elapsed=34357s]
+2025-01-10T12:51:13 (asr2_hf.sh:288:main) ./asr2_hf.sh --stage 14 --stop_stage 14 --gpu_kmeans true --portion 1.0 --kmeans_opts --batch_bins 1 --nj 8 --kmeans_feature wavlm_large_finetune/24 --nclusters 2000 --ngpu 1 --nj 4 --inference_nj 4 --inference_asr_model valid.cer_ctc.best.pth --gpu_inference true --src_lang wavlm_large_finetune_24_km2000 --tgt_lang en --src_token_type char --src_nbpe 6000 --tgt_token_type bpe --tgt_nbpe 5000 --src_case ts --tgt_case ts --use_lm false --asr_config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --inference_config conf/decode_ctc1.0_greedy.yaml --train_set train --valid_set dev --test_sets dev test --src_bpe_train_text dump/raw/train/text.ts.wavlm_large_finetune_24_km2000 --tgt_bpe_train_text dump/raw/train/text.ts.en --lm_train_text dump/raw/train/text.ts.en
+2025-01-10T12:51:14 (asr2_hf.sh:625:main) Skipped stages:  8 9 10 11 16 17 
+2025-01-10T12:51:14 (asr2_hf.sh:1545:main) Stage 14: Decoding: training_dir=exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000
+2025-01-10T12:51:14 (asr2_hf.sh:1573:main) Generate 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/run.sh'. You can resume the process from stage 14 using this script
+2025-01-10T12:51:14 (asr2_hf.sh:1604:main) Decoding started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/asr_inference.*.log'
+2025-01-10T13:02:43 (asr2_hf.sh:1789:main) Successfully finished. [elapsed=4038s]
+2025-01-10T13:08:05 (asr2_hf.sh:1789:main) Successfully finished. [elapsed=4313s]
+2025-01-10T13:08:20 (asr2_hf.sh:1789:main) Successfully finished. [elapsed=30874s]
+2025-01-10T13:22:58 (asr2_hf.sh:288:main) ./asr2_hf.sh --stage 14 --stop_stage 14 --gpu_kmeans true --portion 1.0 --kmeans_opts --batch_bins 1 --nj 8 --kmeans_feature wavlm_large_finetune/24 --nclusters 2000 --ngpu 1 --nj 4 --inference_nj 4 --inference_asr_model valid.cer_ctc.best.pth --gpu_inference true --src_lang wavlm_large_finetune_24_km2000 --tgt_lang en --src_token_type bpe --src_nbpe 6000 --tgt_token_type bpe --tgt_nbpe 5000 --src_case ts --tgt_case ts --use_lm false --asr_config conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4.yaml --inference_config conf/decode_ctc1.0_greedy.yaml --train_set train --valid_set dev --test_sets dev test --src_bpe_train_text dump/raw/train/text.ts.wavlm_large_finetune_24_km2000 --tgt_bpe_train_text dump/raw/train/text.ts.en --lm_train_text dump/raw/train/text.ts.en
+2025-01-10T13:22:58 (asr2_hf.sh:625:main) Skipped stages:  8 9 10 11 16 17 
+2025-01-10T13:22:58 (asr2_hf.sh:1545:main) Stage 14: Decoding: training_dir=exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000
+2025-01-10T13:22:58 (asr2_hf.sh:1573:main) Generate 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/run.sh'. You can resume the process from stage 14 using this script
+2025-01-10T13:22:58 (asr2_hf.sh:1604:main) Decoding started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_bpe_ts6000_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/dev/logdir/asr_inference.*.log'
+2025-01-10T13:31:58 (asr2_hf.sh:1604:main) Decoding started... log: 'exp/asr_train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr5e-4_raw_wavlm_large_finetune_24_km2000_char_ts_bpe_ts5000/decode_ctc1.0_greedy_asr_model_valid.cer_ctc.best/test/logdir/asr_inference.*.log'

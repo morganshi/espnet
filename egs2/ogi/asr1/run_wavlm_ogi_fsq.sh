@@ -7,18 +7,18 @@ set -o pipefail
 
 train_set="train"
 valid_set="dev"
-test_sets="train"
+test_sets="dev test"
 
 asr_config=conf/train_asr_wavlm_ogi_fsq_ebranchformer_onlyctc_lr1e-4.yaml
 inference_config=conf/decode_asr_ctc_greedy.yaml
 
 
-CUDA_VISIBLE_DEVICES="0"    \
+CUDA_VISIBLE_DEVICES="0,1,2,3"    \
 ./asr_fsq.sh \
-    --stage 14   \
-    --stop_stage 14  \
+    --stage 13   \
+    --stop_stage 13  \
     --lang en \
-    --ngpu 1 \
+    --ngpu 4 \
     --nj 4 \
     --gpu_inference false \
     --inference_asr_model "valid.cer_ctc.best.pth"  \

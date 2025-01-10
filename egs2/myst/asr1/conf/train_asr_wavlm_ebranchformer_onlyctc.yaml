@@ -80,7 +80,7 @@ early_stopping_criterion:
 - min
 best_model_criterion:
 -   - valid
-    - cer_ctc
+    - loss
     - min
 keep_nbest_models: 10
 use_amp: true
