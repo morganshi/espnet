@@ -31,15 +31,18 @@ tgt_case="ts"
 
 CUDA_VISIBLE_DEVICES="0"    \
 ./asr2.sh \
-    --stage 15   \
-    --stop_stage 15  \
-    --kmeans_opts "--batch_bins 600000 --nj 4" \
+    --stage 5   \
+    --stop_stage 5  \
+    --gpu_kmeans true  \
+    --portion 1.0   \
+    --kmeans_opts "--batch_bins 480000 --nj 1" \
     --kmeans_feature "${kmeans_feature}" \
     --nclusters "${nclusters}" \
     --ngpu 1 \
     --nj 4  \
-    --inference_nj 2    \
+    --inference_nj 1    \
     --inference_asr_model "valid.cer_ctc.best.pth"   \
+    --gpu_inference true    \
     --src_lang ${src_lang} \
     --tgt_lang ${tgt_lang} \
     --src_token_type "bpe" \
@@ -54,6 +57,6 @@ CUDA_VISIBLE_DEVICES="0"    \
     --train_set "${train_set}" \
     --valid_set "${train_dev}" \
     --test_sets "${test_sets}" \
-    --src_bpe_train_text "dump/raw/${train_set}_sp/text.${src_case}.${src_lang}" \
-    --tgt_bpe_train_text "dump/raw/${train_set}_sp/text.${tgt_case}.${tgt_lang}" \
-    --lm_train_text "dump/raw/${train_set}_sp/text.${tgt_case}.${tgt_lang}" "$@"
+    --src_bpe_train_text "dump/raw/${train_set}/text.${src_case}.${src_lang}" \
+    --tgt_bpe_train_text "dump/raw/${train_set}/text.${tgt_case}.${tgt_lang}" \
+    --lm_train_text "dump/raw/${train_set}/text.${tgt_case}.${tgt_lang}" "$@"

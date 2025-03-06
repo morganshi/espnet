@@ -208,6 +208,7 @@ if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ] && ! [[ " ${skip_stages} " =~ [
         ${python} pyscripts/utils/learn_kmeans.py \
             --km_path ${km_dir}/km_${nclusters}.mdl \
             --n_clusters ${nclusters} \
+            --batch_size 100    \
             --percent -1 \
             --in_filetype mat \
             "scp:${km_dir}/train.scp" || exit 1;

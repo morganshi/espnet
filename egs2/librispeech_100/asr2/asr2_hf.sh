@@ -788,10 +788,10 @@ if [ ${stage} -le 5 ] && [ ${stop_stage} -ge 5 ] && ! [[ " ${skip_stages} " =~ [
 
     if [ "${tokenization_choice}" == "ssl" ]; then
         scripts/feats/perform_kmeans_hf.sh \
-            --stage 3 --stop-stage 3 \
+            --stage 2 --stop-stage 3 \
             --train_set "${train_set}" \
             --dev_set "${_dev_set}" \
-            --other_sets "${test_sets} ${train_sp_sets}" \
+            --other_sets "${test_sets}" \
             --datadir "${data_audio}" \
             --featdir "${data_extract}" \
             --audio_format "${audio_format}" \

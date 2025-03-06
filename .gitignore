@@ -42,7 +42,9 @@ egs*/*/*/db
 egs*/*/*/downloads
 egs*/*/*/ckpt
 egs*/*/*/dump
-egs*/*/*/ckpt
+egs*/*/*/FSQ
+egs*/*/*/token_distribution
+egs*/*/*/result*
 egs*/*/*/nohup.out
 egs*/*/*/enhan
 egs*/*/*/exp

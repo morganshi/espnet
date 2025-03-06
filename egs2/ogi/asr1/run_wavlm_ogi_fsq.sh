@@ -9,20 +9,20 @@ train_set="train"
 valid_set="dev"
 test_sets="dev test"
 
-asr_config=conf/train_asr_wavlm_ogi_fsq_ebranchformer_onlyctc_lr1e-4.yaml
+asr_config=conf/train_asr_wavlm_ogi_fsq_1000_ebranchformer_onlyctc_lr1e-4.yaml
 inference_config=conf/decode_asr_ctc_greedy.yaml
 
 
-CUDA_VISIBLE_DEVICES="0,1,2,3"    \
+CUDA_VISIBLE_DEVICES="1"    \
 ./asr_fsq.sh \
     --stage 13   \
     --stop_stage 13  \
     --lang en \
-    --ngpu 4 \
+    --ngpu 1 \
     --nj 4 \
-    --gpu_inference false \
+    --gpu_inference true \
     --inference_asr_model "valid.cer_ctc.best.pth"  \
-    --inference_nj 4 \
+    --inference_nj 1 \
     --nbpe 200 \
     --max_wav_duration 30 \
     --feats_normalize None \

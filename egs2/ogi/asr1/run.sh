@@ -10,14 +10,14 @@ train_set="train"
 valid_set="dev"
 test_sets="dev test"
 
-asr_config=conf/train_asr_onlyctc_nospecaug.yaml
+asr_config=conf/train_asr_onlyctc_lr5e-4.yaml
 inference_config=conf/decode_asr_ctc_greedy.yaml
 
 
 CUDA_VISIBLE_DEVICES="0"    \
 ./asr.sh \
-    --stage 10   \
-    --stop_stage 10  \
+    --stage 13   \
+    --stop_stage 13  \
     --lang en \
     --ngpu 1 \
     --nj 4 \
