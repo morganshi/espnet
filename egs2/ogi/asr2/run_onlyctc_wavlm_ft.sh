@@ -32,19 +32,11 @@ tgt_case="ts"
 
 CUDA_VISIBLE_DEVICES="3"    \
 ./asr2_hf.sh \
-<<<<<<< HEAD
     --stage 6   \
     --stop_stage 7  \
     --gpu_kmeans false  \
     --portion 1.0   \
     --kmeans_opts "--batch_bins 4800000 --nj 4" \
-=======
-    --stage 15   \
-    --stop_stage 15  \
-    --gpu_kmeans true  \
-    --portion 1.0   \
-    --kmeans_opts "--batch_bins 1 --nj 4" \
->>>>>>> 5ebf8f1b6dc51bfa26a032f85e8e4b6ca01d6936
     --kmeans_feature "${kmeans_feature}" \
     --nclusters "${nclusters}" \
     --ngpu 1 \

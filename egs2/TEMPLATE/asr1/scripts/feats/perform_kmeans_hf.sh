@@ -152,7 +152,7 @@ if [ ${stage} -le 1 ] && [ ${stop_stage} -ge 1 ] && ! [[ " ${skip_stages} " =~ [
         # shellcheck disable=SC2046,SC2086
         ${_cmd} JOB=1:${_nj} ${_logdir}/dump_features.JOB.log \
             ${python} pyscripts/feats/dump_hf_feature.py \
-                --feature_conf "{"type": "hf", "conf": {"download_dir": "/data/mohan/workdir/espnet/egs2/myst/asr2/exp/wavlm-large-myst-fullfinetune/", "multilayer_feature": false, "layer": ${layer}}}" \
+                --feature_conf "{"type": "hf", "conf": {"download_dir": "/data/mohan/workdir/espnet/egs2/ogi_kids_spon/asr2/exp/wavlm-large-ogi-spon", "multilayer_feature": false, "layer": ${layer}}}" \
                 --audio_sample_rate "${audio_sample_rate}" \
                 --use_gpu ${use_gpu} \
                 --in_filetype "${_in_filetype}" \
@@ -239,7 +239,7 @@ if [ ${stage} -le 3 ] && [ ${stop_stage} -ge 3 ] && ! [[ " ${skip_stages} " =~ [
                 _opts+="--in_filetype sound "
             fi
             _opts+="--online_feature_extract ${storage_save_mode} "
-            _opts+="--feature_conf \"{"type": "hf", "conf": {"download_dir": "/data/mohan/workdir/espnet/egs2/myst/asr2/exp/wavlm-large-myst-fullfinetune", "multilayer_feature": false, "layer": ${layer}}}\" "
+            _opts+="--feature_conf \"{"type": "hf", "conf": {"download_dir": "/data/mohan/workdir/espnet/egs2/ogi_kids_spon/asr2/exp/wavlm-large-ogi-spon", "multilayer_feature": false, "layer": ${layer}}}\" "
             if [ -n "${batch_bins}" ]; then
                 _opts+="--batch_bins ${batch_bins} "
             fi

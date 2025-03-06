@@ -23,6 +23,7 @@ CUDA_VISIBLE_DEVICES="0,1,2,3"    \
     --gpu_inference false \
     --inference_asr_model "valid.cer_ctc.best.pth"  \
     --inference_nj 4 \
+    --gpu_inference true    \
     --nbpe 200 \
     --max_wav_duration 30 \
     --feats_normalize None \

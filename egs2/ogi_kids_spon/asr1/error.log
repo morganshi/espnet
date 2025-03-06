@@ -1,0 +1,184 @@
+2025-01-16T05:35:34 (asr.sh:283:main) ./asr.sh --lang en --gpu_inference true --token_type bpe --stage 1 --stop_stage 1 --bpemode unigram --nbpe 5000 --max_wav_duration 30 --speed_perturb_factors 0.9 1.0 1.1 --use_lm false --feats_normalize utt_mvn --feats_type raw --asr_config conf/tuning/train_asr_wavlm_transformer.yaml --inference_config conf/decode_asr.yaml --inference_asr_model valid.acc.best.pth --train_set train --valid_set dev --test_sets test --lm_train_text data/train/text --bpe_train_text data/train/text --local_data_opts --sph2wav true --audio_format wav --min_wav_duration 0.3
+2025-01-16T05:35:34 (asr.sh:565:main) Skipped stages:  6 7 8 9 14 15 
+2025-01-16T05:35:34 (asr.sh:572:main) Stage 1: Data preparation for data/train, data/dev, etc.
+2025-01-16T05:35:34 (data.sh:18:main) local/data.sh --sph2wav true
+2025-01-16T05:35:34 (data.sh:40:main) stage 1: /data/Databases/cmu_kids already exists. Skipping data downloading.
+2025-01-16T05:35:34 (data.sh:45:main) stage 2: Data preparation
+Preparing cmu_kids...
+utils/fix_data_dir.sh: file ./data//all/spk2gender is not in sorted order or not unique, sorting it
+fix_data_dir.sh: kept all 5180 utterances.
+fix_data_dir.sh: old files are kept in ./data//all/.backup
+fix_data_dir.sh: kept all 3784 utterances.
+fix_data_dir.sh: old files are kept in ./data//train/.backup
+utils/validate_data_dir.sh: Successfully validated data-directory ./data//train
+fix_data_dir.sh: kept all 642 utterances.
+fix_data_dir.sh: old files are kept in ./data//dev/.backup
+utils/validate_data_dir.sh: Successfully validated data-directory ./data//dev
+fix_data_dir.sh: kept all 754 utterances.
+fix_data_dir.sh: old files are kept in ./data//test/.backup
+utils/validate_data_dir.sh: Successfully validated data-directory ./data//test
+2025-01-16T05:36:45 (data.sh:51:main) stage 2: Data preparation completed.
+2025-01-16T05:36:45 (data.sh:55:main) Stage 3: Wav conversion
+2025-01-16T05:36:45 (data.sh:58:main) Converting .sph to .wav
+2025-01-16T05:44:25 (data.sh:86:main) Stage 3: Finished .sph to .wav conversion
+2025-01-16T05:44:25 (data.sh:92:main) Successfully finished. [elapsed=531s]
+2025-01-16T05:44:25 (asr.sh:1809:main) Successfully finished. [elapsed=531s]
+2025-01-19T22:00:58 (asr.sh:283:main) ./asr.sh --lang en --gpu_inference true --token_type bpe --stage 1 --stop_stage 1 --bpemode unigram --nbpe 5000 --max_wav_duration 30 --speed_perturb_factors 0.9 1.0 1.1 --use_lm false --feats_normalize utt_mvn --feats_type raw --asr_config conf/tuning/train_asr_wavlm_transformer.yaml --inference_config conf/decode_asr.yaml --inference_asr_model valid.acc.best.pth --train_set train --valid_set dev --test_sets test --lm_train_text data/train/text --bpe_train_text data/train/text --local_data_opts  --audio_format wav --min_wav_duration 0.3
+2025-01-19T22:00:59 (asr.sh:565:main) Skipped stages:  6 7 8 9 14 15 
+2025-01-19T22:00:59 (asr.sh:572:main) Stage 1: Data preparation for data/train, data/dev, etc.
+2025-01-19T22:00:59 (data.sh:17:main) local/data.sh 
+2025-01-19T22:00:59 (data.sh:30:main) Fill the value of 'OGI_KIDS' in db.sh
+2025-01-19T22:01:21 (asr.sh:283:main) ./asr.sh --lang en --gpu_inference true --token_type bpe --stage 1 --stop_stage 1 --bpemode unigram --nbpe 5000 --max_wav_duration 30 --speed_perturb_factors 0.9 1.0 1.1 --use_lm false --feats_normalize utt_mvn --feats_type raw --asr_config conf/tuning/train_asr_wavlm_transformer.yaml --inference_config conf/decode_asr.yaml --inference_asr_model valid.acc.best.pth --train_set train --valid_set dev --test_sets test --lm_train_text data/train/text --bpe_train_text data/train/text --local_data_opts  --audio_format wav --min_wav_duration 0.3
+2025-01-19T22:01:21 (asr.sh:565:main) Skipped stages:  6 7 8 9 14 15 
+2025-01-19T22:01:21 (asr.sh:572:main) Stage 1: Data preparation for data/train, data/dev, etc.
+2025-01-19T22:01:21 (data.sh:17:main) local/data.sh 
+2025-01-19T22:01:21 (data.sh:39:main) stage 1: /data/Databases/OGI_Kids already exists. Skipping data downloading.
+2025-01-19T22:01:21 (data.sh:44:main) stage 2: Data preparation
+dos2unix: converting file data/spont_all/text to file text_unix in Unix format...
+utils/validate_data_dir.sh: Successfully validated data-directory ./data//spont_all
+local/ogi_spon_all_data_prepare.sh: successfully prepared data in ./data/
+2025-01-19T22:01:30 (data.sh:50:main) stage 2: Data preparation completed.
+2025-01-19T22:01:30 (data.sh:54:main) Stage 3: CTC Segment
+  File "/data/balaji/workdir3/espnet/egs2/ogi_kids_spon/asr1/local/ctc_segment.py", line 193
+    if __name__ = '__main__':
+                ^
+SyntaxError: invalid syntax
+2025-01-19T22:01:30 (data.sh:60:main) Stage 3: Finished ctc segmentation
+2025-01-19T22:01:30 (data.sh:63:main) Successfully finished. [elapsed=9s]
+2025-01-19T22:01:30 (asr.sh:1809:main) Successfully finished. [elapsed=9s]
+2025-01-19T22:04:14 (asr.sh:283:main) ./asr.sh --lang en --gpu_inference true --token_type bpe --stage 1 --stop_stage 1 --bpemode unigram --nbpe 5000 --max_wav_duration 30 --speed_perturb_factors 0.9 1.0 1.1 --use_lm false --feats_normalize utt_mvn --feats_type raw --asr_config conf/tuning/train_asr_wavlm_transformer.yaml --inference_config conf/decode_asr.yaml --inference_asr_model valid.acc.best.pth --train_set train --valid_set dev --test_sets test --lm_train_text data/train/text --bpe_train_text data/train/text --local_data_opts  --audio_format wav --min_wav_duration 0.3
+2025-01-19T22:04:14 (asr.sh:565:main) Skipped stages:  6 7 8 9 14 15 
+2025-01-19T22:04:14 (asr.sh:572:main) Stage 1: Data preparation for data/train, data/dev, etc.
+2025-01-19T22:04:14 (data.sh:17:main) local/data.sh 
+2025-01-19T22:04:14 (data.sh:39:main) stage 1: /data/Databases/OGI_Kids already exists. Skipping data downloading.
+2025-01-19T22:04:14 (data.sh:44:main) stage 2: Data preparation
+dos2unix: converting file data/spont_all/text to file text_unix in Unix format...
+utils/validate_data_dir.sh: Successfully validated data-directory ./data//spont_all
+local/ogi_spon_all_data_prepare.sh: successfully prepared data in ./data/
+2025-01-19T22:04:16 (data.sh:50:main) stage 2: Data preparation completed.
+2025-01-19T22:04:16 (data.sh:54:main) Stage 3: CTC Segment
+Traceback (most recent call last):
+  File "/data/balaji/workdir3/espnet/egs2/ogi_kids_spon/asr1/local/ctc_segment.py", line 212, in <module>
+    with open(f'{args.input}/wav.scp', 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: './data/all/wav.scp'
+2025-01-19T22:04:21 (data.sh:60:main) Stage 3: Finished ctc segmentation
+2025-01-19T22:04:21 (data.sh:63:main) Successfully finished. [elapsed=7s]
+2025-01-19T22:04:21 (asr.sh:1809:main) Successfully finished. [elapsed=7s]
+2025-01-19T22:04:56 (asr.sh:283:main) ./asr.sh --lang en --gpu_inference true --token_type bpe --stage 1 --stop_stage 1 --bpemode unigram --nbpe 5000 --max_wav_duration 30 --speed_perturb_factors 0.9 1.0 1.1 --use_lm false --feats_normalize utt_mvn --feats_type raw --asr_config conf/tuning/train_asr_wavlm_transformer.yaml --inference_config conf/decode_asr.yaml --inference_asr_model valid.acc.best.pth --train_set train --valid_set dev --test_sets test --lm_train_text data/train/text --bpe_train_text data/train/text --local_data_opts  --audio_format wav --min_wav_duration 0.3
+2025-01-19T22:04:56 (asr.sh:565:main) Skipped stages:  6 7 8 9 14 15 
+2025-01-19T22:04:56 (asr.sh:572:main) Stage 1: Data preparation for data/train, data/dev, etc.
+2025-01-19T22:04:56 (data.sh:17:main) local/data.sh 
+2025-01-19T22:04:56 (data.sh:39:main) stage 1: /data/Databases/OGI_Kids already exists. Skipping data downloading.
+2025-01-19T22:04:56 (data.sh:44:main) stage 2: Data preparation
+dos2unix: converting file data/spont_all/text to file text_unix in Unix format...
+utils/validate_data_dir.sh: Successfully validated data-directory ./data//spont_all
+local/ogi_spon_all_data_prepare.sh: successfully prepared data in ./data/
+2025-01-19T22:04:57 (data.sh:50:main) stage 2: Data preparation completed.
+2025-01-19T22:04:57 (data.sh:54:main) Stage 3: CTC Segment
+1101
+Downloading: "https://download.pytorch.org/torchaudio/models/wav2vec2_fairseq_base_ls960_asr_ls960.pth" to /home/balaji/.cache/torch/hub/checkpoints/wav2vec2_fairseq_base_ls960_asr_ls960.pth
+  0%|          | 0.00/360M [00:00<?, ?B/s]  0%|          | 128k/360M [00:00<12:55, 487kB/s]  0%|          | 1.12M/360M [00:00<01:42, 3.66MB/s]  1%|          | 2.12M/360M [00:00<01:07, 5.60MB/s]  1%|          | 3.25M/360M [00:00<00:51, 7.30MB/s]  1%|          | 4.38M/360M [00:00<00:45, 8.26MB/s]  1%|▏         | 5.38M/360M [00:00<00:42, 8.75MB/s]  2%|▏         | 6.38M/360M [00:00<00:40, 9.08MB/s]  2%|▏         | 7.38M/360M [00:01<00:39, 9.48MB/s]  2%|▏         | 8.38M/360M [00:01<00:38, 9.58MB/s]  3%|▎         | 9.50M/360M [00:01<00:36, 9.97MB/s]  3%|▎         | 10.5M/360M [00:01<00:36, 10.1MB/s]  3%|▎         | 11.5M/360M [00:01<00:35, 10.2MB/s]  4%|▎         | 12.6M/360M [00:01<00:34, 10.5MB/s]  4%|▍         | 13.8M/360M [00:01<00:34, 10.5MB/s]  4%|▍         | 14.9M/360M [00:01<00:33, 10.8MB/s]  4%|▍         | 16.0M/360M [00:01<00:33, 10.7MB/s]  5%|▍         | 17.1M/360M [00:01<00:33, 10.9MB/s]  5%|▌         | 18.2M/360M [00:02<00:32, 11.0MB/s]  5%|▌         | 19.4M/360M [00:02<00:32, 11.0MB/s]  6%|▌         | 20.5M/360M [00:02<00:32, 11.0MB/s]  6%|▌         | 21.6M/360M [00:02<00:36, 9.63MB/s]  6%|▋         | 23.2M/360M [00:02<00:30, 11.5MB/s]  7%|▋         | 24.5M/360M [00:02<00:30, 11.4MB/s]  7%|▋         | 25.6M/360M [00:02<00:43, 8.00MB/s]  7%|▋         | 26.6M/360M [00:03<00:56, 6.23MB/s]  8%|▊         | 27.4M/360M [00:03<01:08, 5.12MB/s]  8%|▊         | 28.1M/360M [00:03<01:03, 5.53MB/s]  8%|▊         | 29.2M/360M [00:03<00:51, 6.67MB/s]  8%|▊         | 30.2M/360M [00:03<00:46, 7.46MB/s]  9%|▊         | 31.2M/360M [00:03<00:42, 8.15MB/s]  9%|▉         | 32.4M/360M [00:04<00:38, 8.88MB/s]  9%|▉         | 33.5M/360M [00:04<00:36, 9.43MB/s] 10%|▉         | 34.6M/360M [00:04<00:34, 9.94MB/s] 10%|▉         | 35.6M/360M [00:04<00:33, 10.1MB/s] 10%|█         | 36.8M/360M [00:04<00:32, 10.4MB/s] 11%|█         | 37.9M/360M [00:04<00:32, 10.5MB/s] 11%|█         | 39.0M/360M [00:04<00:31, 10.6MB/s] 11%|█         | 40.1M/360M [00:04<00:31, 10.8MB/s] 11%|█▏        | 41.2M/360M [00:04<00:30, 10.9MB/s] 12%|█▏        | 42.4M/360M [00:04<00:30, 10.9MB/s] 12%|█▏        | 43.5M/360M [00:05<00:30, 11.0MB/s] 12%|█▏        | 44.6M/360M [00:05<00:30, 11.0MB/s] 13%|█▎        | 45.8M/360M [00:05<00:29, 11.0MB/s] 13%|█▎        | 46.9M/360M [00:05<00:29, 11.0MB/s] 13%|█▎        | 48.0M/360M [00:05<00:29, 11.2MB/s] 14%|█▎        | 49.1M/360M [00:05<00:29, 11.1MB/s] 14%|█▍        | 50.2M/360M [00:05<00:29, 11.1MB/s] 14%|█▍        | 51.4M/360M [00:05<00:29, 11.0MB/s] 15%|█▍        | 52.5M/360M [00:05<00:28, 11.1MB/s] 15%|█▍        | 53.6M/360M [00:06<00:29, 11.0MB/s] 15%|█▌        | 54.8M/360M [00:06<00:29, 10.8MB/s] 16%|█▌        | 55.9M/360M [00:06<00:29, 11.0MB/s] 16%|█▌        | 57.0M/360M [00:06<00:28, 11.1MB/s] 16%|█▌        | 58.1M/360M [00:06<00:29, 10.8MB/s] 16%|█▋        | 59.4M/360M [00:06<00:28, 11.1MB/s] 17%|█▋        | 60.5M/360M [00:06<00:28, 11.1MB/s] 17%|█▋        | 61.6M/360M [00:06<00:28, 11.2MB/s] 17%|█▋        | 62.8M/360M [00:06<00:27, 11.2MB/s] 18%|█▊        | 63.9M/360M [00:06<00:27, 11.2MB/s] 18%|█▊        | 65.0M/360M [00:07<00:27, 11.2MB/s] 18%|█▊        | 66.1M/360M [00:07<00:27, 11.1MB/s] 19%|█▊        | 67.2M/360M [00:07<00:27, 11.1MB/s] 19%|█▉        | 68.4M/360M [00:07<00:27, 11.1MB/s] 19%|█▉        | 69.5M/360M [00:07<00:27, 11.0MB/s] 20%|█▉        | 70.6M/360M [00:07<00:27, 11.0MB/s] 20%|█▉        | 71.8M/360M [00:07<00:27, 11.1MB/s] 20%|██        | 72.9M/360M [00:07<00:27, 11.0MB/s] 21%|██        | 74.0M/360M [00:07<00:27, 11.0MB/s] 21%|██        | 75.1M/360M [00:08<00:27, 10.9MB/s] 21%|██        | 76.2M/360M [00:08<00:27, 10.9MB/s] 21%|██▏       | 77.4M/360M [00:08<00:26, 11.1MB/s] 22%|██▏       | 78.5M/360M [00:08<00:26, 11.0MB/s] 22%|██▏       | 79.6M/360M [00:08<00:26, 11.0MB/s] 22%|██▏       | 80.8M/360M [00:08<00:26, 11.2MB/s] 23%|██▎       | 81.9M/360M [00:08<00:26, 11.0MB/s] 23%|██▎       | 83.0M/360M [00:08<00:26, 10.9MB/s] 23%|██▎       | 84.1M/360M [00:08<00:26, 11.1MB/s] 24%|██▎       | 85.2M/360M [00:09<00:26, 11.1MB/s] 24%|██▍       | 86.4M/360M [00:09<00:25, 11.2MB/s] 24%|██▍       | 87.5M/360M [00:09<00:25, 11.1MB/s] 25%|██▍       | 88.6M/360M [00:09<00:25, 11.2MB/s] 25%|██▍       | 89.8M/360M [00:09<00:25, 11.0MB/s] 25%|██▌       | 90.9M/360M [00:09<00:25, 11.1MB/s] 26%|██▌       | 92.0M/360M [00:09<00:25, 11.2MB/s] 26%|██▌       | 93.1M/360M [00:09<00:25, 11.2MB/s] 26%|██▌       | 94.2M/360M [00:09<00:25, 11.0MB/s] 26%|██▋       | 95.4M/360M [00:09<00:25, 10.8MB/s] 27%|██▋       | 96.5M/360M [00:10<00:37, 7.40MB/s] 27%|██▋       | 97.5M/360M [00:10<00:34, 7.88MB/s] 27%|██▋       | 98.5M/360M [00:10<00:33, 8.31MB/s] 28%|██▊       | 99.5M/360M [00:10<00:31, 8.78MB/s] 28%|██▊       | 101M/360M [00:10<00:29, 9.34MB/s]  28%|██▊       | 102M/360M [00:10<00:27, 9.82MB/s] 29%|██▊       | 103M/360M [00:10<00:27, 9.86MB/s] 29%|██▉       | 104M/360M [00:11<00:25, 10.4MB/s] 29%|██▉       | 105M/360M [00:11<00:24, 10.7MB/s] 30%|██▉       | 106M/360M [00:11<00:25, 10.5MB/s] 30%|██▉       | 107M/360M [00:11<00:24, 10.7MB/s] 30%|███       | 108M/360M [00:11<00:24, 10.7MB/s] 30%|███       | 110M/360M [00:11<00:24, 10.7MB/s] 31%|███       | 111M/360M [00:11<00:24, 10.9MB/s] 31%|███       | 112M/360M [00:11<00:23, 10.9MB/s] 31%|███▏      | 113M/360M [00:11<00:23, 10.9MB/s] 32%|███▏      | 114M/360M [00:11<00:23, 11.1MB/s] 32%|███▏      | 115M/360M [00:12<00:23, 10.8MB/s] 32%|███▏      | 116M/360M [00:12<00:23, 10.8MB/s] 33%|███▎      | 118M/360M [00:12<00:23, 10.8MB/s] 33%|███▎      | 119M/360M [00:12<00:22, 11.0MB/s] 33%|███▎      | 120M/360M [00:12<00:22, 11.1MB/s] 34%|███▎      | 121M/360M [00:12<00:22, 11.2MB/s] 34%|███▍      | 122M/360M [00:12<00:22, 10.9MB/s] 34%|███▍      | 123M/360M [00:12<00:22, 10.8MB/s] 34%|███▍      | 124M/360M [00:12<00:23, 10.7MB/s] 35%|███▍      | 125M/360M [00:13<00:22, 10.9MB/s] 35%|███▌      | 126M/360M [00:13<00:22, 11.0MB/s] 35%|███▌      | 128M/360M [00:13<00:22, 11.0MB/s] 36%|███▌      | 129M/360M [00:13<00:22, 10.6MB/s] 36%|███▌      | 130M/360M [00:13<00:21, 11.1MB/s] 36%|███▋      | 131M/360M [00:13<00:21, 11.2MB/s] 37%|███▋      | 132M/360M [00:13<00:21, 11.2MB/s] 37%|███▋      | 133M/360M [00:13<00:21, 11.1MB/s] 37%|███▋      | 134M/360M [00:13<00:21, 11.0MB/s] 38%|███▊      | 136M/360M [00:14<00:21, 10.9MB/s] 38%|███▊      | 137M/360M [00:14<00:21, 11.1MB/s] 38%|███▊      | 138M/360M [00:14<00:20, 11.2MB/s] 39%|███▊      | 139M/360M [00:14<00:20, 11.2MB/s] 39%|███▉      | 140M/360M [00:14<00:21, 11.0MB/s] 39%|███▉      | 141M/360M [00:14<00:20, 11.1MB/s] 40%|███▉      | 142M/360M [00:14<00:20, 11.1MB/s] 40%|███▉      | 144M/360M [00:14<00:20, 11.2MB/s] 40%|████      | 145M/360M [00:14<00:20, 11.1MB/s] 40%|████      | 146M/360M [00:15<00:21, 10.3MB/s] 41%|████      | 147M/360M [00:15<00:19, 11.2MB/s] 41%|████      | 148M/360M [00:15<00:19, 11.2MB/s] 41%|████▏     | 149M/360M [00:15<00:20, 11.0MB/s] 42%|████▏     | 150M/360M [00:15<00:19, 11.2MB/s] 42%|████▏     | 152M/360M [00:15<00:19, 11.1MB/s] 42%|████▏     | 153M/360M [00:15<00:19, 11.0MB/s] 43%|████▎     | 154M/360M [00:15<00:19, 10.9MB/s] 43%|████▎     | 155M/360M [00:15<00:19, 11.1MB/s] 43%|████▎     | 156M/360M [00:15<00:19, 10.9MB/s] 44%|████▎     | 157M/360M [00:16<00:19, 11.0MB/s] 44%|████▍     | 158M/360M [00:16<00:19, 11.1MB/s] 44%|████▍     | 160M/360M [00:16<00:19, 11.0MB/s] 45%|████▍     | 161M/360M [00:16<00:18, 11.2MB/s] 45%|████▍     | 162M/360M [00:16<00:18, 11.0MB/s] 45%|████▌     | 163M/360M [00:16<00:18, 11.1MB/s] 46%|████▌     | 164M/360M [00:16<00:18, 11.1MB/s] 46%|████▌     | 165M/360M [00:16<00:18, 11.1MB/s] 46%|████▌     | 166M/360M [00:16<00:18, 11.1MB/s] 46%|████▋     | 167M/360M [00:17<00:18, 11.0MB/s] 47%|████▋     | 168M/360M [00:17<00:18, 11.2MB/s] 47%|████▋     | 170M/360M [00:17<00:17, 11.1MB/s] 47%|████▋     | 171M/360M [00:17<00:17, 11.2MB/s] 48%|████▊     | 172M/360M [00:17<00:17, 11.2MB/s] 48%|████▊     | 173M/360M [00:17<00:17, 11.2MB/s] 48%|████▊     | 174M/360M [00:17<00:17, 11.2MB/s] 49%|████▊     | 175M/360M [00:17<00:17, 11.3MB/s] 49%|████▉     | 176M/360M [00:17<00:17, 11.0MB/s] 49%|████▉     | 178M/360M [00:18<00:17, 11.2MB/s] 50%|████▉     | 179M/360M [00:18<00:17, 11.1MB/s] 50%|████▉     | 180M/360M [00:18<00:17, 11.0MB/s] 50%|█████     | 181M/360M [00:18<00:17, 10.9MB/s] 51%|█████     | 182M/360M [00:18<00:16, 11.0MB/s] 51%|█████     | 183M/360M [00:18<00:17, 10.9MB/s] 51%|█████     | 184M/360M [00:18<00:19, 9.50MB/s] 52%|█████▏    | 186M/360M [00:18<00:16, 11.4MB/s] 52%|█████▏    | 187M/360M [00:18<00:15, 11.3MB/s] 52%|█████▏    | 188M/360M [00:19<00:15, 11.4MB/s] 53%|█████▎    | 189M/360M [00:19<00:16, 11.2MB/s] 53%|█████▎    | 190M/360M [00:19<00:15, 11.2MB/s] 53%|█████▎    | 192M/360M [00:19<00:15, 11.1MB/s] 54%|█████▎    | 193M/360M [00:19<00:15, 11.1MB/s] 54%|█████▍    | 194M/360M [00:19<00:15, 11.2MB/s] 54%|█████▍    | 195M/360M [00:19<00:15, 11.3MB/s] 54%|█████▍    | 196M/360M [00:19<00:15, 11.1MB/s] 55%|█████▍    | 197M/360M [00:19<00:15, 11.1MB/s] 55%|█████▌    | 198M/360M [00:19<00:15, 11.2MB/s] 55%|█████▌    | 200M/360M [00:20<00:16, 10.2MB/s] 56%|█████▌    | 201M/360M [00:20<00:14, 11.4MB/s] 56%|█████▌    | 202M/360M [00:20<00:21, 7.85MB/s] 56%|█████▋    | 203M/360M [00:20<00:20, 8.17MB/s] 57%|█████▋    | 204M/360M [00:20<00:18, 8.79MB/s] 57%|█████▋    | 205M/360M [00:20<00:17, 9.33MB/s] 57%|█████▋    | 206M/360M [00:20<00:16, 9.80MB/s] 58%|█████▊    | 208M/360M [00:21<00:15, 10.2MB/s] 58%|█████▊    | 209M/360M [00:21<00:15, 10.6MB/s] 58%|█████▊    | 210M/360M [00:21<00:15, 10.5MB/s] 59%|█████▊    | 211M/360M [00:21<00:14, 10.7MB/s] 59%|█████▉    | 212M/360M [00:21<00:14, 10.7MB/s] 59%|█████▉    | 213M/360M [00:21<00:14, 10.8MB/s] 60%|█████▉    | 214M/360M [00:21<00:14, 10.9MB/s] 60%|█████▉    | 216M/360M [00:21<00:13, 11.0MB/s] 60%|██████    | 217M/360M [00:21<00:13, 10.8MB/s] 60%|██████    | 218M/360M [00:22<00:13, 10.9MB/s] 61%|██████    | 219M/360M [00:22<00:13, 11.0MB/s] 61%|██████    | 220M/360M [00:22<00:13, 10.9MB/s] 61%|██████▏   | 221M/360M [00:22<00:13, 11.0MB/s] 62%|██████▏   | 222M/360M [00:22<00:13, 11.1MB/s] 62%|██████▏   | 223M/360M [00:22<00:12, 11.1MB/s] 62%|██████▏   | 224M/360M [00:22<00:12, 11.1MB/s] 63%|██████▎   | 226M/360M [00:22<00:12, 11.0MB/s] 63%|██████▎   | 227M/360M [00:22<00:12, 11.0MB/s] 63%|██████▎   | 228M/360M [00:22<00:12, 11.1MB/s] 64%|██████▎   | 229M/360M [00:23<00:12, 11.1MB/s] 64%|██████▍   | 230M/360M [00:23<00:12, 11.1MB/s] 64%|██████▍   | 231M/360M [00:23<00:12, 11.1MB/s] 65%|██████▍   | 232M/360M [00:23<00:12, 11.1MB/s] 65%|██████▍   | 234M/360M [00:23<00:11, 11.1MB/s] 65%|██████▌   | 235M/360M [00:23<00:11, 11.1MB/s] 65%|██████▌   | 236M/360M [00:23<00:11, 11.2MB/s] 66%|██████▌   | 237M/360M [00:23<00:11, 11.1MB/s] 66%|██████▌   | 238M/360M [00:23<00:11, 11.2MB/s] 66%|██████▋   | 239M/360M [00:24<00:11, 11.2MB/s] 67%|██████▋   | 240M/360M [00:24<00:11, 11.3MB/s] 67%|██████▋   | 241M/360M [00:24<00:13, 9.55MB/s] 68%|██████▊   | 243M/360M [00:24<00:10, 11.8MB/s] 68%|██████▊   | 244M/360M [00:24<00:10, 11.5MB/s] 68%|██████▊   | 246M/360M [00:24<00:10, 11.4MB/s] 69%|██████▊   | 247M/360M [00:24<00:10, 11.4MB/s] 69%|██████▉   | 248M/360M [00:24<00:10, 11.4MB/s] 69%|██████▉   | 249M/360M [00:24<00:10, 11.2MB/s] 69%|██████▉   | 250M/360M [00:25<00:10, 11.2MB/s] 70%|██████▉   | 251M/360M [00:25<00:10, 10.9MB/s] 70%|███████   | 252M/360M [00:25<00:10, 11.3MB/s] 70%|███████   | 254M/360M [00:25<00:09, 11.3MB/s] 71%|███████   | 255M/360M [00:25<00:09, 11.2MB/s] 71%|███████   | 256M/360M [00:25<00:09, 11.0MB/s] 71%|███████▏  | 257M/360M [00:25<00:09, 11.0MB/s] 72%|███████▏  | 258M/360M [00:25<00:09, 11.0MB/s] 72%|███████▏  | 259M/360M [00:25<00:09, 11.1MB/s] 72%|███████▏  | 260M/360M [00:26<00:09, 10.7MB/s] 73%|███████▎  | 262M/360M [00:26<00:09, 11.1MB/s] 73%|███████▎  | 263M/360M [00:26<00:11, 9.24MB/s] 73%|███████▎  | 265M/360M [00:26<00:08, 11.6MB/s] 74%|███████▍  | 266M/360M [00:26<00:08, 11.5MB/s] 74%|███████▍  | 267M/360M [00:26<00:08, 11.4MB/s] 74%|███████▍  | 268M/360M [00:26<00:08, 11.2MB/s] 75%|███████▍  | 269M/360M [00:26<00:08, 11.2MB/s] 75%|███████▌  | 270M/360M [00:27<00:08, 11.0MB/s] 75%|███████▌  | 272M/360M [00:27<00:08, 11.1MB/s] 76%|███████▌  | 273M/360M [00:27<00:08, 11.0MB/s] 76%|███████▌  | 274M/360M [00:27<00:08, 11.1MB/s] 76%|███████▋  | 275M/360M [00:27<00:08, 11.1MB/s] 77%|███████▋  | 276M/360M [00:27<00:07, 11.1MB/s] 77%|███████▋  | 277M/360M [00:27<00:07, 11.1MB/s] 77%|███████▋  | 278M/360M [00:27<00:07, 11.2MB/s] 78%|███████▊  | 280M/360M [00:27<00:07, 11.2MB/s] 78%|███████▊  | 281M/360M [00:27<00:07, 11.1MB/s] 78%|███████▊  | 282M/360M [00:28<00:07, 11.0MB/s] 79%|███████▊  | 283M/360M [00:28<00:07, 11.1MB/s] 79%|███████▉  | 284M/360M [00:28<00:07, 11.0MB/s] 79%|███████▉  | 285M/360M [00:28<00:07, 11.1MB/s] 79%|███████▉  | 286M/360M [00:28<00:06, 11.1MB/s] 80%|███████▉  | 287M/360M [00:28<00:06, 11.1MB/s] 80%|████████  | 288M/360M [00:28<00:06, 11.1MB/s] 80%|████████  | 290M/360M [00:28<00:06, 11.1MB/s] 81%|████████  | 291M/360M [00:28<00:06, 11.1MB/s] 81%|████████  | 292M/360M [00:29<00:06, 11.0MB/s] 81%|████████▏ | 293M/360M [00:29<00:06, 11.0MB/s] 82%|████████▏ | 294M/360M [00:29<00:06, 11.0MB/s] 82%|████████▏ | 295M/360M [00:29<00:06, 11.0MB/s] 82%|████████▏ | 296M/360M [00:29<00:06, 11.0MB/s] 83%|████████▎ | 298M/360M [00:29<00:07, 9.37MB/s] 83%|████████▎ | 299M/360M [00:29<00:05, 11.5MB/s] 83%|████████▎ | 300M/360M [00:29<00:05, 11.4MB/s] 84%|████████▍ | 302M/360M [00:29<00:05, 11.3MB/s] 84%|████████▍ | 303M/360M [00:30<00:05, 11.2MB/s] 84%|████████▍ | 304M/360M [00:30<00:05, 11.1MB/s] 85%|████████▍ | 305M/360M [00:30<00:05, 11.1MB/s] 85%|████████▌ | 306M/360M [00:30<00:05, 11.2MB/s] 85%|████████▌ | 307M/360M [00:30<00:05, 9.34MB/s] 86%|████████▌ | 309M/360M [00:30<00:04, 11.6MB/s] 86%|████████▌ | 310M/360M [00:30<00:04, 11.5MB/s] 87%|████████▋ | 312M/360M [00:30<00:04, 11.4MB/s] 87%|████████▋ | 313M/360M [00:31<00:04, 11.3MB/s] 87%|████████▋ | 314M/360M [00:31<00:04, 11.3MB/s] 87%|████████▋ | 315M/360M [00:31<00:04, 11.2MB/s] 88%|████████▊ | 316M/360M [00:31<00:04, 11.1MB/s] 88%|████████▊ | 317M/360M [00:31<00:04, 11.1MB/s] 88%|████████▊ | 318M/360M [00:31<00:03, 11.1MB/s] 89%|████████▊ | 320M/360M [00:31<00:03, 11.2MB/s] 89%|████████▉ | 321M/360M [00:31<00:03, 11.2MB/s] 89%|████████▉ | 322M/360M [00:31<00:03, 11.0MB/s] 90%|████████▉ | 323M/360M [00:32<00:05, 7.68MB/s] 90%|████████▉ | 324M/360M [00:32<00:04, 8.10MB/s] 90%|█████████ | 325M/360M [00:32<00:04, 8.43MB/s] 91%|█████████ | 326M/360M [00:32<00:04, 8.78MB/s] 91%|█████████ | 327M/360M [00:32<00:03, 9.05MB/s] 91%|█████████ | 328M/360M [00:32<00:03, 9.47MB/s] 91%|█████████▏| 329M/360M [00:32<00:03, 9.93MB/s] 92%|█████████▏| 330M/360M [00:32<00:03, 10.1MB/s] 92%|█████████▏| 332M/360M [00:33<00:02, 10.4MB/s] 92%|█████████▏| 333M/360M [00:33<00:02, 10.6MB/s] 93%|█████████▎| 334M/360M [00:33<00:02, 10.8MB/s] 93%|█████████▎| 335M/360M [00:33<00:02, 10.8MB/s] 93%|█████████▎| 336M/360M [00:33<00:02, 11.0MB/s] 94%|█████████▎| 337M/360M [00:33<00:02, 11.0MB/s] 94%|█████████▍| 338M/360M [00:33<00:02, 11.0MB/s] 94%|█████████▍| 339M/360M [00:33<00:02, 10.9MB/s] 95%|█████████▍| 340M/360M [00:33<00:01, 11.0MB/s] 95%|█████████▍| 342M/360M [00:33<00:01, 10.8MB/s] 95%|█████████▌| 343M/360M [00:34<00:01, 11.1MB/s] 95%|█████████▌| 344M/360M [00:34<00:01, 11.1MB/s] 96%|█████████▌| 345M/360M [00:34<00:01, 10.9MB/s] 96%|█████████▌| 346M/360M [00:34<00:01, 10.7MB/s] 96%|█████████▋| 347M/360M [00:34<00:01, 10.9MB/s] 97%|█████████▋| 348M/360M [00:34<00:01, 10.8MB/s] 97%|█████████▋| 350M/360M [00:34<00:01, 11.0MB/s] 97%|█████████▋| 351M/360M [00:34<00:00, 10.9MB/s] 98%|█████████▊| 352M/360M [00:34<00:00, 11.1MB/s] 98%|█████████▊| 353M/360M [00:35<00:00, 11.0MB/s] 98%|█████████▊| 354M/360M [00:35<00:00, 11.1MB/s] 99%|█████████▊| 355M/360M [00:35<00:00, 11.1MB/s] 99%|█████████▉| 356M/360M [00:35<00:00, 11.1MB/s] 99%|█████████▉| 357M/360M [00:35<00:00, 11.2MB/s]100%|█████████▉| 358M/360M [00:35<00:00, 11.2MB/s]100%|█████████▉| 360M/360M [00:35<00:00, 11.2MB/s]100%|██████████| 360M/360M [00:35<00:00, 10.6MB/s]
+{'-': 0, '|': 1, 'E': 2, 'T': 3, 'A': 4, 'O': 5, 'N': 6, 'I': 7, 'H': 8, 'S': 9, 'R': 10, 'D': 11, 'L': 12, 'U': 13, 'M': 14, 'W': 15, 'C': 16, 'F': 17, 'G': 18, 'Y': 19, 'P': 20, 'B': 21, 'V': 22, 'K': 23, "'": 24, 'X': 25, 'J': 26, 'Q': 27, 'Z': 28}
+Processed 0 files
+Processed 100 files
+Processed 200 files
+Processed 300 files
+Processed 400 files
+Processed 500 files
+Processed 600 files
+Processed 700 files
+Processed 800 files
+Processed 900 files
+Processed 1000 files
+Processed 1100 files
+Traceback (most recent call last):
+  File "/data/balaji/workdir3/espnet/egs2/ogi_kids_spon/asr1/local/ctc_segment.py", line 346, in <module>
+    with open(all_segs_dir+'/wav.scp', 'w') as f:
+FileNotFoundError: [Errno 2] No such file or directory: './data/all_segs/wav.scp'
+2025-01-19T22:59:18 (data.sh:60:main) Stage 3: Finished ctc segmentation
+2025-01-19T22:59:18 (data.sh:63:main) Successfully finished. [elapsed=3262s]
+2025-01-19T22:59:18 (asr.sh:1809:main) Successfully finished. [elapsed=3263s]
+2025-01-19T23:03:16 (asr.sh:283:main) ./asr.sh --lang en --gpu_inference true --token_type bpe --stage 1 --stop_stage 1 --bpemode unigram --nbpe 5000 --max_wav_duration 30 --speed_perturb_factors 0.9 1.0 1.1 --use_lm false --feats_normalize utt_mvn --feats_type raw --asr_config conf/tuning/train_asr_wavlm_transformer.yaml --inference_config conf/decode_asr.yaml --inference_asr_model valid.acc.best.pth --train_set train --valid_set dev --test_sets test --lm_train_text data/train/text --bpe_train_text data/train/text --local_data_opts  --audio_format wav --min_wav_duration 0.3
+2025-01-19T23:03:16 (asr.sh:565:main) Skipped stages:  6 7 8 9 14 15 
+2025-01-19T23:03:16 (asr.sh:572:main) Stage 1: Data preparation for data/train, data/dev, etc.
+2025-01-19T23:03:16 (data.sh:17:main) local/data.sh 
+2025-01-19T23:03:16 (data.sh:39:main) stage 1: /data/Databases/OGI_Kids already exists. Skipping data downloading.
+2025-01-19T23:03:16 (data.sh:44:main) stage 2: Data preparation
+dos2unix: converting file data/spont_all/text to file text_unix in Unix format...
+utils/validate_data_dir.sh: Successfully validated data-directory ./data//spont_all
+local/ogi_spon_all_data_prepare.sh: successfully prepared data in ./data/
+2025-01-19T23:03:24 (data.sh:50:main) stage 2: Data preparation completed.
+2025-01-19T23:03:24 (data.sh:54:main) Stage 3: CTC Segment
+1101
+{'-': 0, '|': 1, 'E': 2, 'T': 3, 'A': 4, 'O': 5, 'N': 6, 'I': 7, 'H': 8, 'S': 9, 'R': 10, 'D': 11, 'L': 12, 'U': 13, 'M': 14, 'W': 15, 'C': 16, 'F': 17, 'G': 18, 'Y': 19, 'P': 20, 'B': 21, 'V': 22, 'K': 23, "'": 24, 'X': 25, 'J': 26, 'Q': 27, 'Z': 28}
+Processed 0 files
+Processed 100 files
+Processed 200 files
+Processed 300 files
+Processed 400 files
+Processed 500 files
+Processed 600 files
+Processed 700 files
+Processed 800 files
+Processed 900 files
+Processed 1000 files
+Processed 1100 files
+2025-01-19T23:56:37 (data.sh:60:main) Stage 3: Finished ctc segmentation
+2025-01-19T23:56:37 (data.sh:63:main) Successfully finished. [elapsed=3201s]
+2025-01-19T23:56:37 (asr.sh:1809:main) Successfully finished. [elapsed=3201s]
+2025-01-20T01:13:01 (asr.sh:283:main) ./asr.sh --lang en --gpu_inference true --token_type bpe --stage 1 --stop_stage 1 --bpemode unigram --nbpe 5000 --max_wav_duration 30 --speed_perturb_factors 0.9 1.0 1.1 --use_lm false --feats_normalize utt_mvn --feats_type raw --asr_config conf/tuning/train_asr_wavlm_transformer.yaml --inference_config conf/decode_asr.yaml --inference_asr_model valid.acc.best.pth --train_set train --valid_set dev --test_sets test --lm_train_text data/train/text --bpe_train_text data/train/text --local_data_opts  --audio_format wav --min_wav_duration 0.3
+2025-01-20T01:13:01 (asr.sh:565:main) Skipped stages:  6 7 8 9 14 15 
+2025-01-20T01:13:01 (asr.sh:572:main) Stage 1: Data preparation for data/train, data/dev, etc.
+2025-01-20T01:13:01 (data.sh:17:main) local/data.sh 
+2025-01-20T01:13:01 (data.sh:39:main) stage 1: /data/Databases/OGI_Kids already exists. Skipping data downloading.
+2025-01-20T01:13:01 (data.sh:44:main) stage 2: Data preparation
+dos2unix: converting file data/spont_all/text to file text_unix in Unix format...
+utils/validate_data_dir.sh: Successfully validated data-directory ./data//spont_all
+local/ogi_spon_all_data_prepare.sh: successfully prepared data in ./data/
+2025-01-20T01:13:27 (data.sh:50:main) stage 2: Data preparation completed.
+2025-01-20T01:13:27 (data.sh:54:main) Stage 3: CTC Segment
+1101
+{'-': 0, '|': 1, 'E': 2, 'T': 3, 'A': 4, 'O': 5, 'N': 6, 'I': 7, 'H': 8, 'S': 9, 'R': 10, 'D': 11, 'L': 12, 'U': 13, 'M': 14, 'W': 15, 'C': 16, 'F': 17, 'G': 18, 'Y': 19, 'P': 20, 'B': 21, 'V': 22, 'K': 23, "'": 24, 'X': 25, 'J': 26, 'Q': 27, 'Z': 28}
+Processed 0 files
+Processed 100 files
+Processed 200 files
+Processed 300 files
+Processed 400 files
+Processed 500 files
+Processed 600 files
+Processed 700 files
+Processed 800 files
+Processed 900 files
+Processed 1000 files
+Processed 1100 files
+2025-01-20T02:04:47 (data.sh:60:main) Stage 3: Finished ctc segmentation
+2025-01-20T02:04:47 (data.sh:63:main) Successfully finished. [elapsed=3106s]
+2025-01-20T02:04:47 (asr.sh:1809:main) Successfully finished. [elapsed=3106s]
+2025-01-20T02:35:19 (asr.sh:283:main) ./asr.sh --lang en --gpu_inference true --token_type bpe --stage 1 --stop_stage 1 --bpemode unigram --nbpe 5000 --max_wav_duration 30 --speed_perturb_factors 0.9 1.0 1.1 --use_lm false --feats_normalize utt_mvn --feats_type raw --asr_config conf/tuning/train_asr_wavlm_transformer.yaml --inference_config conf/decode_asr.yaml --inference_asr_model valid.acc.best.pth --train_set train --valid_set dev --test_sets test --lm_train_text data/train/text --bpe_train_text data/train/text --local_data_opts  --audio_format wav --min_wav_duration 0.3
+2025-01-20T02:35:19 (asr.sh:565:main) Skipped stages:  6 7 8 9 14 15 
+2025-01-20T02:35:19 (asr.sh:572:main) Stage 1: Data preparation for data/train, data/dev, etc.
+2025-01-20T02:35:19 (data.sh:17:main) local/data.sh 
+2025-01-20T02:35:19 (data.sh:39:main) stage 1: /data/Databases/OGI_Kids already exists. Skipping data downloading.
+2025-01-20T02:35:19 (data.sh:44:main) stage 2: Data preparation
+dos2unix: converting file data/spont_all/text to file text_unix in Unix format...
+utils/validate_data_dir.sh: Successfully validated data-directory ./data//spont_all
+local/ogi_spon_all_data_prepare.sh: successfully prepared data in ./data/
+2025-01-20T02:35:26 (data.sh:50:main) stage 2: Data preparation completed.
+2025-01-20T02:35:26 (data.sh:54:main) Stage 3: CTC Segment
+1101
+{'-': 0, '|': 1, 'E': 2, 'T': 3, 'A': 4, 'O': 5, 'N': 6, 'I': 7, 'H': 8, 'S': 9, 'R': 10, 'D': 11, 'L': 12, 'U': 13, 'M': 14, 'W': 15, 'C': 16, 'F': 17, 'G': 18, 'Y': 19, 'P': 20, 'B': 21, 'V': 22, 'K': 23, "'": 24, 'X': 25, 'J': 26, 'Q': 27, 'Z': 28}
+Processed 0 files
+Processed 100 files
+Processed 200 files
+Processed 300 files
+Processed 400 files
+Processed 500 files
+Processed 600 files
+Processed 700 files
+Processed 800 files
+Processed 900 files
+Processed 1000 files
+Processed 1100 files
+2025-01-20T03:26:20 (data.sh:60:main) Stage 3: Finished ctc segmentation
+2025-01-20T03:26:20 (data.sh:63:main) Successfully finished. [elapsed=3061s]
+2025-01-20T03:26:20 (asr.sh:1809:main) Successfully finished. [elapsed=3061s]
