@@ -74,7 +74,11 @@ num_att_plot: 0
 # log_interval: 100
 num_workers: 4
 batch_type: numel
+<<<<<<< HEAD
 batch_bins: 1000000
+=======
+batch_bins: 4000000
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
 accum_grad: 1
 max_epoch: 70
 patience: none
@@ -98,4 +102,8 @@ optim_conf:
     weight_decay: 0.000001
 scheduler: warmuplr
 scheduler_conf:
+<<<<<<< HEAD
     warmup_steps: 15000
+=======
+    warmup_steps: 5000
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f

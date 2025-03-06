@@ -8,7 +8,7 @@ freeze_param: [
 # network architecture
 frontend: hf_freeze_ctc
 frontend_conf:
-    download_dir: /data/mohan/workdir/espnet/egs2/ogi/asr2/exp/wavlm-large-ogi-fullfinetune
+    download_dir: /data/mohan/workdir/espnet/egs2/ogi_kids_speech/asr2/exp/wavlm-large-ogi-scripted
     layer: 24
 
 

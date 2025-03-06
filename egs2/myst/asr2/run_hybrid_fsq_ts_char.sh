@@ -15,7 +15,11 @@ tgt_lang=en
 
 train_set="train"
 train_dev="dev"
+<<<<<<< HEAD
 test_sets="dev test"
+=======
+test_sets="test"
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
 
 # test_sets="test_clean test_other dev_clean dev_other"
 
@@ -30,7 +34,11 @@ tgt_nbpe=5000   # if token_joint is True, then only tgt_nbpe is used
 src_case="ts"
 tgt_case="ts"
 
+<<<<<<< HEAD
 CUDA_VISIBLE_DEVICES="0"    \
+=======
+CUDA_VISIBLE_DEVICES="1"    \
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
 ./asr2_fsq.sh \
     --stage 14   \
     --stop_stage 14  \

@@ -98,4 +98,8 @@ optim_conf:
     weight_decay: 0.000001
 scheduler: warmuplr
 scheduler_conf:
+<<<<<<< HEAD
     warmup_steps: 15000
+=======
+    warmup_steps: 5000
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f

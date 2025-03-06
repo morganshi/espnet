@@ -30,6 +30,7 @@ tgt_nbpe=5000   # if token_joint is True, then only tgt_nbpe is used
 src_case="ts"
 tgt_case="ts"
 
+<<<<<<< HEAD
 CUDA_VISIBLE_DEVICES="0"    \
 ./asr2_hf.sh \
     --stage 15   \
@@ -39,6 +40,17 @@ CUDA_VISIBLE_DEVICES="0"    \
     --kmeans_feature "${kmeans_feature}" \
     --nclusters "${nclusters}" \
     --portion 1.0   \
+=======
+CUDA_VISIBLE_DEVICES="2"    \
+./asr2_hf.sh \
+    --stage 14   \
+    --stop_stage 14  \
+    --gpu_kmeans true  \
+    --portion 1.0   \
+    --kmeans_opts "--batch_bins 1 --nj 8" \
+    --kmeans_feature "${kmeans_feature}" \
+    --nclusters "${nclusters}" \
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
     --ngpu 1 \
     --nj 4  \
     --inference_nj 4    \

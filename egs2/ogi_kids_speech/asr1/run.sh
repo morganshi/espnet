@@ -7,24 +7,25 @@ set -e
 set -u
 set -o pipefail
 
-train_set="train_nodev"
-valid_set="train_dev"
+train_set="train"
+valid_set="dev"
 test_sets="test"
 
 asr_config=conf/train_asr.yaml
 inference_config=conf/decode_asr.yaml
 
+CUDA_VISIBLE_DEVICES="0"    \
 ./asr.sh \
-    --stage 11   \
-    --stop_stage 11  \
+    --stage 10   \
+    --stop_stage 10  \
     --lang en \
     --ngpu 1 \
     --nj 4 \
     --gpu_inference true \
-    --inference_nj 2 \
+    --inference_asr_model "valid.cer_ctc.best.pth"  \
+    --inference_nj 4 \
     --nbpe 200 \
     --max_wav_duration 30 \
-    --speed_perturb_factors "0.9 1.0 1.1" \
     --audio_format "wav" \
     --feats_type raw \
     --use_lm false \
@@ -33,5 +34,5 @@ inference_config=conf/decode_asr.yaml
     --train_set "${train_set}" \
     --valid_set "${valid_set}" \
     --test_sets "${test_sets}" \
-    --lm_train_text "data/${train_set}/text" \
-    --bpe_train_text "data/${train_set}/text" "$@"
+    --lm_train_text "dump/raw/${train_set}/text" \
+    --bpe_train_text "dump/raw/${train_set}/text" "$@"

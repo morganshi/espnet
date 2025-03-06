@@ -787,26 +787,26 @@ if [ ${stage} -le 5 ] && [ ${stop_stage} -ge 5 ] && ! [[ " ${skip_stages} " =~ [
     # kmeans_feature_conf="{type=s3prl,conf={s3prl_conf={upstream=wavlm_large},download_dir=ckpt,multilayer_feature=False,layer=${layer}}}"
 
     if [ "${tokenization_choice}" == "ssl" ]; then
-        # scripts/feats/perform_kmeans_hf.sh \
-        #     --stage 3 --stop-stage 3 \
-        #     --train_set "${train_set}" \
-        #     --dev_set "${_dev_set}" \
-        #     --other_sets "${test_sets} ${train_sp_sets}" \
-        #     --datadir "${data_audio}" \
-        #     --featdir "${data_extract}" \
-        #     --audio_format "${audio_format}" \
-        #     --feature_type "${kmeans_feature_type}" \
-        #     --layer "${layer}" \
-        #     --feature_conf "${kmeans_feature_conf}" \
-        #     --km_dir "${km_dir}" \
-        #     --portion "${portion}" \
-        #     --nclusters "${nclusters}" \
-        #     --storage_save_mode ${storage_save_mode} \
-        #     --use_gpu ${gpu_kmeans} \
-        #     --nj ${nj} \
-        #     --cpu_cmd "${train_cmd}" \
-        #     --cuda_cmd "${cuda_cmd}" \
-        #     ${kmeans_opts}
+        scripts/feats/perform_kmeans_hf.sh \
+            --stage 2 --stop-stage 3 \
+            --train_set "${train_set}" \
+            --dev_set "${_dev_set}" \
+            --other_sets "${test_sets}" \
+            --datadir "${data_audio}" \
+            --featdir "${data_extract}" \
+            --audio_format "${audio_format}" \
+            --feature_type "${kmeans_feature_type}" \
+            --layer "${layer}" \
+            --feature_conf "${kmeans_feature_conf}" \
+            --km_dir "${km_dir}" \
+            --portion "${portion}" \
+            --nclusters "${nclusters}" \
+            --storage_save_mode ${storage_save_mode} \
+            --use_gpu ${gpu_kmeans} \
+            --nj ${nj} \
+            --cpu_cmd "${train_cmd}" \
+            --cuda_cmd "${cuda_cmd}" \
+            ${kmeans_opts}
 
         log "Stage 5b: Prepare token_list and convert number indices to CJK tokens"
 

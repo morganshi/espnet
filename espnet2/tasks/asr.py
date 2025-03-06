@@ -56,11 +56,16 @@ from espnet2.asr.frontend.fused import FusedFrontends
 from espnet2.asr.frontend.s3prl import S3prlFrontend
 from espnet2.asr.frontend.hf_freeze import HfFreezeCTCFrontend
 from espnet2.asr.frontend.hf_fsq_train import HfCTCFSQFrontend
+<<<<<<< HEAD
 from espnet2.asr.frontend.hf_fsq_240_train import HfCTCFSQ240Frontend
 from espnet2.asr.frontend.hf_kmfsq_train import HfCTCKMFSQFrontend
 from espnet2.asr.frontend.hf_fbfsq_train import HfCTCFBFSQFrontend
 from espnet2.asr.frontend.hf_mlfsq_train import HfCTCMLFSQFrontend
 from espnet2.asr.frontend.hf_rfsq_train import HfCTCRFSQFrontend
+=======
+from espnet2.asr.frontend.hf_fsq_1000_train import HfCTCFSQ1000Frontend
+from espnet2.asr.frontend.hf_fsq_240_train import HfCTCFSQ240Frontend
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
 from espnet2.asr.frontend.whisper import WhisperFrontend
 from espnet2.asr.frontend.windowing import SlidingWindow
 from espnet2.asr.maskctc_model import MaskCTCModel
@@ -104,9 +109,13 @@ frontend_choices = ClassChoices(
         hf_freeze_ctc=HfFreezeCTCFrontend,
         hf_train_fsq_ctc=HfCTCFSQFrontend,
         hf_train_fsq_240_ctc=HfCTCFSQ240Frontend,
+<<<<<<< HEAD
         hf_train_fbfsq_ctc=HfCTCFBFSQFrontend,
         hf_train_mlfsq_ctc=HfCTCMLFSQFrontend,
         hf_train_rfsq_ctc=HfCTCRFSQFrontend,
+=======
+        hf_train_fsq_1000_ctc=HfCTCFSQ1000Frontend,
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
         fused=FusedFrontends,
         whisper=WhisperFrontend,
     ),

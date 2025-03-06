@@ -995,6 +995,7 @@ if [ ${stage} -le 7 ] && [ ${stop_stage} -ge 7 ] && ! [[ " ${skip_stages} " =~ [
     fi
 
     # First generate tgt lang
+<<<<<<< HEAD
     # if [ "${tgt_token_type}" = bpe ]; then
     #     log "Stage 7a: Generate token_list from ${tgt_bpe_train_text} using BPE for tgt_lang"
 
@@ -1135,6 +1136,148 @@ if [ ${stage} -le 7 ] && [ ${stop_stage} -ge 7 ] && ! [[ " ${skip_stages} " =~ [
             exit 2
         fi
     fi
+=======
+    if [ "${tgt_token_type}" = bpe ]; then
+        log "Stage 7a: Generate token_list from ${tgt_bpe_train_text} using BPE for tgt_lang"
+
+        mkdir -p "${tgt_bpedir}"
+        # shellcheck disable=SC2002
+        cat ${tgt_bpe_train_text} | cut -f 2- -d" "  > "${tgt_bpedir}"/train.txt
+
+        if [ -n "${tgt_bpe_nlsyms}" ]; then
+            _opts_spm="--user_defined_symbols=${tgt_bpe_nlsyms}"
+        else
+            _opts_spm=""
+        fi
+
+        spm_train \
+            --input="${tgt_bpedir}"/train.txt \
+            --vocab_size="${tgt_nbpe}" \
+            --model_type="${tgt_bpemode}" \
+            --model_prefix="${tgt_bpeprefix}" \
+            --character_coverage=${tgt_bpe_char_cover} \
+            --input_sentence_size="${tgt_bpe_input_sentence_size}" \
+            ${_opts_spm}
+
+        {
+        echo "${blank}"
+        echo "${oov}"
+        # Remove <unk>, <s>, </s> from the vocabulary
+        <"${tgt_bpeprefix}".vocab awk '{ if( NR != 1 && NR != 2 && NR != 3 ){ print $1; } }'
+        echo "${sos_eos}"
+        } > "${tgt_token_list}"
+
+    elif [ "${tgt_token_type}" = char ] || [ "${tgt_token_type}" = word ]; then
+        log "Stage 7a: Generate character level token_list from ${tgt_bpe_train_text}  for tgt_lang"
+
+        _opts="--non_linguistic_symbols ${nlsyms_txt}"
+
+        # shellcheck disable=SC2002
+        cat ${tgt_bpe_train_text} | cut -f 2- -d" "  > "${data_feats}"/token_train.txt
+
+        # The first symbol in token_list must be "<blank>" and the last must be also sos/eos:
+        # 0 is reserved for CTC-blank for ASR and also used as ignore-index in the other task
+        ${python} -m espnet2.bin.tokenize_text  \
+            --token_type "${tgt_token_type}" \
+            --input "${data_feats}/token_train.txt" --output "${tgt_token_list}" ${_opts} \
+            --field 1- \
+            --cleaner "${cleaner}" \
+            --g2p "${g2p}" \
+            --write_vocabulary true \
+            --add_symbol "${blank}:0" \
+            --add_symbol "${oov}:1" \
+            --add_symbol "${sos_eos}:-1"
+
+    else
+        log "Error: not supported --token_type '${tgt_token_type}'"
+        exit 2
+    fi
+
+    # Create word-list for word-LM training
+    if ${use_word_lm} && [ "${tgt_token_type}" != word ]; then
+        log "Generate word level token_list from ${data_feats}/lm_train.txt"
+        ${python} -m espnet2.bin.tokenize_text \
+            --token_type word \
+            --input "${data_feats}/lm_train.txt" --output "${lm_token_list}" \
+            --field 2- \
+            --cleaner "${cleaner}" \
+            --g2p "${g2p}" \
+            --write_vocabulary true \
+            --vocabulary_size "${word_vocab_size}" \
+            --add_symbol "${blank}:0" \
+            --add_symbol "${oov}:1" \
+            --add_symbol "${sos_eos}:-1"
+    fi
+
+    # Then generate src lang
+    # if "${token_joint}"; then
+    #     log "Stage 7b: Skip separate token construction for src_lang when setting ${token_joint} as true"
+    # else
+    #     if [ "${src_token_type}" = bpe ]; then
+    #         log "Stage 7b: Generate token_list from ${src_bpe_train_text} using BPE for src_lang"
+
+    #         mkdir -p "${src_bpedir}"
+    #         # shellcheck disable=SC2002
+    #         cat ${src_bpe_train_text} | cut -f 2- -d" "  > "${src_bpedir}"/train.txt
+
+    #         if [ -n "${src_bpe_nlsyms}" ]; then
+    #             _opts_spm="--user_defined_symbols=${src_bpe_nlsyms}"
+    #         else
+    #             _opts_spm=""
+    #         fi
+
+    #         spm_train \
+    #             --input="${src_bpedir}"/train.txt \
+    #             --vocab_size="${src_nbpe}" \
+    #             --model_type="${src_bpemode}" \
+    #             --model_prefix="${src_bpeprefix}" \
+    #             --character_coverage=${src_bpe_char_cover} \
+    #             --input_sentence_size="${src_bpe_input_sentence_size}" \
+    #             ${_opts_spm}
+
+    #         {
+    #         echo "${blank}"
+    #         echo "${oov}"
+    #         # Remove <unk>, <s>, </s> from the vocabulary
+    #         <"${src_bpeprefix}".vocab awk '{ if( NR != 1 && NR != 2 && NR != 3 ){ print $1; } }'
+    #         echo "${sos_eos}"
+    #         } > "${src_token_list}"
+
+    #     elif [ "${src_token_type}" = char ] || [ "${src_token_type}" = word ]; then
+    #         log "Stage 7b: Generate character level token_list from ${src_bpe_train_text} for src_lang"
+
+    #         _opts="--non_linguistic_symbols ${nlsyms_txt}"
+
+    #         # shellcheck disable=SC2002
+    #         cat ${src_bpe_train_text} | tr '\t' ' ' | cut -f 2- -d" "  > "${data_feats}"/token_train_${src_lang}.txt
+
+    #         # The first symbol in token_list must be "<blank>" and the last must be also sos/eos:
+    #         # 0 is reserved for CTC-blank for ASR and also used as ignore-index in the other task
+    #         ${python} -m espnet2.bin.tokenize_text  \
+    #             --token_type "${src_token_type}" \
+    #             --input "${data_feats}/token_train_${src_lang}.txt" --output "${src_token_list}" ${_opts} \
+    #             --field 1- \
+    #             --cleaner "${cleaner}" \
+    #             --g2p "${g2p}" \
+    #             --write_vocabulary true \
+    #             --add_symbol "${blank}:0" \
+    #             --add_symbol "${oov}:1" \
+    #             --add_symbol "${sos_eos}:-1"
+
+    #     elif [ "${src_token_type}" = "null" ]; then
+    #         log "Stage 7b: Generate token_list from existing src vocabulary and special tokens"
+    #         mkdir -p "$(dirname ${src_token_list})"
+    #         echo ${blank} > ${src_token_list}
+    #         echo ${oov} >> ${src_token_list}
+    #         cat "${data_feats}"/${valid_set}/token_lists/codec_token_list >> ${src_token_list}
+    #         echo ${sos_eos} >> ${src_token_list}
+
+    #     else
+    #         log "Error: not supported --token_type '${src_token_type}'"
+    #         exit 2
+    #     fi
+    # fi
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
 fi
 
 

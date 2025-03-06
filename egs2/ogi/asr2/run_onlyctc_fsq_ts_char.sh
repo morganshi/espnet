@@ -41,14 +41,19 @@ CUDA_VISIBLE_DEVICES="1"    \
     --nclusters "${nclusters}" \
     --ngpu 1 \
     --nj 4  \
+<<<<<<< HEAD
     --inference_nj 4    \
     --inference_asr_model "valid.cer_ctc.ave.pth"   \
+=======
+    --inference_nj 1    \
+    --inference_asr_model "valid.cer_ctc.best.pth"   \
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
     --gpu_inference true    \
     --src_lang ${src_lang} \
     --tgt_lang ${tgt_lang} \
     --src_token_type "char" \
     --src_nbpe $src_nbpe \
-    --tgt_token_type "bpe" \
+    --tgt_token_type "char" \
     --tgt_nbpe $tgt_nbpe \
     --src_case ${src_case} \
     --tgt_case ${tgt_case} \

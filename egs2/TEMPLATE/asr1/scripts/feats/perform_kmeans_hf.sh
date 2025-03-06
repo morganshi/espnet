@@ -152,7 +152,11 @@ if [ ${stage} -le 1 ] && [ ${stop_stage} -ge 1 ] && ! [[ " ${skip_stages} " =~ [
         # shellcheck disable=SC2046,SC2086
         ${_cmd} JOB=1:${_nj} ${_logdir}/dump_features.JOB.log \
             ${python} pyscripts/feats/dump_hf_feature.py \
+<<<<<<< HEAD
                 --feature_conf "{"type": "hf", "conf": {"download_dir": "/data/mohan/workdir/espnet/egs2/ogi_kids_spon/asr2/exp/wavlm-large-ogi-spon", "multilayer_feature": false, "layer": ${layer}}}" \
+=======
+                --feature_conf "{"type": "hf", "conf": {"download_dir": "/data/mohan/workdir/espnet/egs2/cmu_kids/asr2/exp/wavlm-large-cmu-kids", "multilayer_feature": false, "layer": ${layer}}}" \
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
                 --audio_sample_rate "${audio_sample_rate}" \
                 --use_gpu ${use_gpu} \
                 --in_filetype "${_in_filetype}" \
@@ -208,6 +212,7 @@ if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ] && ! [[ " ${skip_stages} " =~ [
         ${python} pyscripts/utils/learn_kmeans.py \
             --km_path ${km_dir}/km_${nclusters}.mdl \
             --n_clusters ${nclusters} \
+            --batch_size 100    \
             --percent -1 \
             --in_filetype mat \
             "scp:${km_dir}/train.scp" || exit 1;
@@ -239,7 +244,11 @@ if [ ${stage} -le 3 ] && [ ${stop_stage} -ge 3 ] && ! [[ " ${skip_stages} " =~ [
                 _opts+="--in_filetype sound "
             fi
             _opts+="--online_feature_extract ${storage_save_mode} "
+<<<<<<< HEAD
             _opts+="--feature_conf \"{"type": "hf", "conf": {"download_dir": "/data/mohan/workdir/espnet/egs2/ogi_kids_spon/asr2/exp/wavlm-large-ogi-spon", "multilayer_feature": false, "layer": ${layer}}}\" "
+=======
+            _opts+="--feature_conf \"{"type": "hf", "conf": {"download_dir": "/data/mohan/workdir/espnet/egs2/cmu_kids/asr2/exp/wavlm-large-cmu-kids", "multilayer_feature": false, "layer": ${layer}}}\" "
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
             if [ -n "${batch_bins}" ]; then
                 _opts+="--batch_bins ${batch_bins} "
             fi
