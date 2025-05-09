@@ -18,6 +18,8 @@ vocoder_file=vocoder/vocoder.pkl
 teacher_dumpdir=teacher_dumpdir
 
 ./tts2.sh \
+    --stage 1 \
+    --stop_stage 1  \
     --nj 16 \
     --inference_nj 16 \
     --fs 16000 --n_shift 320 --n_fft 1280 \

@@ -1,6 +1,6 @@
 import copy
 import logging
-from typing import Optional, Tuple, Union
+from typing import Sequence, Optional, Tuple, Union
 
 import humanfriendly
 import torch
@@ -27,15 +27,16 @@ class HfCTCFSQFrontend(AbsFrontend):
         fs: Union[int, str] = 16000,
         download_dir: Optional[str] = None,
         layer: int = -1,
+        levels: Sequence[int] = [5,5,5,4,4],
     ):
         super().__init__()
 
         self.upstream = AutoModelForCTC.from_pretrained(download_dir)
-        self.processor = AutoFeatureExtractor.from_pretrained('/data/mohan/workdir/download/wavlm-large')
+        self.processor = AutoFeatureExtractor.from_pretrained(download_dir)
 
         self.upstream.freeze_feature_encoder()
 
-        self.quantizer = FSQ(levels = [5,5,5,4,4], dim = self.upstream.config.hidden_size)
+        self.quantizer = FSQ(levels = levels, dim = self.upstream.config.hidden_size)
 
         self.layer = layer
 

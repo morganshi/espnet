@@ -115,6 +115,9 @@ g2p=g2p_en       # g2p method (needed if token_type=phn).
 lang=noinfo      # The language type of corpus.
 text_fold_length=150   # fold_length for text data.
 speech_fold_length=800 # fold_length for speech data.
+train_token_path=
+valid_token_path=
+test_token_path=
 
 # Upload model related
 hf_repo=
@@ -729,176 +732,29 @@ if ! "${skip_train}"; then
             _opts+="--config ${train_config} "
         fi
 
-        if [ -z "${teacher_dumpdir}" ]; then
-            #####################################
-            #     CASE 1: AR model training     #
-            #####################################
-            _scp=wav.scp
-            if [[ "${audio_format}" == *ark* ]]; then
-                _type=kaldi_ark
-            else
-                # "sound" supports "wav", "flac", etc.
-                _type=sound
-            fi
-            _fold_length="$((speech_fold_length * n_shift))"
-            _opts+="--feats_extract ${feats_extract} "
-            _opts+="--feats_extract_conf n_fft=${n_fft} "
-            _opts+="--feats_extract_conf hop_length=${n_shift} "
-            _opts+="--feats_extract_conf win_length=${win_length} "
-            if [ "${feats_extract}" = fbank ]; then
-                _opts+="--feats_extract_conf fs=${fs} "
-                _opts+="--feats_extract_conf fmin=${fmin} "
-                _opts+="--feats_extract_conf fmax=${fmax} "
-                _opts+="--feats_extract_conf n_mels=${n_mels} "
-            fi
+        #####################################
+        #   CASE 2: Non-AR model training   #
+        #####################################
+        _fold_length="${speech_fold_length}"
+        _opts+="--train_data_path_and_name_and_type ${train_token_path},speech_token,text_int "
+        # _opts+="--train_shape_file ${tts_stats_dir}/train/text_shape.${token_type} "
+        _opts+="--valid_data_path_and_name_and_type ${valid_token_path},speech_token,text_int "
+        # _opts+="--valid_shape_file ${tts_stats_dir}/valid/text_shape.${token_type} "
 
-            if [ "${num_splits}" -gt 1 ]; then
-                # If you met a memory error when parsing text files, this option may help you.
-                # The corpus is split into subsets and each subset is used for training one by one in order,
-                # so the memory footprint can be limited to the memory required for each dataset.
-
-                _split_dir="${tts_stats_dir}/splits${num_splits}"
-                if [ ! -f "${_split_dir}/.done" ]; then
-                    rm -f "${_split_dir}/.done"
-                    ${python} -m espnet2.bin.split_scps \
-                      --scps \
-                          "${_train_dir}/text" \
-                          "${_train_dir}/${_scp}" \
-                          "${tts_stats_dir}/train/speech_shape" \
-                          "${tts_stats_dir}/train/text_shape.${token_type}" \
-                      --num_splits "${num_splits}" \
-                      --output_dir "${_split_dir}"
-                    touch "${_split_dir}/.done"
-                else
-                    log "${_split_dir}/.done exists. Spliting is skipped"
-                fi
-
-                _opts+="--train_data_path_and_name_and_type ${_split_dir}/text,text,text "
-                _opts+="--train_data_path_and_name_and_type ${_split_dir}/${_scp},speech,${_type} "
-                _opts+="--train_shape_file ${_split_dir}/text_shape.${token_type} "
-                _opts+="--train_shape_file ${_split_dir}/speech_shape "
-                _opts+="--multiple_iterator true "
-
-            else
-                _opts+="--train_data_path_and_name_and_type ${_train_dir}/text,text,text "
-                _opts+="--train_data_path_and_name_and_type ${_train_dir}/${_scp},speech,${_type} "
-                _opts+="--train_shape_file ${tts_stats_dir}/train/text_shape.${token_type} "
-                _opts+="--train_shape_file ${tts_stats_dir}/train/speech_shape "
-            fi
-            _opts+="--valid_data_path_and_name_and_type ${_valid_dir}/text,text,text "
-            _opts+="--valid_data_path_and_name_and_type ${_valid_dir}/${_scp},speech,${_type} "
-            _opts+="--valid_shape_file ${tts_stats_dir}/valid/text_shape.${token_type} "
-            _opts+="--valid_shape_file ${tts_stats_dir}/valid/speech_shape "
+        # Teacher forcing case: use groundtruth as the target
+        _scp=wav.scp
+        if [[ "${audio_format}" == *ark* ]]; then
+            _type=kaldi_ark
         else
-            #####################################
-            #   CASE 2: Non-AR model training   #
-            #####################################
-            _teacher_train_dir="${teacher_dumpdir}/${train_set}"
-            _teacher_valid_dir="${teacher_dumpdir}/${valid_set}"
-            _fold_length="${speech_fold_length}"
-            _opts+="--train_data_path_and_name_and_type ${_train_dir}/text,text,text "
-            _opts+="--train_data_path_and_name_and_type ${_teacher_train_dir}/durations,durations,text_int "
-            _opts+="--train_shape_file ${tts_stats_dir}/train/text_shape.${token_type} "
-            _opts+="--valid_data_path_and_name_and_type ${_valid_dir}/text,text,text "
-            _opts+="--valid_data_path_and_name_and_type ${_teacher_valid_dir}/durations,durations,text_int "
-            _opts+="--valid_shape_file ${tts_stats_dir}/valid/text_shape.${token_type} "
+            # "sound" supports "wav", "flac", etc.
+            _type=sound
+        fi
+        _fold_length="$((speech_fold_length * n_shift))"
+        _opts+="--train_data_path_and_name_and_type ${_train_dir}/${_scp},speech,${_type} "
+        _opts+="--train_shape_file /data/mohan/workdir/espnet/egs2/myst/asr1/exp/asr_stats_raw_en_bpe5000/train/speech_shape "
+        _opts+="--valid_data_path_and_name_and_type ${_valid_dir}/${_scp},speech,${_type} "
+        _opts+="--valid_shape_file /data/mohan/workdir/espnet/egs2/myst/asr1/exp/asr_stats_raw_en_bpe5000/valid/speech_shape "
 
-            if [ -e ${_teacher_train_dir}/probs ]; then
-                # Knowledge distillation case: use the outputs of the teacher model as the target
-                _scp=feats.scp
-                _type=npy
-                _odim="$(head -n 1 "${_teacher_train_dir}/speech_shape" | cut -f 2 -d ",")"
-                _opts+="--odim=${_odim} "
-                _opts+="--train_data_path_and_name_and_type ${_teacher_train_dir}/denorm/${_scp},speech,${_type} "
-                _opts+="--train_shape_file ${_teacher_train_dir}/speech_shape "
-                _opts+="--valid_data_path_and_name_and_type ${_teacher_valid_dir}/denorm/${_scp},speech,${_type} "
-                _opts+="--valid_shape_file ${_teacher_valid_dir}/speech_shape "
-            else
-                # Teacher forcing case: use groundtruth as the target
-                _scp=wav.scp
-                if [[ "${audio_format}" == *ark* ]]; then
-                    _type=kaldi_ark
-                else
-                    # "sound" supports "wav", "flac", etc.
-                    _type=sound
-                fi
-                _fold_length="$((speech_fold_length * n_shift))"
-                _opts+="--feats_extract ${feats_extract} "
-                _opts+="--feats_extract_conf n_fft=${n_fft} "
-                _opts+="--feats_extract_conf hop_length=${n_shift} "
-                _opts+="--feats_extract_conf win_length=${win_length} "
-                if [ "${feats_extract}" = fbank ]; then
-                    _opts+="--feats_extract_conf fs=${fs} "
-                    _opts+="--feats_extract_conf fmin=${fmin} "
-                    _opts+="--feats_extract_conf fmax=${fmax} "
-                    _opts+="--feats_extract_conf n_mels=${n_mels} "
-                fi
-                _opts+="--train_data_path_and_name_and_type ${_train_dir}/${_scp},speech,${_type} "
-                _opts+="--train_shape_file ${tts_stats_dir}/train/speech_shape "
-                _opts+="--valid_data_path_and_name_and_type ${_valid_dir}/${_scp},speech,${_type} "
-                _opts+="--valid_shape_file ${tts_stats_dir}/valid/speech_shape "
-            fi
-        fi
-
-        # If there are dumped files of additional inputs, we use it to reduce computational cost
-        # NOTE (kan-bayashi): Use dumped files of the target features as well?
-        if [ -e "${tts_stats_dir}/train/collect_feats/pitch.scp" ]; then
-            _scp=pitch.scp
-            _type=npy
-            _train_collect_dir=${tts_stats_dir}/train/collect_feats
-            _valid_collect_dir=${tts_stats_dir}/valid/collect_feats
-            _opts+="--train_data_path_and_name_and_type ${_train_collect_dir}/${_scp},pitch,${_type} "
-            _opts+="--valid_data_path_and_name_and_type ${_valid_collect_dir}/${_scp},pitch,${_type} "
-        fi
-        if [ -e "${tts_stats_dir}/train/collect_feats/energy.scp" ]; then
-            _scp=energy.scp
-            _type=npy
-            _train_collect_dir=${tts_stats_dir}/train/collect_feats
-            _valid_collect_dir=${tts_stats_dir}/valid/collect_feats
-            _opts+="--train_data_path_and_name_and_type ${_train_collect_dir}/${_scp},energy,${_type} "
-            _opts+="--valid_data_path_and_name_and_type ${_valid_collect_dir}/${_scp},energy,${_type} "
-        fi
-
-        # Check extra statistics
-        if [ -e "${tts_stats_dir}/train/pitch_stats.npz" ]; then
-            _opts+="--pitch_extract_conf fs=${fs} "
-            _opts+="--pitch_extract_conf n_fft=${n_fft} "
-            _opts+="--pitch_extract_conf hop_length=${n_shift} "
-            _opts+="--pitch_extract_conf f0max=${f0max} "
-            _opts+="--pitch_extract_conf f0min=${f0min} "
-            _opts+="--pitch_normalize_conf stats_file=${tts_stats_dir}/train/pitch_stats.npz "
-        fi
-        if [ -e "${tts_stats_dir}/train/energy_stats.npz" ]; then
-            _opts+="--energy_extract_conf fs=${fs} "
-            _opts+="--energy_extract_conf n_fft=${n_fft} "
-            _opts+="--energy_extract_conf hop_length=${n_shift} "
-            _opts+="--energy_extract_conf win_length=${win_length} "
-            _opts+="--energy_normalize_conf stats_file=${tts_stats_dir}/train/energy_stats.npz "
-        fi
-
-        # Add speaker embedding to the inputs if needed
-        if "${use_spk_embed}"; then
-            _spk_embed_train_dir="${dumpdir}/${spk_embed_tag}/${train_set}"
-            _spk_embed_valid_dir="${dumpdir}/${spk_embed_tag}/${valid_set}"
-            _opts+="--train_data_path_and_name_and_type ${_spk_embed_train_dir}/${spk_embed_tag}.scp,spembs,kaldi_ark "
-            _opts+="--valid_data_path_and_name_and_type ${_spk_embed_valid_dir}/${spk_embed_tag}.scp,spembs,kaldi_ark "
-        fi
-
-        # Add spekaer ID to the inputs if needed
-        if "${use_sid}"; then
-            _opts+="--train_data_path_and_name_and_type ${_train_dir}/utt2sid,sids,text_int "
-            _opts+="--valid_data_path_and_name_and_type ${_valid_dir}/utt2sid,sids,text_int "
-        fi
-
-        # Add language ID to the inputs if needed
-        if "${use_lid}"; then
-            _opts+="--train_data_path_and_name_and_type ${_train_dir}/utt2lid,lids,text_int "
-            _opts+="--valid_data_path_and_name_and_type ${_valid_dir}/utt2lid,lids,text_int "
-        fi
-
-        if [ "${feats_normalize}" = "global_mvn" ]; then
-            _opts+="--normalize_conf stats_file=${tts_stats_dir}/train/feats_stats.npz "
-        fi
 
         log "Generate '${tts_exp}/run.sh'. You can resume the process from stage 7 using this script"
         mkdir -p "${tts_exp}"; echo "${run_args} --stage 7 \"\$@\"; exit \$?" > "${tts_exp}/run.sh"; chmod +x "${tts_exp}/run.sh"
@@ -913,21 +769,16 @@ if ! "${skip_train}"; then
             jobname="${tts_exp}/train.log"
         fi
         # shellcheck disable=SC2086
-        # ${python} -m espnet2.bin.launch \
-        #     --cmd "${cuda_cmd} --name ${jobname}" \
-        #     --log "${tts_exp}"/train.log \
-        #     --ngpu "${ngpu}" \
-        #     --num_nodes "${num_nodes}" \
-        #     --init_file_prefix "${tts_exp}"/.dist_init_ \
-        #     --multiprocessing_distributed true -- \
+        ${python} -m espnet2.bin.launch \
+            --cmd "${cuda_cmd} --name ${jobname}" \
+            --log "${tts_exp}"/train.log \
+            --ngpu "${ngpu}" \
+            --num_nodes "${num_nodes}" \
+            --init_file_prefix "${tts_exp}"/.dist_init_ \
+            --multiprocessing_distributed true -- \
             ${python} -m "espnet2.bin.${tts_task}_train" \
                 --use_preprocessor true \
-                --token_type "${token_type}" \
-                --token_list "${token_list}" \
                 --non_linguistic_symbols "${nlsyms_txt}" \
-                --cleaner "${cleaner}" \
-                --g2p "${g2p}" \
-                --normalize "${feats_normalize}" \
                 --resume true \
                 --fold_length "${text_fold_length}" \
                 --fold_length "${_fold_length}" \
@@ -988,8 +839,10 @@ if ! "${skip_eval}"; then
         log "Generate '${tts_exp}/${inference_tag}/run.sh'. You can resume the process from stage 8 using this script"
         mkdir -p "${tts_exp}/${inference_tag}"; echo "${run_args} --stage 8 \"\$@\"; exit \$?" > "${tts_exp}/${inference_tag}/run.sh"; chmod +x "${tts_exp}/${inference_tag}/run.sh"
 
+        for i in "${!test_sets[@]}"; do
+            dset="${test_sets[$i]}"
+            dset_token_path="${test_token_path[$i]}"
 
-        for dset in ${test_sets}; do
             _data="${data_feats}/${dset}"
             _speech_data="${_data}"
             _dir="${tts_exp}/${inference_tag}/${dset}"
@@ -997,39 +850,12 @@ if ! "${skip_eval}"; then
             mkdir -p "${_logdir}"
 
             _ex_opts=""
-            if [ -n "${teacher_dumpdir}" ]; then
-                # Use groundtruth of durations
-                _teacher_dir="${teacher_dumpdir}/${dset}"
-                _ex_opts+="--data_path_and_name_and_type ${_teacher_dir}/durations,durations,text_int "
-                # Overwrite speech arguments if use knowledge distillation
-                if [ -e "${teacher_dumpdir}/${train_set}/probs" ]; then
-                    _speech_data="${_teacher_dir}/denorm"
-                    _scp=feats.scp
-                    _type=npy
-                fi
-            fi
-
-            # Add speaker embedding to the inputs if needed
-            if "${use_spk_embed}"; then
-                _spk_embed_dir="${dumpdir}/${spk_embed_tag}/${dset}"
-                _ex_opts+="--data_path_and_name_and_type ${_spk_embed_dir}/${spk_embed_tag}.scp,spembs,kaldi_ark "
-            fi
-
-            # Add spekaer ID to the inputs if needed
-            if "${use_sid}"; then
-                _ex_opts+="--data_path_and_name_and_type ${_data}/utt2sid,sids,text_int "
-            fi
-
-            # Add language ID to the inputs if needed
-            if "${use_lid}"; then
-                _ex_opts+="--data_path_and_name_and_type ${_data}/utt2lid,lids,text_int "
-            fi
 
             # 0. Copy feats_type
             cp "${_data}/feats_type" "${_dir}/feats_type"
 
             # 1. Split the key file
-            key_file=${_data}/text
+            key_file=${dset_token_path}
             split_scps=""
             _nj=$(min "${inference_nj}" "$(<${key_file} wc -l)")
             for n in $(seq "${_nj}"); do
@@ -1039,19 +865,19 @@ if ! "${skip_eval}"; then
             utils/split_scp.pl "${key_file}" ${split_scps}
 
             # 2. Submit decoding jobs
-            log "Decoding started... log: '${_logdir}/tts_inference.*.log'"
+            log "Decoding started... log: '${_logdir}/unit_rec_inference.*.log'"
             # shellcheck disable=SC2046,SC2086
-            ${_cmd} --gpu "${_ngpu}" JOB=1:"${_nj}" "${_logdir}"/tts_inference.JOB.log \
-                ${python} -m espnet2.bin.tts_inference \
+            # ${_cmd} --gpu "${_ngpu}" JOB=1:"${_nj}" "${_logdir}"rec2_inference.JOB.log \
+                ${python} -m espnet2.bin.rec2_inference \
                     --ngpu "${_ngpu}" \
-                    --data_path_and_name_and_type "${_data}/text,text,text" \
+                    --data_path_and_name_and_type "${dset_token_path},speech_token,text_int" \
                     --data_path_and_name_and_type ${_speech_data}/${_scp},speech,${_type} \
-                    --key_file "${_logdir}"/keys.JOB.scp \
+                    --key_file "${_logdir}"/keys.1.scp \
                     --model_file "${tts_exp}"/"${inference_model}" \
                     --train_config "${tts_exp}"/config.yaml \
-                    --output_dir "${_logdir}"/output.JOB \
+                    --output_dir "${_logdir}"/output.1 \
                     --vocoder_file "${vocoder_file}" \
-                    ${_opts} ${_ex_opts} ${inference_args} || { cat $(grep -l -i error "${_logdir}"/tts_inference.*.log) ; exit 1; }
+                    ${_opts} ${_ex_opts} ${inference_args} || { cat $(grep -l -i error "${_logdir}"/rec2_inference.*.log) ; exit 1; }
 
             # 3. Concatenates the output files from each jobs
             if [ -e "${_logdir}/output.${_nj}/norm" ]; then
