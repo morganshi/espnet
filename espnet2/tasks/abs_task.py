@@ -1202,8 +1202,8 @@ class AbsTask(ABC):
         if args.print_config:
             cls.print_config()
             sys.exit(0)
-        cls.check_required_command_args(args)
-
+        # cls.check_required_command_args(args)
+        # import ipdb;ipdb.set_trace()
         # "distributed" is decided using the other command args
         resolve_distributed_mode(args)
         if not args.distributed or not args.multiprocessing_distributed:
@@ -1813,6 +1813,7 @@ class AbsTask(ABC):
             f"[{mode}] mini-batch sizes summary: N-batch={len(bs_list)}, "
             f"mean={np.mean(bs_list):.1f}, min={np.min(bs_list)}, max={np.max(bs_list)}"
         )
+        # import ipdb;ipdb.set_trace()
 
         if iter_options.distributed:
             world_size = torch.distributed.get_world_size()

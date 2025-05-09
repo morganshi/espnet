@@ -15,7 +15,11 @@ tgt_lang=en
 
 train_set="train"
 train_dev="dev"
+<<<<<<< HEAD
+test_sets="dev test"
+=======
 test_sets="test"
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
 
 # test_sets="test_clean test_other dev_clean dev_other"
 
@@ -32,8 +36,13 @@ tgt_case="ts"
 
 CUDA_VISIBLE_DEVICES="0"    \
 ./asr2_hf.sh \
+<<<<<<< HEAD
+    --stage 15   \
+    --stop_stage 15  \
+=======
     --stage 5   \
     --stop_stage 7  \
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
     --gpu_kmeans true  \
     --portion 1.0   \
     --kmeans_opts "--batch_bins 480000 --nj 1" \

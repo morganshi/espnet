@@ -15,7 +15,11 @@ tgt_lang=en
 
 train_set="train"
 train_dev="dev"
+<<<<<<< HEAD
+test_sets="dev test"
+=======
 test_sets="test"
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
 
 # test_sets="test_clean test_other dev_clean dev_other"
 
@@ -30,10 +34,17 @@ tgt_nbpe=5000   # if token_joint is True, then only tgt_nbpe is used
 src_case="ts"
 tgt_case="ts"
 
+<<<<<<< HEAD
+CUDA_VISIBLE_DEVICES="2"    \
+./asr2_hf.sh \
+    --stage 15   \
+    --stop_stage 15  \
+=======
 CUDA_VISIBLE_DEVICES="0"    \
 ./asr2_hf.sh \
     --stage 13   \
     --stop_stage 13  \
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
     --gpu_kmeans true  \
     --portion 1.0   \
     --kmeans_opts "--batch_bins 480000 --nj 1" \
@@ -41,9 +52,15 @@ CUDA_VISIBLE_DEVICES="0"    \
     --nclusters "${nclusters}" \
     --ngpu 1 \
     --nj 4  \
+<<<<<<< HEAD
+    --inference_nj 4    \
+    --inference_asr_model "valid.cer_ctc.best.pth"   \
+    --gpu_inference false    \
+=======
     --inference_nj 1    \
     --inference_asr_model "valid.cer_ctc.best.pth"   \
     --gpu_inference true    \
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
     --src_lang ${src_lang} \
     --tgt_lang ${tgt_lang} \
     --src_token_type "char" \

@@ -7,7 +7,11 @@ set -o pipefail
 
 CUDA_VISIBLE_DEVICES="0"
 
+<<<<<<< HEAD
+kmeans_feature="wavlm_large/21"  # use model_type/layer_index
+=======
 kmeans_feature="wavlm_large_finetune/24"  # use model_type/layer_index
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
 nclusters=2000
 
 src_lang=fsq_ls100
@@ -15,7 +19,11 @@ tgt_lang=en
 
 train_set="train"
 train_dev="dev"
+<<<<<<< HEAD
+test_sets="dev test"
+=======
 test_sets="test"
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
 
 # test_sets="test_clean test_other dev_clean dev_other"
 
@@ -32,11 +40,19 @@ tgt_case="ts"
 
 CUDA_VISIBLE_DEVICES="0"    \
 ./asr2_fsq.sh \
+<<<<<<< HEAD
+    --stage 15   \
+    --stop_stage 15  \
+    --gpu_kmeans true  \
+    --portion 0.1   \
+    --kmeans_opts "--batch_bins 1 --nj 4" \
+=======
     --stage 13   \
     --stop_stage 13  \
     --gpu_kmeans true  \
     --portion 1.0   \
     --kmeans_opts "--batch_bins 1 --nj 8" \
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
     --kmeans_feature "${kmeans_feature}" \
     --nclusters "${nclusters}" \
     --ngpu 1 \

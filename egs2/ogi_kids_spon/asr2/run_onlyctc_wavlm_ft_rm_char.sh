@@ -19,7 +19,11 @@ test_sets="dev test"
 
 # test_sets="test_clean test_other dev_clean dev_other"
 
+<<<<<<< HEAD
+asr_config=conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr1e-4.yaml
+=======
 asr_config=conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr2e-3.yaml
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
 inference_config=conf/decode_ctc1.0_greedy.yaml
 
 src_nbpe=6000   # I use src_nbpe=6000 for 2000-cluster kmeans.
@@ -32,8 +36,13 @@ tgt_case="ts"
 
 CUDA_VISIBLE_DEVICES="1"    \
 ./asr2_hf.sh \
+<<<<<<< HEAD
+    --stage 15   \
+    --stop_stage 15  \
+=======
     --stage 13   \
     --stop_stage 13  \
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
     --gpu_kmeans true  \
     --portion 1.0   \
     --kmeans_opts "--batch_bins 1 --nj 4" \

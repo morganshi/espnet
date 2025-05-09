@@ -201,6 +201,7 @@ TEDX_SPANISH=downloads
 IAM=downloads
 OFUTON=
 OGI_KIDS_SPEECH=
+OGI_KIDS=/data/Databases/OGI_Kids
 OPENCPOP=
 M_AILABS=downloads
 CATSLU=downloads

@@ -855,7 +855,7 @@ if [ ${stage} -le 5 ] && [ ${stop_stage} -ge 5 ] && ! [[ " ${skip_stages} " =~ [
                         }
                         print($1,out);
                     }' "${km_dir}/"distinct_cjk_token_lists \
-                    "${km_dir}/${src_lang}/${dset}/pseudo_labels_fsq.txt" \
+                    "${km_dir}/FSQ/${dset}/pseudo_labels_fsq.txt" \
                     > "${data_extract}/FSQ/${src_lang}/${dset}"/text.${src_case}.${src_lang}
             done
         else

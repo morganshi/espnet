@@ -22,7 +22,12 @@ CUDA_VISIBLE_DEVICES="1"    \
     --nj 4 \
     --gpu_inference true \
     --inference_asr_model "valid.cer_ctc.best.pth"  \
+<<<<<<< HEAD
+    --inference_nj 4 \
+    --gpu_inference true    \
+=======
     --inference_nj 1 \
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
     --nbpe 200 \
     --max_wav_duration 30 \
     --feats_normalize None \

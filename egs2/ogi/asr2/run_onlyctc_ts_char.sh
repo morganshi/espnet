@@ -30,10 +30,15 @@ tgt_nbpe=200   # if token_joint is True, then only tgt_nbpe is used
 src_case="ts"
 tgt_case="ts"
 
-CUDA_VISIBLE_DEVICES="0"    \
+CUDA_VISIBLE_DEVICES="1"    \
 ./asr2.sh \
+<<<<<<< HEAD
+    --stage 15   \
+    --stop_stage 15  \
+=======
     --stage 5   \
     --stop_stage 7  \
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
     --gpu_kmeans true  \
     --portion 1.0   \
     --kmeans_opts "--batch_bins 1 --nj 4" \
@@ -43,6 +48,7 @@ CUDA_VISIBLE_DEVICES="0"    \
     --nj 4  \
     --inference_nj 4    \
     --inference_asr_model "valid.cer_ctc.best.pth"   \
+    --gpu_inference true    \
     --src_lang ${src_lang} \
     --tgt_lang ${tgt_lang} \
     --src_token_type "char" \

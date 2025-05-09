@@ -15,11 +15,19 @@ tgt_lang=en
 
 train_set="train"
 train_dev="dev"
+<<<<<<< HEAD
+test_sets="test"
+
+# test_sets="test_clean test_other dev_clean dev_other"
+
+asr_config=conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr1e-4.yaml
+=======
 test_sets="dev test"
 
 # test_sets="test_clean test_other dev_clean dev_other"
 
 asr_config=conf/train_discrete_asr_e_branchformer1_onlyctc_1gpu_lr2e-3.yaml
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
 inference_config=conf/decode_ctc1.0_greedy.yaml
 
 src_nbpe=6000   # I use src_nbpe=6000 for 2000-cluster kmeans.
@@ -30,6 +38,15 @@ tgt_nbpe=200   # if token_joint is True, then only tgt_nbpe is used
 src_case="rm"
 tgt_case="ts"
 
+<<<<<<< HEAD
+CUDA_VISIBLE_DEVICES="0"    \
+./asr2_hf.sh \
+    --stage 5   \
+    --stop_stage 5  \
+    --gpu_kmeans false  \
+    --portion 1.0   \
+    --kmeans_opts "--batch_bins 1 --nj 4" \
+=======
 CUDA_VISIBLE_DEVICES="1"    \
 ./asr2_hf.sh \
     --stage 13   \
@@ -37,6 +54,7 @@ CUDA_VISIBLE_DEVICES="1"    \
     --gpu_kmeans true  \
     --portion 1.0   \
     --kmeans_opts "--batch_bins 480000 --nj 1" \
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
     --kmeans_feature "${kmeans_feature}" \
     --nclusters "${nclusters}" \
     --ngpu 1 \

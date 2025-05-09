@@ -36,7 +36,11 @@ CUDA_VISIBLE_DEVICES="0"    \
     --stop_stage 5  \
     --gpu_kmeans true  \
     --portion 1.0   \
+<<<<<<< HEAD
+    --kmeans_opts "--batch_bins 1 --nj 1" \
+=======
     --kmeans_opts "--batch_bins 480000 --nj 1" \
+>>>>>>> cea7138339774c302f4af2804631d62c75bb4b2f
     --kmeans_feature "${kmeans_feature}" \
     --nclusters "${nclusters}" \
     --ngpu 1 \
